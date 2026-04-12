@@ -62,6 +62,18 @@ export default function ReportCards() {
 
       <div className="container" style={{ paddingTop: 'var(--space-12)', paddingBottom: 'var(--space-16)' }}>
 
+        {/* ── Guide ── */}
+        <section style={{ marginBottom: 'var(--space-10)' }}>
+          <h2 style={{ fontSize: 'var(--text-xl)', marginBottom: 'var(--space-3)', color: '#1E2D3D' }}>Guide</h2>
+          <p style={{ fontSize: 'var(--text-base)', color: '#444', lineHeight: 1.75, margin: 0 }}>
+            These scorecards are the result of a deep, AI-powered analysis of each councillor's performance
+            record across six categories that define high-performing civic leadership. Click any councillor
+            to see the full score breakdown, category-by-category reasoning, and sources. We encourage you
+            to read the analysis and use it as a starting point for your own research. Use this as your
+            starting point, not your final word.
+          </p>
+        </section>
+
         {/* ── Summary table ── */}
         <section style={{ marginBottom: 'var(--space-12)' }}>
           <h2 style={{ fontSize: 'var(--text-xl)', marginBottom: 'var(--space-5)' }}>
