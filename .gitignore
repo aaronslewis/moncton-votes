@@ -1,2 +1,13 @@
 # Local Netlify folder
 .netlify
+
+# Build output — Netlify builds this automatically
+dist/
+
+# Dependencies
+node_modules/
+
+# Misc
+*.log
+.env
+.env.local
