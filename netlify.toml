@@ -33,3 +33,10 @@
   for = "/index.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# Force full response (200) for OG image — prevents Facebook scraper getting 206
+[[headers]]
+  for = "/og-image.jpg"
+  [headers.values]
+    Accept-Ranges = "none"
+    Cache-Control = "public, max-age=86400"
