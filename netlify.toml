@@ -6,6 +6,18 @@
   NODE_VERSION = "20"
 
 [[redirects]]
+  from   = "http://monctonvotes.ca/*"
+  to     = "https://monctonvotes.ca/:splat"
+  status = 301
+  force  = true
+
+[[redirects]]
+  from   = "http://www.monctonvotes.ca/*"
+  to     = "https://monctonvotes.ca/:splat"
+  status = 301
+  force  = true
+
+[[redirects]]
   from   = "/*"
   to     = "/index.html"
   status = 200
