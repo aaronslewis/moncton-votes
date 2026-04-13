@@ -1,0 +1,1760 @@
+{
+  "metadata": {
+    "title": "Moncton City Council — Meeting Attendance Records 2021–2025",
+    "council_term": "2021–2025",
+    "source": "City of Moncton official Regular Public Council Meeting minutes",
+    "source_url": "https://www.moncton.ca/en/my-govt-work-city-council/council-meetings-and-materials",
+    "data_notes": [
+      "Covers Regular Public Council Meetings only (not Committee of the Whole or Private/in-camera meetings)",
+      "Meetings from Jan–May 2021 are pre-election (previous council term); newly elected councillors first appear June 21, 2021",
+      "Remote attendance denotes participation via Webex, Microsoft Teams, or similar virtual platform",
+      "The 2021-09-07 meeting record appears incomplete in the source minutes PDF",
+      "Meetings 2024-06-03 through 2024-08-19 show only partial attendance lists — summer meeting format may differ",
+      "Dawn Arnold was appointed to the Senate of Canada on March 7, 2025; absent from meetings from April 2025 onward",
+      "Attendance totals vary per councillor due to term timing (new councillors joined June 2021)"
+    ],
+    "generated": "2026-04-13",
+    "total_meetings_in_dataset": 86,
+    "meetings_with_new_2021_council": 80
+  },
+  "councillors": [
+    {
+      "id": "shawn-crossman",
+      "name": "Shawn Crossman",
+      "role": "Councillor",
+      "ward": "Ward 1",
+      "attendance_summary": {
+        "meetings_in_person": 68,
+        "meetings_remote": 13,
+        "meetings_absent": 0,
+        "total_meetings_recorded": 81,
+        "attendance_rate_pct": 100
+      },
+      "notes": "Served as Deputy Mayor"
+    },
+    {
+      "id": "dave-steeves",
+      "name": "Dave Steeves",
+      "role": "Councillor",
+      "ward": "Ward 3",
+      "attendance_summary": {
+        "meetings_in_person": 67,
+        "meetings_remote": 7,
+        "meetings_absent": 0,
+        "total_meetings_recorded": 74,
+        "attendance_rate_pct": 100
+      }
+    },
+    {
+      "id": "susan-edgett",
+      "name": "Susan Edgett",
+      "role": "Councillor",
+      "ward": "Ward 4",
+      "attendance_summary": {
+        "meetings_in_person": 66,
+        "meetings_remote": 14,
+        "meetings_absent": 0,
+        "total_meetings_recorded": 80,
+        "attendance_rate_pct": 100
+      }
+    },
+    {
+      "id": "daniel-bourgeois",
+      "name": "Daniel Bourgeois",
+      "role": "Councillor",
+      "ward": "Ward 2",
+      "attendance_summary": {
+        "meetings_in_person": 54,
+        "meetings_remote": 20,
+        "meetings_absent": 1,
+        "total_meetings_recorded": 75,
+        "attendance_rate_pct": 99
+      }
+    },
+    {
+      "id": "charles-leger",
+      "name": "Charles Léger",
+      "role": "Councillor",
+      "ward": "Ward 2",
+      "attendance_summary": {
+        "meetings_in_person": 58,
+        "meetings_remote": 21,
+        "meetings_absent": 1,
+        "total_meetings_recorded": 80,
+        "attendance_rate_pct": 99
+      }
+    },
+    {
+      "id": "monique-leblanc",
+      "name": "Monique LeBlanc",
+      "role": "Councillor-at-Large",
+      "ward": "At-Large",
+      "attendance_summary": {
+        "meetings_in_person": 66,
+        "meetings_remote": 8,
+        "meetings_absent": 1,
+        "total_meetings_recorded": 75,
+        "attendance_rate_pct": 99
+      }
+    },
+    {
+      "id": "paul-richard",
+      "name": "Paul Richard",
+      "role": "Councillor",
+      "ward": "Ward 4",
+      "attendance_summary": {
+        "meetings_in_person": 64,
+        "meetings_remote": 9,
+        "meetings_absent": 2,
+        "total_meetings_recorded": 75,
+        "attendance_rate_pct": 97
+      }
+    },
+    {
+      "id": "dawn-arnold",
+      "name": "Dawn Arnold",
+      "role": "Mayor",
+      "ward": "City-wide",
+      "attendance_summary": {
+        "meetings_in_person": 71,
+        "meetings_remote": 5,
+        "meetings_absent": 3,
+        "total_meetings_recorded": 79,
+        "attendance_rate_pct": 96
+      },
+      "notes": "Appointed to the Senate of Canada on March 7, 2025"
+    },
+    {
+      "id": "paulette-theriault",
+      "name": "Paulette Thériault",
+      "role": "Councillor",
+      "ward": "Ward 1",
+      "attendance_summary": {
+        "meetings_in_person": 70,
+        "meetings_remote": 9,
+        "meetings_absent": 3,
+        "total_meetings_recorded": 82,
+        "attendance_rate_pct": 96
+      }
+    },
+    {
+      "id": "marty-kingston",
+      "name": "Marty Kingston",
+      "role": "Councillor-at-Large",
+      "ward": "At-Large",
+      "attendance_summary": {
+        "meetings_in_person": 68,
+        "meetings_remote": 4,
+        "meetings_absent": 3,
+        "total_meetings_recorded": 75,
+        "attendance_rate_pct": 96
+      }
+    },
+    {
+      "id": "bryan-butler",
+      "name": "Bryan Butler",
+      "role": "Councillor",
+      "ward": "Ward 3",
+      "attendance_summary": {
+        "meetings_in_person": 63,
+        "meetings_remote": 12,
+        "meetings_absent": 6,
+        "total_meetings_recorded": 81,
+        "attendance_rate_pct": 93
+      }
+    }
+  ],
+  "meetings": [
+    {
+      "date": "2021-01-18",
+      "present_in_person": [],
+      "present_remote": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Charles Léger",
+        "Bryan Butler"
+      ],
+      "absent": [],
+      "total_present": 6
+    },
+    {
+      "date": "2021-02-01",
+      "present_in_person": [],
+      "present_remote": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Charles Léger",
+        "Bryan Butler"
+      ],
+      "absent": [],
+      "total_present": 6
+    },
+    {
+      "date": "2021-02-16",
+      "present_in_person": [],
+      "present_remote": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Charles Léger",
+        "Bryan Butler"
+      ],
+      "absent": [],
+      "total_present": 6
+    },
+    {
+      "date": "2021-03-15",
+      "present_in_person": [
+        "Paulette Thériault"
+      ],
+      "present_remote": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Shawn Crossman",
+        "Charles Léger"
+      ],
+      "absent": [
+        "Bryan Butler"
+      ],
+      "total_present": 5
+    },
+    {
+      "date": "2021-04-06",
+      "present_in_person": [
+        "Paulette Thériault"
+      ],
+      "present_remote": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Shawn Crossman",
+        "Charles Léger",
+        "Bryan Butler"
+      ],
+      "absent": [],
+      "total_present": 6
+    },
+    {
+      "date": "2021-05-03",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Shawn Crossman"
+      ],
+      "present_remote": [
+        "Paulette Thériault",
+        "Charles Léger",
+        "Bryan Butler"
+      ],
+      "absent": [],
+      "total_present": 6
+    },
+    {
+      "date": "2021-06-21",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2021-07-05",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2021-07-19",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 10
+    },
+    {
+      "date": "2021-08-16",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2021-09-07",
+      "present_in_person": [
+        "Dawn Arnold"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 1
+    },
+    {
+      "date": "2021-09-20",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2021-10-04",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2021-10-18",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves"
+      ],
+      "present_remote": [
+        "Susan Edgett",
+        "Paul Richard"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2021-11-01",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves"
+      ],
+      "present_remote": [
+        "Susan Edgett",
+        "Paul Richard"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2021-11-05",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves"
+      ],
+      "present_remote": [
+        "Susan Edgett",
+        "Paul Richard"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2021-11-15",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves"
+      ],
+      "present_remote": [
+        "Susan Edgett",
+        "Paul Richard"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2021-12-06",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Paulette Thériault",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Shawn Crossman",
+        "Daniel Bourgeois"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2021-12-20",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Marty Kingston",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Monique LeBlanc",
+        "Shawn Crossman",
+        "Paulette Thériault"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-01-17",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Charles Léger"
+      ],
+      "present_remote": [
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "absent": [
+        "Bryan Butler"
+      ],
+      "total_present": 10
+    },
+    {
+      "date": "2022-02-07",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [
+        "Bryan Butler"
+      ],
+      "total_present": 10
+    },
+    {
+      "date": "2022-02-22",
+      "present_in_person": [
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [
+        "Dawn Arnold",
+        "Bryan Butler"
+      ],
+      "total_present": 9
+    },
+    {
+      "date": "2022-03-21",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-04-04",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-04-19",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-05-02",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 10
+    },
+    {
+      "date": "2022-05-16",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-06-06",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-06-20",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-07-18",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-08-16",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-09-06",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Monique LeBlanc",
+        "Bryan Butler"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-09-20",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-10-03",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Daniel Bourgeois",
+        "Charles Léger"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-10-17",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Paulette Thériault",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Shawn Crossman",
+        "Daniel Bourgeois",
+        "Charles Léger"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-11-07",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Daniel Bourgeois",
+        "Charles Léger"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-11-21",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Marty Kingston",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Monique LeBlanc",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2022-12-05",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [
+        "Daniel Bourgeois"
+      ],
+      "total_present": 10
+    },
+    {
+      "date": "2022-12-19",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Daniel Bourgeois",
+        "Charles Léger"
+      ],
+      "absent": [
+        "Bryan Butler"
+      ],
+      "total_present": 10
+    },
+    {
+      "date": "2023-01-16",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Bryan Butler"
+      ],
+      "present_remote": [
+        "Susan Edgett",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Dave Steeves"
+      ],
+      "absent": [
+        "Paul Richard"
+      ],
+      "total_present": 10
+    },
+    {
+      "date": "2023-02-06",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Marty Kingston",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Monique LeBlanc",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2023-02-21",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2023-03-20",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2023-04-03",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2023-04-17",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2023-05-01",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2023-05-15",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2023-06-05",
+      "present_in_person": [
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 10
+    },
+    {
+      "date": "2023-06-19",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2023-06-22",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [
+        "Monique LeBlanc"
+      ],
+      "total_present": 10
+    },
+    {
+      "date": "2023-07-17",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2023-08-21",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2023-09-05",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 10
+    },
+    {
+      "date": "2023-09-18",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves"
+      ],
+      "present_remote": [],
+      "absent": [
+        "Paul Richard"
+      ],
+      "total_present": 10
+    },
+    {
+      "date": "2023-10-03",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [
+        "Paulette Thériault"
+      ],
+      "total_present": 10
+    },
+    {
+      "date": "2023-10-16",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2023-11-06",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Daniel Bourgeois",
+        "Charles Léger"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2023-11-20",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Bryan Butler",
+        "Dave Steeves"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2023-12-04",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves"
+      ],
+      "present_remote": [
+        "Susan Edgett",
+        "Paul Richard"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2023-12-18",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Monique LeBlanc",
+        "Shawn Crossman",
+        "Charles Léger",
+        "Dave Steeves"
+      ],
+      "present_remote": [
+        "Susan Edgett",
+        "Daniel Bourgeois",
+        "Bryan Butler",
+        "Paul Richard"
+      ],
+      "absent": [
+        "Marty Kingston",
+        "Paulette Thériault"
+      ],
+      "total_present": 9
+    },
+    {
+      "date": "2024-01-15",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Daniel Bourgeois",
+        "Charles Léger"
+      ],
+      "absent": [
+        "Bryan Butler"
+      ],
+      "total_present": 10
+    },
+    {
+      "date": "2024-02-05",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 10
+    },
+    {
+      "date": "2024-02-20",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2024-03-18",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Daniel Bourgeois",
+        "Charles Léger"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2024-04-02",
+      "present_in_person": [
+        "Susan Edgett",
+        "Shawn Crossman",
+        "Bryan Butler",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Dave Steeves"
+      ],
+      "absent": [
+        "Dawn Arnold",
+        "Paulette Thériault"
+      ],
+      "total_present": 9
+    },
+    {
+      "date": "2024-04-15",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Monique LeBlanc",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Bryan Butler",
+        "Dave Steeves"
+      ],
+      "present_remote": [
+        "Susan Edgett",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Paul Richard"
+      ],
+      "absent": [
+        "Marty Kingston"
+      ],
+      "total_present": 10
+    },
+    {
+      "date": "2024-05-06",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Daniel Bourgeois",
+        "Charles Léger"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2024-05-21",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Daniel Bourgeois",
+        "Charles Léger"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2024-06-03",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Paulette Thériault"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 2
+    },
+    {
+      "date": "2024-06-17",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Paulette Thériault"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 2
+    },
+    {
+      "date": "2024-07-15",
+      "present_in_person": [],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 0
+    },
+    {
+      "date": "2024-08-19",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Paulette Thériault"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 2
+    },
+    {
+      "date": "2024-09-16",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Monique LeBlanc",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Charles Léger",
+        "Bryan Butler",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Marty Kingston",
+        "Daniel Bourgeois",
+        "Dave Steeves"
+      ],
+      "absent": [],
+      "total_present": 10
+    },
+    {
+      "date": "2024-10-07",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault"
+      ],
+      "present_remote": [
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2024-10-21",
+      "present_in_person": [
+        "Susan Edgett",
+        "Marty Kingston",
+        "Paulette Thériault",
+        "Paul Richard"
+      ],
+      "present_remote": [
+        "Monique LeBlanc",
+        "Shawn Crossman",
+        "Daniel Bourgeois",
+        "Bryan Butler",
+        "Dave Steeves"
+      ],
+      "absent": [
+        "Dawn Arnold",
+        "Charles Léger"
+      ],
+      "total_present": 9
+    },
+    {
+      "date": "2024-11-04",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [
+        "Marty Kingston"
+      ],
+      "total_present": 10
+    },
+    {
+      "date": "2024-12-02",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2025-01-20",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2025-02-03",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2025-02-18",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2025-03-17",
+      "present_in_person": [
+        "Dawn Arnold",
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 11
+    },
+    {
+      "date": "2025-04-07",
+      "present_in_person": [
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 10
+    },
+    {
+      "date": "2025-04-22",
+      "present_in_person": [
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 10
+    },
+    {
+      "date": "2025-05-05",
+      "present_in_person": [
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 10
+    },
+    {
+      "date": "2025-05-20",
+      "present_in_person": [
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 10
+    },
+    {
+      "date": "2025-08-18",
+      "present_in_person": [
+        "Susan Edgett",
+        "Monique LeBlanc",
+        "Marty Kingston",
+        "Shawn Crossman",
+        "Paulette Thériault",
+        "Daniel Bourgeois",
+        "Charles Léger",
+        "Bryan Butler",
+        "Dave Steeves",
+        "Paul Richard"
+      ],
+      "present_remote": [],
+      "absent": [],
+      "total_present": 10
+    }
+  ]
+}

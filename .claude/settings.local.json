@@ -63,7 +63,16 @@
       "Bash(curl -L \"https://scontent.fyqm1-1.fna.fbcdn.net/v/t39.30808-6/665919044_10242922234339043_1056696557648921524_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=NMqg-5x-bv8Q7kNvwGJDxfD&_nc_oc=Adoc6UBzHrZTaYwpTit2KzFp7bKmesrIeflFHRtK3U3DruI08AP7pLwM-Yd8GAHkd2E&_nc_zt=23&_nc_ht=scontent.fyqm1-1.fna&_nc_gid=SzZyJD1YyD7c4JXUUcIE9Q&_nc_ss=7a3a8&oh=00_Af3BQQLsgKv4tdcv4KuuQXsLVxAdgBURu6w08RZN0gYQvQ&oe=69DF6842\" -o \"C:\\\\Users\\\\aaron\\\\Code\\\\monctonpoli\\\\public\\\\images\\\\felix-leblanc.jpg\" -s)",
       "Bash(curl -L \"https://ugc.production.linktr.ee/c2ffbe8c-cd78-4728-8f65-2bb4032c885b_R1YN52NH9EGCoefTIWriw-bTA3JQ76VqbjP3S7pp0xbMB3pl65VGFnn8ZoneDw6h-gjXybok-w-s800-c-k-c0x00ffffff-no-r.jpeg?io=true&size=avatar-v3_0\" -o \"C:\\\\Users\\\\aaron\\\\Code\\\\monctonpoli\\\\public\\\\images\\\\julianna-mutch.jpg\" -s)",
       "Read(///wsl$/Ubuntu/home/aaron/code/**)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(python -c \"from PIL import Image, ImageDraw, ImageFont; print\\('Pillow OK'\\)\")",
+      "Bash(pip install:*)",
+      "Bash(findstr -i \"arial\\\\|segoe\\\\|calibri\")",
+      "Bash(python -c \"import os; fonts = os.listdir\\('C:/Windows/Fonts'\\); [print\\(f\\) for f in sorted\\(fonts\\) if any\\(x in f.lower\\(\\) for x in ['arial','segoe','calibri','gothic','bold']\\)]\")",
+      "Bash(python)",
+      "Bash(python -c \"import os; files = os.listdir\\(r'C:\\\\Users\\\\aaron\\\\Code\\\\monctonpoli\\\\node_modules\\\\@fontsource-variable\\\\inter\\\\files'\\); [print\\(f\\) for f in files if 'latin' in f and 'normal' in f and 'woff2' not in f]\")",
+      "Bash(python -c \"import os; files = os.listdir\\(r'C:\\\\Users\\\\aaron\\\\Code\\\\monctonpoli\\\\node_modules\\\\@fontsource-variable\\\\inter\\\\files'\\); [print\\(f\\) for f in files[:20]]\")",
+      "Bash(python -c ':*)",
+      "Bash(del \"C:\\\\Users\\\\aaron\\\\Code\\\\monctonpoli\\\\inter.zip\" \"C:\\\\Users\\\\aaron\\\\Code\\\\monctonpoli\\\\inter-Inter-Bold.ttf\" \"C:\\\\Users\\\\aaron\\\\Code\\\\monctonpoli\\\\inter-Inter-Regular.ttf\")"
     ]
   }
 }
