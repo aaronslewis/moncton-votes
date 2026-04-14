@@ -98,7 +98,7 @@ const BASICS_LINKS = [
     source: 'moncton',
   },
   {
-    title: 'Municipal Regions — Elections NB',
+    title: 'Municipal Regions',
     description:
       'An interactive map from Elections New Brunswick showing how the province is divided into municipal electoral regions. Helpful for understanding the broader landscape of local governance in New Brunswick.',
     url: 'https://www.electionsnb.ca/content/enb/en/maps/municipal-regions.html',
@@ -166,28 +166,42 @@ const VOTING_LINKS = [
     source: 'moncton',
   },
   {
-    title: 'Where Do I Vote? — Elections NB',
+    title: 'Where Do I Vote?',
     description:
       'The official Elections NB voter lookup tool. Select the "Local Government" option to find your polling division, your electoral ward, and your elected representatives in Moncton.',
     url: 'https://www.electionsnb.ca/content/enb/en/voters/search.html',
     source: 'elections',
   },
   {
-    title: 'Voters List — Elections NB',
+    title: 'Voters List',
     description:
       'Confirm that your name is on the voters list, or add/update your information in the NB Registry of Electors. You must be on the list to vote in a municipal election.',
     url: 'https://www.electionsnb.ca/content/enb/en/voters/voters-list.html',
     source: 'elections',
   },
   {
-    title: 'Local Government Candidates — Elections NB',
+    title: 'How to Vote',
+    description:
+      'A step-by-step guide to voting in a New Brunswick municipal election, including advance voting options, what to expect at the polls, and accessibility services available to voters.',
+    url: 'https://www.electionsnb.ca/content/enb/en/voters/how-to-vote.html',
+    source: 'elections',
+  },
+  {
+    title: 'Voter ID Requirements',
+    description:
+      'The official list of acceptable identification to bring to the polls on election day. Includes photo ID options and alternatives if you do not have photo ID.',
+    url: 'https://www.electionsnb.ca/content/enb/en/voters/voter-id-requirements.html',
+    source: 'elections',
+  },
+  {
+    title: 'Local Government Candidates',
     description:
       'Information for anyone considering running for local government in New Brunswick, including nomination requirements and the candidate kit. Also useful for citizens who want to understand the candidacy process.',
     url: 'https://www.electionsnb.ca/content/enb/en/representatives/municipal-candidates.html',
     source: 'elections',
   },
   {
-    title: 'Municipal Election Publications — Elections NB',
+    title: 'Municipal Election Publications',
     description:
       'Historical results, reports, and official publications from past NB municipal elections. Useful for comparing participation rates, candidate histories, and past election outcomes in Moncton.',
     url: 'https://www.electionsnb.ca/content/enb/en/resources/publications/mehep.html',
