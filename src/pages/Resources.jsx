@@ -142,6 +142,13 @@ const ACTIVITY_LINKS = [
     source: 'moncton',
   },
   {
+    title: 'Council Attendance Record (2021–2025)',
+    description:
+      'The official attendance record for Moncton City Council during the 2021–2025 term. Shows how often each councillor was present at meetings — a key measure of engagement and accountability.',
+    url: 'https://www5.moncton.ca/docs/council/2021-2025_Attendance_Presences.pdf',
+    source: 'moncton',
+  },
+  {
     title: 'My Government at Work',
     description:
       "A broader overview of the City's governance activities, including committees, reports, and decisions beyond regular council meetings. A good way to see the full scope of how your elected officials are engaged.",
