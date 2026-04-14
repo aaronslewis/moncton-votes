@@ -18,6 +18,12 @@
   force  = true
 
 [[redirects]]
+  from   = "https://www.monctonvotes.ca/*"
+  to     = "https://monctonvotes.ca/:splat"
+  status = 301
+  force  = true
+
+[[redirects]]
   from   = "/*"
   to     = "/index.html"
   status = 200
@@ -31,6 +37,11 @@
 # Never cache the HTML entry point — always fetch fresh so users get new deploys
 [[headers]]
   for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
