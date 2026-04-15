@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from './components/Layout.jsx';
+import Home from './pages/Home.jsx';  // eager — it's the entry page, no benefit to lazy loading
 
-const Home              = lazy(() => import('./pages/Home.jsx'));
 const ReportCards       = lazy(() => import('./pages/ReportCards.jsx'));
 const CouncillorProfile = lazy(() => import('./pages/CouncillorProfile.jsx'));
 const Candidates        = lazy(() => import('./pages/Candidates.jsx'));
