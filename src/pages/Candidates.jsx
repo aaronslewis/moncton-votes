@@ -202,6 +202,25 @@ export default function Candidates() {
       </header>
 
       <div className="container">
+        {/* ── Voting breakdown notice ──────────────────────────── */}
+        <div
+          className="notice notice-info"
+          style={{ marginTop: 'var(--space-8)', marginBottom: 'var(--space-4)' }}
+        >
+          <p>
+            <strong>On election day you will vote for:</strong> 1 Mayor &nbsp;·&nbsp;
+            2 At-Large Councillors &nbsp;·&nbsp; 2 Ward Councillors (for your ward).
+            {' '}
+            <a
+              href="https://www.moncton.ca/en/municipal-elections-2026"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Source: City of Moncton →
+            </a>
+          </p>
+        </div>
+
         {/* ── Ward Filter ──────────────────────────────────────── */}
         <section
           className="card"
