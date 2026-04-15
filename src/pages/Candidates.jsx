@@ -42,12 +42,16 @@ function CandidateCard({ candidate }) {
           <img
             src={candidate.photo}
             alt={candidate.name}
-            style={{ width: '56px', height: '56px', borderRadius: 'var(--radius-full)', objectFit: 'cover', flexShrink: 0 }}
+            loading="lazy"
+            decoding="async"
+            width="84"
+            height="84"
+            style={{ width: '84px', height: '84px', borderRadius: 'var(--radius-full)', objectFit: 'cover', flexShrink: 0 }}
           />
         ) : (
           <div
             className="avatar-placeholder"
-            style={{ width: '56px', height: '56px', fontSize: 'var(--text-lg)', flexShrink: 0 }}
+            style={{ width: '84px', height: '84px', fontSize: 'var(--text-xl)', flexShrink: 0 }}
             aria-hidden="true"
           >
             {initials}
