@@ -44,19 +44,19 @@ export const routes = [
       // Home is eager — it's the entry page, no benefit to lazy loading
       { index: true, element: <Home /> },
 
-      { path: 'scorecards',      lazy: () => import('./pages/ReportCards.jsx') },
+      { path: 'scorecards',      lazy: async () => ({ Component: (await import('./pages/ReportCards.jsx')).default }) },
       {
         path: 'scorecards/:slug',
-        lazy: () => import('./pages/CouncillorProfile.jsx'),
+        lazy: async () => ({ Component: (await import('./pages/CouncillorProfile.jsx')).default }),
         // Tell SSG which URLs to pre-render for this dynamic route
         getStaticPaths: async () => {
           const { councillors } = await import('./data/councillors.js');
           return councillors.map((c) => `scorecards/${c.slug}`);
         },
       },
-      { path: 'candidates',    lazy: () => import('./pages/Candidates.jsx') },
-      { path: 'resources',     lazy: () => import('./pages/Resources.jsx') },
-      { path: 'voter-compass', lazy: () => import('./pages/VoterCompass.jsx') },
+      { path: 'candidates',    lazy: async () => ({ Component: (await import('./pages/Candidates.jsx')).default }) },
+      { path: 'resources',     lazy: async () => ({ Component: (await import('./pages/Resources.jsx')).default }) },
+      { path: 'voter-compass', lazy: async () => ({ Component: (await import('./pages/VoterCompass.jsx')).default }) },
       { path: '*',             element: <NotFound /> },
     ],
   },
