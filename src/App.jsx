@@ -1,15 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 import Layout from './components/Layout.jsx';
-import Home from './pages/Home.jsx';  // eager — it's the entry page, no benefit to lazy loading
+import Home from './pages/Home.jsx';
 
-const ReportCards       = lazy(() => import('./pages/ReportCards.jsx'));
-const CouncillorProfile = lazy(() => import('./pages/CouncillorProfile.jsx'));
-const Candidates        = lazy(() => import('./pages/Candidates.jsx'));
-const Resources         = lazy(() => import('./pages/Resources.jsx'));
-const VoterCompass      = lazy(() => import('./pages/VoterCompass.jsx'));
-
-function PageLoader() {
+/* ── Spinner shown while lazy page chunks are loading ─────────── */
+export function PageLoader() {
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '40vh' }}>
       <div style={{ width: '2rem', height: '2rem', borderRadius: '50%', border: '3px solid var(--colour-grey-200)', borderTopColor: 'var(--colour-primary-600)', animation: 'spin 0.6s linear infinite' }} />
@@ -17,6 +11,7 @@ function PageLoader() {
   );
 }
 
+/* ── 404 ──────────────────────────────────────────────────────── */
 function NotFound() {
   return (
     <div style={{ textAlign: 'center', padding: '4rem 1rem' }}>
@@ -31,22 +26,38 @@ function NotFound() {
   );
 }
 
-export default function App() {
+/* ── Root layout wrapper — renders Navbar + Footer around pages ── */
+function AppLayout() {
   return (
-    <BrowserRouter>
-      <Layout>
-        <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/scorecards" element={<ReportCards />} />
-          <Route path="/scorecards/:slug" element={<CouncillorProfile />} />
-          <Route path="/candidates" element={<Candidates />} />
-          <Route path="/resources" element={<Resources />} />
-          <Route path="/voter-compass" element={<VoterCompass />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        </Suspense>
-      </Layout>
-    </BrowserRouter>
+    <Layout>
+      <Outlet />
+    </Layout>
   );
 }
+
+/* ── Route config (React Router v6 data routes) ──────────────── */
+export const routes = [
+  {
+    path: '/',
+    element: <AppLayout />,
+    children: [
+      // Home is eager — it's the entry page, no benefit to lazy loading
+      { index: true, element: <Home /> },
+
+      { path: 'scorecards',      lazy: () => import('./pages/ReportCards.jsx') },
+      {
+        path: 'scorecards/:slug',
+        lazy: () => import('./pages/CouncillorProfile.jsx'),
+        // Tell SSG which URLs to pre-render for this dynamic route
+        getStaticPaths: async () => {
+          const { councillors } = await import('./data/councillors.js');
+          return councillors.map((c) => `scorecards/${c.slug}`);
+        },
+      },
+      { path: 'candidates',    lazy: () => import('./pages/Candidates.jsx') },
+      { path: 'resources',     lazy: () => import('./pages/Resources.jsx') },
+      { path: 'voter-compass', lazy: () => import('./pages/VoterCompass.jsx') },
+      { path: '*',             element: <NotFound /> },
+    ],
+  },
+];
