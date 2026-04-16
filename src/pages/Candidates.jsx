@@ -246,7 +246,7 @@ export default function Candidates() {
                 <option value="">All wards</option>
                 {WARDS.map((ward) => (
                   <option key={ward.value} value={ward.value}>
-                    {ward.label} — {ward.description}
+                    {ward.label}
                   </option>
                 ))}
               </select>
@@ -317,9 +317,6 @@ export default function Candidates() {
                   <div className="section-heading">
                     <h3 style={{ fontSize: 'var(--text-xl)' }}>
                       {ward.label}
-                      <span style={{ fontSize: 'var(--text-sm)', fontWeight: 400, color: 'var(--colour-grey-500)', marginLeft: 'var(--space-2)' }}>
-                        {ward.description}
-                      </span>
                     </h3>
                     <div className="section-divider" aria-hidden="true" />
                   </div>

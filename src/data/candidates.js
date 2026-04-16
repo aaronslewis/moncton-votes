@@ -378,10 +378,10 @@ export const candidates = {
 };
 
 export const WARDS = [
-  { value: 'ward1', label: 'Ward 1', description: 'Northeastern Moncton' },
-  { value: 'ward2', label: 'Ward 2', description: 'Northwestern Moncton' },
-  { value: 'ward3', label: 'Ward 3', description: 'Central / Downtown Moncton' },
-  { value: 'ward4', label: 'Ward 4', description: 'Southern Moncton' },
+  { value: 'ward1', label: 'Ward 1' },
+  { value: 'ward2', label: 'Ward 2' },
+  { value: 'ward3', label: 'Ward 3' },
+  { value: 'ward4', label: 'Ward 4' },
 ];
 
 export default candidates;
