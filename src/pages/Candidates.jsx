@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { candidates, WARDS } from '../data/candidates.js';
 
 /* ── Contact icons (aria-hidden SVGs, labels on the parent <a>) ─────── */
@@ -113,6 +114,18 @@ function CandidateCard({ candidate }) {
               <li key={i}>{point}</li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {/* Profile link */}
+      {candidate.qa && candidate.qa.length > 0 && (
+        <div style={{ marginTop: 'var(--space-3)' }}>
+          <Link
+            to={`/candidates/${candidate.id}`}
+            style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--colour-primary-600)', textDecoration: 'none' }}
+          >
+            View profile &amp; Q&amp;A →
+          </Link>
         </div>
       )}
 
