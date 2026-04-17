@@ -134,7 +134,7 @@ export const candidates = {
       ward: 'At-Large',
       incumbent: false,
       photo: '/images/ana-larade.webp',
-      website: null,
+      website: 'https://voteforanamoncton.ca/',
       phone: null,
       email: 'voteforanamoncton@gmail.com',
       facebook: 'https://www.facebook.com/profile.php?id=61583939081497',
