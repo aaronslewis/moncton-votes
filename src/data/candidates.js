@@ -9,8 +9,9 @@
 export const CANDIDATE_QUESTIONS = [
   "What's your top priority, and what's your plan to achieve it?",
   "What is your plan to address homelessness in Moncton?",
-  "Moncton's policing budget has grown significantly in recent years, yet concern about public safety remains high — how would you approach public safety spending as a councillor?",
+  "Moncton's policing budget has grown significantly in recent years, yet concern about public safety remains high — how would you approach public safety spending as an elected official?",
   "How do you see Moncton growing over the next decade — where should we build, and how should people get around?",
+  "Which major developments do you plan to support in the next four years?",
   "How will you make life more affordable for Monctonians feeling financially squeezed?",
   "Where do you think the city can generate new revenues or find cost savings?",
   "What's a decision Moncton council has made in the last four years that you disagreed with, and what would you have done differently?",
@@ -293,31 +294,6 @@ export const candidates = {
   ],
 
   ward3: [
-    {
-      id: 'ward3-berry-mills',
-      name: 'Berry Mills',
-      ward: 'Ward 3',
-      incumbent: false,
-      photo: null,
-      website: 'https://berryformoncton.ca',
-      phone: '506-555-0142',
-      email: 'berry@berryformoncton.ca',
-      facebook: 'https://www.facebook.com/berryformoncton',
-      bio: 'Lifelong Moncton resident and transit enthusiast who believes bold thinking is what the city needs.',
-      platform: ['Monorail connecting key corridors', 'Affordable transit passes for low-income residents', 'Eliminate parking minimums downtown'],
-      qa: [
-        { answer: "The monorail is not just a campaign promise — it's a generational investment in who Moncton chooses to be. For too long, we have watched our city's car-dependency strangle our streets, price out our young people, and leave entire neighbourhoods isolated from opportunity. A monorail connecting Main Street, the Magnetic Hill corridor, and the emerging Caledonia growth area would do what no bus route can: make transit faster than driving, visible from every corner of the city, and exciting enough to actually change behaviour. I've spent three years studying transit systems in cities our size — from Wuppertal, Germany to cities across North America — and the evidence is clear: elevated rapid transit triggers economic development along its corridors, reduces per-capita emissions, and pays for itself within 20 years through increased property tax assessment. My plan begins with commissioning a full feasibility study in the first 90 days, funded by a joint federal-provincial application under the Permanent Public Transit Fund." },
-        { answer: "Homelessness is a housing crisis first. We cannot arrest our way out of it. I would push council to fast-track zoning approvals for supportive housing developments and work with the province to co-fund a transitional housing hub in the downtown core. Navigation workers — not more police patrols — are what actually move people from the street into stable shelter." },
-        { answer: "We need to ask what we're buying with each dollar. The policing budget has nearly doubled in a decade, yet residents still don't feel safe in parts of the downtown. I would push for an independent audit of how officers spend their shifts and redirect a portion of the budget toward mental health co-responders who can handle the calls that don't require a badge and a gun." },
-        { answer: null },
-        { answer: "Affordability starts at city hall with development charges that don't price out smaller builders. I'll push to exempt secondary suites and small multi-unit builds from the full fee schedule, making it financially attractive to add the gentle density we desperately need. On transit, a universal low-income pass would immediately free up income for families stretched thin." },
-        { answer: "Parking minimums are costing us money, not making it. Every surface lot we mandate is land that isn't generating assessment. Eliminating parking minimums in the downtown core would unlock private investment and grow our tax base without raising rates. On the savings side, I'd look hard at our fleet maintenance contracts — there's real money sitting there." },
-        { answer: "The decision to approve the McAllister Drive expansion without a dedicated cycling facility was a missed opportunity we'll be paying for in decades of car dependency. I would have insisted on protected lanes as a condition of approval — the traffic counts absolutely justified it, and we had a once-in-a-generation chance to build them in at road-construction cost rather than retrofit cost later." },
-        { answer: "Tree canopy. It sounds quiet, but Moncton loses significant canopy to development approvals every year, and we have no binding replacement policy. I'll introduce a one-for-one tree replacement bylaw that actually has teeth. It's a quality-of-life issue, a climate issue, and frankly a property value issue." },
-        { answer: "I once rode every single Codiac Transpo route back-to-back in a single day to understand what riders actually experience. It took eleven hours, three transfers I shouldn't have had to make, and one very cold wait at a shelter with a broken roof. That day is why I'm running." },
-        { answer: "Moncton is a city that punches above its weight — our arts scene, our bilingualism, our scrappiness. Let's match that energy with infrastructure that says we're serious about the next fifty years. Vote Mills, Ward 3." },
-      ],
-    },
     {
       id: 'ward3-rodney-arsenault',
       name: 'Rodney Arsenault',
