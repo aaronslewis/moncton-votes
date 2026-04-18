@@ -209,12 +209,12 @@ const features = [
   },
   {
     icon: <VoterCompassIcon />,
-    title: 'Voter Compass',
+    title: 'Candidate Platforms',
     description:
-      "Answer a few questions about local issues and see which candidates best match your values. We're building this feature now — coming soon.",
-    link: '/voter-compass',
-    linkLabel: 'Learn More',
-    comingSoon: true,
+      'Browse where candidates stand on homelessness, public safety, housing, transit, affordability, and more — in their own words.',
+    link: '/platforms',
+    linkLabel: 'View Platforms',
+    comingSoon: false,
   },
 ];
 

@@ -64,7 +64,7 @@ export const routes = [
         },
       },
       { path: 'resources',     lazy: async () => ({ Component: (await import('./pages/Resources.jsx')).default }) },
-      { path: 'voter-compass', lazy: async () => ({ Component: (await import('./pages/VoterCompass.jsx')).default }) },
+      { path: 'platforms',     lazy: async () => ({ Component: (await import('./pages/Platforms.jsx')).default }) },
       { path: '*',             element: <NotFound /> },
     ],
   },
