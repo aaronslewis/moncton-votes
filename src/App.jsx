@@ -55,6 +55,14 @@ export const routes = [
         },
       },
       { path: 'candidates',    lazy: async () => ({ Component: (await import('./pages/Candidates.jsx')).default }) },
+      {
+        path: 'candidates/:id',
+        lazy: async () => ({ Component: (await import('./pages/CandidateDetail.jsx')).default }),
+        getStaticPaths: async () => {
+          const { candidates } = await import('./data/candidates.js');
+          return Object.values(candidates).flat().map((c) => `candidates/${c.id}`);
+        },
+      },
       { path: 'resources',     lazy: async () => ({ Component: (await import('./pages/Resources.jsx')).default }) },
       { path: 'voter-compass', lazy: async () => ({ Component: (await import('./pages/VoterCompass.jsx')).default }) },
       { path: '*',             element: <NotFound /> },

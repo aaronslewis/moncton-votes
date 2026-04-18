@@ -26,67 +26,80 @@ export default function CouncillorProfile() {
     <>
       {/* ── Profile header ── */}
       <div style={{
-        background:   tier.bg,
+        background:   '#1E2D3D',
         padding:      'var(--space-10) 0 var(--space-12)',
-        borderBottom: '1px solid rgba(0,0,0,0.07)',
+        borderBottom: `3px solid ${tier.bar}`,
       }}>
         <div className="container">
           <Link
             to="/scorecards"
-            style={{ color: tier.text, fontSize: 'var(--text-sm)', display: 'inline-flex', alignItems: 'center', gap: 'var(--space-1)', marginBottom: 'var(--space-6)', fontWeight: 600, textDecoration: 'none', opacity: 0.8 }}
+            style={{ color: 'rgba(255,255,255,0.6)', fontSize: 'var(--text-sm)', display: 'inline-flex', alignItems: 'center', gap: 'var(--space-1)', marginBottom: 'var(--space-6)', fontWeight: 600, textDecoration: 'none' }}
           >
             ← Back to Scorecards
           </Link>
 
           <div className="profile-header-row">
             {/* Avatar */}
-            <div className="profile-header-avatar" style={{
-              width:          '80px',
-              height:         '80px',
-              borderRadius:   '50%',
-              background:     `${tier.bar}30`,
-              border:         `3px solid ${tier.bar}`,
-              alignItems:     'center',
-              justifyContent: 'center',
-              fontSize:       'var(--text-2xl)',
-              fontWeight:     700,
-              color:          tier.text,
-              flexShrink:     0,
-              fontFamily:     "'Fraunces Variable', 'Fraunces', Georgia, serif",
-            }}>
-              {initials}
-            </div>
+            {councillor.photo ? (
+              <img
+                src={councillor.photo}
+                alt={councillor.name}
+                loading="eager"
+                decoding="async"
+                width="80"
+                height="80"
+                className="profile-header-avatar"
+                style={{ width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
+              />
+            ) : (
+              <div className="profile-header-avatar" style={{
+                width:          '80px',
+                height:         '80px',
+                borderRadius:   '50%',
+                background:     'rgba(255,255,255,0.08)',
+                border:         `3px solid ${tier.bar}`,
+                alignItems:     'center',
+                justifyContent: 'center',
+                fontSize:       'var(--text-2xl)',
+                fontWeight:     700,
+                color:          '#fff',
+                flexShrink:     0,
+                fontFamily:     "'Fraunces Variable', 'Fraunces', Georgia, serif",
+              }}>
+                {initials}
+              </div>
+            )}
 
             {/* Name + meta */}
             <div className="profile-name-block">
-              <h1 style={{ color: '#1E2D3D', fontSize: 'var(--text-3xl)', marginBottom: 'var(--space-2)' }}>
+              <h1 style={{ color: '#fff', fontSize: 'var(--text-3xl)', marginBottom: 'var(--space-2)' }}>
                 {councillor.name}
               </h1>
-              <div style={{ fontSize: 'var(--text-sm)', color: '#5A6375', marginBottom: 'var(--space-2)', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+              <div style={{ fontSize: 'var(--text-sm)', color: 'rgba(255,255,255,0.6)', marginBottom: 'var(--space-2)', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
                 <span>{councillor.role}{councillor.ward && councillor.ward !== 'City-wide' && ` · ${councillor.ward}`}</span>
                 {councillor.reOffering === false && (
-                  <span style={{ display: 'inline-block', padding: '0.15rem 0.55rem', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 600, background: '#F8FAFC', color: '#94A3B8', border: '1px solid #E2E8F0' }}>
+                  <span style={{ display: 'inline-block', padding: '0.15rem 0.55rem', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 600, background: 'transparent', color: 'rgba(255,255,255,0.4)', border: '1px solid rgba(255,255,255,0.2)' }}>
                     Not re-offering
                   </span>
                 )}
                 {councillor.reOffering === 'mayor' && (
-                  <span style={{ display: 'inline-block', padding: '0.15rem 0.55rem', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 600, background: '#fff', color: '#166534', border: '1px solid #16A34A' }}>
+                  <span style={{ display: 'inline-block', padding: '0.15rem 0.55rem', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 600, background: '#16A34A', color: '#fff', border: '1px solid #16A34A' }}>
                     Re-offering — Mayor
                   </span>
                 )}
                 {councillor.reOffering === 'atlarge' && (
-                  <span style={{ display: 'inline-block', padding: '0.15rem 0.55rem', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 600, background: '#fff', color: '#166534', border: '1px solid #16A34A' }}>
+                  <span style={{ display: 'inline-block', padding: '0.15rem 0.55rem', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 600, background: '#16A34A', color: '#fff', border: '1px solid #16A34A' }}>
                     Re-offering — At-Large
                   </span>
                 )}
                 {councillor.reOffering === true && (
-                  <span style={{ display: 'inline-block', padding: '0.15rem 0.55rem', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 600, background: '#fff', color: '#166534', border: '1px solid #16A34A' }}>
+                  <span style={{ display: 'inline-block', padding: '0.15rem 0.55rem', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 600, background: '#16A34A', color: '#fff', border: '1px solid #16A34A' }}>
                     Re-offering
                   </span>
                 )}
               </div>
               {councillor.term_info && (
-                <div style={{ fontSize: 'var(--text-xs)', color: '#5A6375' }}>
+                <div style={{ fontSize: 'var(--text-xs)', color: 'rgba(255,255,255,0.45)' }}>
                   {councillor.term_info}
                 </div>
               )}
@@ -94,7 +107,7 @@ export default function CouncillorProfile() {
 
             {/* Score display */}
             <div className="profile-score" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: '3.5rem', fontWeight: 800, color: tier.text, lineHeight: 1, letterSpacing: '-0.04em' }}>
+              <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: '3.5rem', fontWeight: 800, color: tier.bar, lineHeight: 1, letterSpacing: '-0.04em' }}>
                 {councillor.score}
                 <sup style={{ fontSize: '1.2rem', fontWeight: 600, opacity: 0.55, verticalAlign: 'super', letterSpacing: 0 }}>/100</sup>
               </div>
