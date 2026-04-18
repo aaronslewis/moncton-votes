@@ -33,6 +33,7 @@
       "score": 85,
       "descriptor": "Great",
       "reOffering": false,
+      "photo": null,
       "sources": [
         {
           "title": "Prime minister appoints Moncton Mayor Dawn Arnold to Senate",
@@ -165,6 +166,7 @@
       "score": 75,
       "descriptor": "Good",
       "reOffering": true,
+      "photo": "https://www.moncton.ca/sites/default/files/styles/media_library/public/2021-07/web_council_2021_2025_3.jpg",
       "sources": [
         {
           "title": "Moncton reverses menorah and nativity scene decision",
@@ -277,6 +279,7 @@
       "score": 72,
       "descriptor": "Good",
       "reOffering": "mayor",
+      "photo": "https://www.moncton.ca/sites/default/files/styles/media_library/public/2021-07/web_council_2021_2025_9.jpg",
       "sources": [
         {
           "title": "Moncton Council Rallies Around Basic Income",
@@ -383,6 +386,7 @@
       "score": 68,
       "descriptor": "Okay",
       "reOffering": true,
+      "photo": "https://www.moncton.ca/sites/default/files/styles/media_library/public/2021-07/web_council_2021_2025_4.jpg",
       "sources": [
         {
           "title": "Councillor Bryan Butler — City of Moncton",
@@ -489,6 +493,7 @@
       "score": 65,
       "descriptor": "Okay",
       "reOffering": "mayor",
+      "photo": "https://www.moncton.ca/sites/default/files/styles/media_library/public/2021-07/web_council_2021_2025_7.jpg",
       "sources": [
         {
           "title": "Cancer is 'only a word,' says Moncton city councillor diagnosed with multiple myeloma",
@@ -615,6 +620,7 @@
       "score": 66,
       "descriptor": "Okay",
       "reOffering": true,
+      "photo": "https://www.moncton.ca/sites/default/files/styles/media_library/public/2021-07/web_council_2021_2025_10.jpg",
       "sources": [
         {
           "title": "Moncton council votes to review who polices city",
@@ -716,6 +722,7 @@
       "score": 64,
       "descriptor": "Okay",
       "reOffering": false,
+      "photo": null,
       "sources": [
         {
           "title": "Northrop Frye International Literary Festival — History",
@@ -827,6 +834,7 @@
       "score": 65,
       "descriptor": "Okay",
       "reOffering": false,
+      "photo": null,
       "sources": [
         {
           "title": "Moncton council byelection win by Susan Edgett confirmed in recount",
@@ -918,6 +926,7 @@
       "score": 61,
       "descriptor": "Okay",
       "reOffering": false,
+      "photo": null,
       "sources": [
         {
           "title": "Moncton City Councillor helps save man from overdose",
@@ -1004,6 +1013,7 @@
       "score": 54,
       "descriptor": "Poor",
       "reOffering": true,
+      "photo": "https://www.moncton.ca/sites/default/files/styles/media_library/public/2021-07/web_council_2021_2025_5.jpg",
       "sources": [
         {
           "title": "Moncton councillor's conduct, comments about city committee member under review",
@@ -1146,6 +1156,7 @@
       "score": 51,
       "descriptor": "Poor",
       "reOffering": true,
+      "photo": "https://www.moncton.ca/sites/default/files/styles/media_library/public/images/city_council_0390_marty-kingston-2025_0.jpg",
       "sources": [
         {
           "title": "Marty Kingston returns as voice of the Wildcats",
