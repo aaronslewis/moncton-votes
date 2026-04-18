@@ -53,9 +53,8 @@ export default function Navbar() {
               <NavLink to="/resources" className={getNavLinkClass} role="listitem">
                 Resources
               </NavLink>
-              <NavLink to="/voter-compass" className={getNavLinkClass} role="listitem">
-                Voter Compass
-                <span className="nav-coming-soon" aria-label="Coming soon">Soon</span>
+              <NavLink to="/platforms" className={getNavLinkClass} role="listitem">
+                Platforms
               </NavLink>
             </div>
 
@@ -102,9 +101,8 @@ export default function Navbar() {
             <NavLink to="/resources" className={getMobileNavLinkClass} onClick={closeMenu}>
               Resources
             </NavLink>
-            <NavLink to="/voter-compass" className={getMobileNavLinkClass} onClick={closeMenu}>
-              Voter Compass
-              <span className="nav-coming-soon" style={{ marginLeft: '6px' }}>Coming Soon</span>
+            <NavLink to="/platforms" className={getMobileNavLinkClass} onClick={closeMenu}>
+              Platforms
             </NavLink>
           </div>
         </div>
