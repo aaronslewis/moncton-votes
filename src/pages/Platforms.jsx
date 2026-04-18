@@ -12,7 +12,7 @@ export default function Platforms() {
 
       <div className="container" style={{ paddingTop: 'var(--space-8)', paddingBottom: 'var(--space-16)' }}>
         <p style={{ fontSize: 'var(--text-base)', color: 'var(--colour-grey-700)', marginBottom: 'var(--space-8)', lineHeight: 1.7 }}>
-          Candidates were asked to answer the following questions. Their responses will be posted the week of April 28th.
+          Candidates were asked to answer the following questions. Their responses will be posted the week of April 27th.
         </p>
 
         <ol style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', paddingLeft: 0, listStyle: 'none' }}>
