@@ -2,6 +2,8 @@
    Resources — official, non-partisan civic links for Moncton
    ============================================================ */
 
+import { Link } from 'react-router-dom';
+
 function ExternalIcon() {
   return (
     <svg
@@ -28,6 +30,19 @@ const SOURCES = {
   moncton: { label: 'City of Moncton', className: 'source-badge source-moncton' },
   elections: { label: 'Elections NB', className: 'source-badge source-elections' },
 };
+
+/** A single internal-link card (no source badge) */
+function InternalResourceLink({ title, description, to }) {
+  return (
+    <Link to={to} className="card-hover resource-link resource-link--internal">
+      <div className="resource-link-head">
+        <h3>{title}</h3>
+      </div>
+      <p>{description}</p>
+      <span className="resource-link-cta">View →</span>
+    </Link>
+  );
+}
 
 /** A single external-link card */
 function ResourceLink({ title, description, url, source }) {
@@ -72,9 +87,11 @@ function ResourceSection({ id, title, blurb, links }) {
         </p>
       )}
       <div className="grid-2">
-        {links.map((l) => (
-          <ResourceLink key={l.url} {...l} />
-        ))}
+        {links.map((l) =>
+          l.to
+            ? <InternalResourceLink key={l.to} {...l} />
+            : <ResourceLink key={l.url} {...l} />
+        )}
       </div>
     </section>
   );
@@ -83,6 +100,12 @@ function ResourceSection({ id, title, blurb, links }) {
 /* ── Data ────────────────────────────────────────────────── */
 
 const BASICS_LINKS = [
+  {
+    title: 'Levels of Government — Moncton',
+    description:
+      'An infographic showing what each level of government — federal, provincial, and municipal — is responsible for, and who currently represents Moncton at each level.',
+    to: '/levels-of-government',
+  },
   {
     title: 'How City Council Works',
     description:
@@ -231,20 +254,8 @@ export default function Resources() {
       </header>
 
       <div className="container">
-        {/* ── Intro notice ─────────────────────────────────────── */}
-        <div
-          className="notice notice-info"
-          style={{ marginTop: 'var(--space-8)', marginBottom: 'var(--space-10)' }}
-        >
-          <p>
-            <strong>All official.</strong> Every link below points to the City of
-            Moncton or Elections New Brunswick. Moncton Votes does not endorse any
-            organization, publication, or viewpoint — these are the authoritative
-            starting points for your own research.
-          </p>
-        </div>
-
         {/* ── Sections ─────────────────────────────────────────── */}
+        <div style={{ marginTop: 'var(--space-8)' }} />
         <ResourceSection
           id="ward-heading"
           title="Find Your Ward"
@@ -295,7 +306,7 @@ export default function Resources() {
             marginBottom: 'var(--space-2)',
             color: 'var(--accent-dark)',
           }}>
-            Know an official resource we should add?
+            Know a resource we should add?
           </h2>
           <p style={{
             color: 'var(--colour-grey-700)',
@@ -303,25 +314,12 @@ export default function Resources() {
             lineHeight: 1.7,
             marginBottom: 0,
           }}>
-            If you know of another City of Moncton or Elections NB resource that
-            would help voters, send it our way at{' '}
+            If you know of another resource that would help voters, send it our way at{' '}
             <a href="mailto:info@monctonvotes.ca">info@monctonvotes.ca</a>. We review
             every suggestion against our non-partisanship standard before adding it.
           </p>
         </section>
 
-        <p style={{
-          textAlign: 'center',
-          fontSize: 'var(--text-xs)',
-          color: 'var(--colour-grey-500)',
-          maxWidth: '640px',
-          margin: '0 auto var(--space-16)',
-          lineHeight: 1.6,
-        }}>
-          All links point to official City of Moncton or Elections New Brunswick
-          sources. Content on those pages is maintained by the respective
-          government bodies and may be updated at any time.
-        </p>
       </div>
     </>
   );
