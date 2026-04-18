@@ -4,6 +4,12 @@ import { candidates, CANDIDATE_QUESTIONS } from '../data/candidates.js';
 
 const TRUNCATE_AT = 500;
 
+function incumbentLabel(candidate) {
+  const seat = candidate.incumbentOf || candidate.ward;
+  if (seat === 'City-Wide (Mayoral)') return 'Mayor Incumbent';
+  return `${seat} Incumbent`;
+}
+
 const PhoneIcon = () => (
   <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18" aria-hidden="true" focusable="false">
     <path fillRule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 16.352V17.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clipRule="evenodd" />
@@ -162,7 +168,7 @@ export default function CandidateDetail() {
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)', alignItems: 'center' }}>
                 <span className="badge badge-blue">{candidate.ward}</span>
                 {candidate.incumbent && (
-                  <span className="badge badge-grey">Incumbent</span>
+                  <span className="badge badge-grey">{incumbentLabel(candidate)}</span>
                 )}
               </div>
             </div>

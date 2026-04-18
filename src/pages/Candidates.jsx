@@ -22,6 +22,12 @@ const FacebookIcon = () => (
   </svg>
 );
 
+function incumbentLabel(candidate) {
+  const seat = candidate.incumbentOf || candidate.ward;
+  if (seat === 'City-Wide (Mayoral)') return 'Mayor Incumbent';
+  return `${seat} Incumbent`;
+}
+
 /** Get initials from a candidate name string */
 function getInitials(name) {
   const clean = name.replace(/\[|\]/g, '').trim();
@@ -74,7 +80,7 @@ function CandidateCard({ candidate }) {
             </span>
             {candidate.incumbent && (
               <span className="badge badge-grey" style={{ fontSize: 'var(--text-xs)' }}>
-                Incumbent
+                {incumbentLabel(candidate)}
               </span>
             )}
           </div>
