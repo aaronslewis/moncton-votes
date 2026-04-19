@@ -5,9 +5,9 @@ import { candidates, CANDIDATE_QUESTIONS } from '../data/candidates.js';
 const TRUNCATE_AT = 500;
 
 function incumbentLabel(candidate) {
-  const seat = candidate.incumbentOf || candidate.ward;
-  if (seat === 'City-Wide (Mayoral)') return 'Mayor Incumbent';
-  return `${seat} Incumbent`;
+  if (!candidate.incumbentOf) return 'Incumbent';
+  if (candidate.incumbentOf === 'City-Wide (Mayoral)') return 'Mayor Incumbent';
+  return `${candidate.incumbentOf} Incumbent`;
 }
 
 const PhoneIcon = () => (
@@ -56,10 +56,17 @@ function AnswerBlock({ answer }) {
   const needsTruncation = answer.length > TRUNCATE_AT;
   const displayText = needsTruncation && !expanded ? answer.slice(0, TRUNCATE_AT) : answer;
 
+  const renderWithBold = (text) =>
+    text.split(/(\*\*[^*]+\*\*)/).map((part, i) =>
+      part.startsWith('**') && part.endsWith('**')
+        ? <strong key={i}>{part.slice(2, -2)}</strong>
+        : part
+    );
+
   return (
     <div>
       <p style={{ fontSize: 'var(--text-base)', color: '#444', lineHeight: 1.8, margin: 0 }}>
-        {displayText}{needsTruncation && !expanded && '…'}
+        {renderWithBold(displayText)}{needsTruncation && !expanded && '…'}
       </p>
       {needsTruncation && (
         <button
@@ -104,7 +111,7 @@ export default function CandidateDetail() {
   }
 
   const initials = getInitials(candidate.name);
-  const hasContact = candidate.phone || candidate.email || candidate.facebook || candidate.website;
+  const hasContact = candidate.phone || candidate.email || candidate.facebook || candidate.website || candidate.websiteEn || candidate.websiteFr;
 
   return (
     <>
@@ -208,6 +215,22 @@ export default function CandidateDetail() {
                     <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><GlobeIcon /></span>
                     <a href={candidate.website} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
                       {candidate.website.replace(/^https?:\/\//, '')}
+                    </a>
+                  </li>
+                )}
+                {candidate.websiteEn && (
+                  <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+                    <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><GlobeIcon /></span>
+                    <a href={candidate.websiteEn} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
+                      Campaign site
+                    </a>
+                  </li>
+                )}
+                {candidate.websiteFr && (
+                  <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+                    <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><GlobeIcon /></span>
+                    <a href={candidate.websiteFr} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
+                      Site de campagne
                     </a>
                   </li>
                 )}

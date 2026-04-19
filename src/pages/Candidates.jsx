@@ -23,9 +23,9 @@ const FacebookIcon = () => (
 );
 
 function incumbentLabel(candidate) {
-  const seat = candidate.incumbentOf || candidate.ward;
-  if (seat === 'City-Wide (Mayoral)') return 'Mayor Incumbent';
-  return `${seat} Incumbent`;
+  if (!candidate.incumbentOf) return 'Incumbent';
+  if (candidate.incumbentOf === 'City-Wide (Mayoral)') return 'Mayor Incumbent';
+  return `${candidate.incumbentOf} Incumbent`;
 }
 
 /** Get initials from a candidate name string */
@@ -93,6 +93,30 @@ function CandidateCard({ candidate }) {
             >
               Campaign site →
             </a>
+          )}
+          {(candidate.websiteEn || candidate.websiteFr) && (
+            <div style={{ display: 'flex', gap: 'var(--space-3)', marginTop: 'var(--space-1)', flexWrap: 'wrap' }}>
+              {candidate.websiteEn && (
+                <a
+                  href={candidate.websiteEn}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: 'var(--text-xs)', color: 'var(--colour-primary-600)', display: 'inline-block' }}
+                >
+                  Campaign site →
+                </a>
+              )}
+              {candidate.websiteFr && (
+                <a
+                  href={candidate.websiteFr}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: 'var(--text-xs)', color: 'var(--colour-primary-600)', display: 'inline-block' }}
+                >
+                  Site de campagne →
+                </a>
+              )}
+            </div>
           )}
         </div>
       </div>
