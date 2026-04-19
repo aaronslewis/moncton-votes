@@ -301,7 +301,7 @@ export const candidates = {
       name: 'Rodney Arsenault',
       ward: 'Ward 3',
       incumbent: false,
-      photo: null,
+      photo: '/images/rodney-arsenault.webp',
       website: null,
       phone: '506-227-0773',
       email: 'rodney4ward3@gmail.com',
