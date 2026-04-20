@@ -105,26 +105,6 @@ export default function CouncillorProfile() {
               )}
             </div>
 
-            {/* Score display */}
-            <div className="profile-score" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <div style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: '3.5rem', fontWeight: 800, color: tier.bar, lineHeight: 1, letterSpacing: '-0.04em' }}>
-                {councillor.score}
-                <sup style={{ fontSize: '1.2rem', fontWeight: 600, opacity: 0.55, verticalAlign: 'super', letterSpacing: 0 }}>/100</sup>
-              </div>
-              <span style={{
-                display:       'inline-block',
-                padding:       '0.35rem 0.9rem',
-                borderRadius:  '20px',
-                fontSize:      '0.85rem',
-                fontWeight:    700,
-                letterSpacing: '0.04em',
-                textTransform: 'uppercase',
-                background:    tier.bar,
-                color:         '#fff',
-              }}>
-                {councillor.descriptor}
-              </span>
-            </div>
           </div>
         </div>
       </div>

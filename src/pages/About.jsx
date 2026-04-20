@@ -29,20 +29,18 @@ export default function About() {
             </div>
             <p style={{ lineHeight: 1.8, color: 'var(--colour-grey-700)', marginBottom: 'var(--space-4)' }}>
               Moncton Votes grew out of a personal desire to know more about the sitting councillors'
-              track record. From there, once it became apparent how little information was readily
-              available on the candidates running, their platforms, and the voting process itself —
-              that's when the project really took off. There was a major gap that needed to be filled.
+              track record. From there, when it became apparent how little information was readily
+              available for voters, on the candidates they would choose from, their platforms, and basic
+              voting questions — that's when the project really took off.
             </p>
             <p style={{ lineHeight: 1.8, color: 'var(--colour-grey-700)', marginBottom: 'var(--space-4)' }}>
               The site was built using <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code</a>,
-              an AI tool that helps people build and ship software. Discovering the candidate and election information gap was well timed with discovering this new tool
-              and looking for a project to use it on.
+              an AI tool that helps people build apps and websites. Discovering the information gap for voters came at the same time as discovering this new tool —
+              the project followed naturally.
             </p>
             <p style={{ lineHeight: 1.8, color: 'var(--colour-grey-700)' }}>
-              The site was created by Aaron Lewis, a Moncton resident, and has benefited
-              from suggestions, fact-checks, and encouragement from a number of community connections —
-              neighbours, local watchers of city politics, and people who simply wanted to see better
-              civic information online.
+              The site was created by Aaron Lewis, a Moncton citizen, with a great deal of input from
+              community members who have helped with suggestions, fact-checks, and encouragement.
             </p>
           </section>
 
@@ -59,7 +57,7 @@ export default function About() {
             </p>
             <p style={{ lineHeight: 1.8, color: 'var(--colour-grey-700)' }}>
               No candidate, party, business, or organization has contributed money or resources to this
-              site — and none have been asked to. That independence is intentional.
+              site — and none have been asked to.
             </p>
           </section>
 
@@ -116,16 +114,14 @@ export default function About() {
               <div className="section-divider" aria-hidden="true" />
             </div>
             <p style={{ lineHeight: 1.8, color: 'var(--colour-grey-700)', marginBottom: 'var(--space-4)' }}>
-              It's clear this site fills a real gap. Citizens can't wait for institutions to step up on
-              something as important as our democracy and the leaders we elect. People need to know who
-              the candidates are and what they stand for — and that need doesn't stop at Moncton's city
-              limits. Dieppe, Riverview, and every other municipality face the same problem.
+              Voters should be able to easily know who they can vote for, and what that candidate stands for, in an election.
+              Our democracy will struggle if this is not the case. This applies to people in Moncton,
+              but also Dieppe, Riverview, and every other municipality.
             </p>
             <p style={{ lineHeight: 1.8, color: 'var(--colour-grey-700)' }}>
-              Democracy is too important for something this critical to depend on any one person or
-              group. What's needed is an open solution — something that exists on its own terms,
-              independent of any individual, and built to earn trust over time. The next chapter of
-              this project will explore what that could look like.
+              As well, our democracy shouldn't rely on one person or any group of people. Our democracy
+              is too important. How to provide voters with what they need, in a way they can trust, is
+              what the next chapter of this project will explore.
             </p>
           </section>
 
