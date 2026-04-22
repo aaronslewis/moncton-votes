@@ -22,6 +22,12 @@ const FacebookIcon = () => (
   </svg>
 );
 
+const InstagramIcon = () => (
+  <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18" aria-hidden="true" focusable="false">
+    <path fillRule="evenodd" d="M10 0C7.284 0 6.944.012 5.877.06 2.246.227.227 2.242.06 5.877.012 6.944 0 7.284 0 10c0 2.716.012 3.056.06 4.123.167 3.632 2.182 5.65 5.817 5.817C6.944 19.988 7.284 20 10 20c2.716 0 3.056-.012 4.123-.06 3.629-.167 5.652-2.182 5.817-5.817.048-1.067.06-1.407.06-4.123 0-2.716-.012-3.056-.06-4.123C19.773 2.245 17.755.228 14.123.06 13.056.012 12.716 0 10 0zm0 1.802c2.67 0 2.986.01 4.04.058 3.066.14 4.502 1.598 4.642 4.642.048 1.054.058 1.37.058 4.04 0 2.672-.01 2.988-.058 4.042-.14 3.04-1.572 4.501-4.642 4.641-1.054.048-1.368.058-4.04.058-2.67 0-2.987-.01-4.04-.058-3.074-.14-4.503-1.604-4.643-4.641C1.812 12.988 1.802 12.672 1.802 10c0-2.67.01-2.986.058-4.04.141-3.042 1.573-4.503 4.643-4.642C7.013 1.812 7.33 1.802 10 1.802zm0 3.063a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 8.468a3.333 3.333 0 110-6.666 3.333 3.333 0 010 6.666zm5.338-9.87a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clipRule="evenodd" />
+  </svg>
+);
+
 function incumbentLabel(candidate) {
   if (!candidate.incumbentOf) return 'Incumbent';
   if (candidate.incumbentOf === 'City-Wide (Mayoral)') return 'Mayor Incumbent';
@@ -160,7 +166,7 @@ function CandidateCard({ candidate }) {
       )}
 
       {/* Contact icons */}
-      {(candidate.phone || candidate.email || candidate.facebook) && (
+      {(candidate.phone || candidate.email || candidate.facebook || candidate.instagram) && (
         <ul className="candidate-contact" aria-label={`Contact ${candidate.name}`}>
           {candidate.phone && (
             <li>
@@ -197,6 +203,20 @@ function CandidateCard({ candidate }) {
               >
                 <FacebookIcon />
                 <span className="sr-only">Facebook</span>
+              </a>
+            </li>
+          )}
+          {candidate.instagram && (
+            <li>
+              <a
+                href={candidate.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-icon-link"
+                aria-label={`${candidate.name} on Instagram (opens in new tab)`}
+              >
+                <InstagramIcon />
+                <span className="sr-only">Instagram</span>
               </a>
             </li>
           )}
