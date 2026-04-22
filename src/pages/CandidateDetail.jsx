@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { candidates, CANDIDATE_QUESTIONS } from '../data/candidates.js';
+import CampaignSiteLink from '../components/CampaignSiteLink.jsx';
 
 const TRUNCATE_AT = 500;
 
@@ -216,28 +217,16 @@ export default function CandidateDetail() {
                     </a>
                   </li>
                 )}
-                {candidate.website && (
+                {(candidate.website || candidate.websiteEn || candidate.websiteFr) && (
                   <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
                     <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><GlobeIcon /></span>
-                    <a href={candidate.website} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
-                      {candidate.website.replace(/^https?:\/\//, '')}
-                    </a>
-                  </li>
-                )}
-                {candidate.websiteEn && (
-                  <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-                    <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><GlobeIcon /></span>
-                    <a href={candidate.websiteEn} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
-                      Campaign site
-                    </a>
-                  </li>
-                )}
-                {candidate.websiteFr && (
-                  <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-                    <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><GlobeIcon /></span>
-                    <a href={candidate.websiteFr} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
-                      Site de campagne
-                    </a>
+                    <CampaignSiteLink
+                      website={candidate.website}
+                      websiteEn={candidate.websiteEn}
+                      websiteFr={candidate.websiteFr}
+                      label="Campaign site"
+                      style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}
+                    />
                   </li>
                 )}
                 {candidate.facebook && (

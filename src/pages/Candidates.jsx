@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { candidates, WARDS } from '../data/candidates.js';
+import CampaignSiteLink from '../components/CampaignSiteLink.jsx';
 
 /* ── Contact icons (aria-hidden SVGs, labels on the parent <a>) ─────── */
 const PhoneIcon = () => (
@@ -90,39 +91,14 @@ function CandidateCard({ candidate }) {
               </span>
             )}
           </div>
-          {candidate.website && (
-            <a
-              href={candidate.website}
-              target="_blank"
-              rel="noopener noreferrer"
+          {(candidate.website || candidate.websiteEn || candidate.websiteFr) && (
+            <CampaignSiteLink
+              website={candidate.website}
+              websiteEn={candidate.websiteEn}
+              websiteFr={candidate.websiteFr}
+              label="Campaign site →"
               style={{ fontSize: 'var(--text-xs)', color: 'var(--colour-primary-600)', marginTop: 'var(--space-1)', display: 'inline-block' }}
-            >
-              Campaign site →
-            </a>
-          )}
-          {(candidate.websiteEn || candidate.websiteFr) && (
-            <div style={{ display: 'flex', gap: 'var(--space-3)', marginTop: 'var(--space-1)', flexWrap: 'wrap' }}>
-              {candidate.websiteEn && (
-                <a
-                  href={candidate.websiteEn}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ fontSize: 'var(--text-xs)', color: 'var(--colour-primary-600)', display: 'inline-block' }}
-                >
-                  Campaign site →
-                </a>
-              )}
-              {candidate.websiteFr && (
-                <a
-                  href={candidate.websiteFr}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ fontSize: 'var(--text-xs)', color: 'var(--colour-primary-600)', display: 'inline-block' }}
-                >
-                  Site de campagne →
-                </a>
-              )}
-            </div>
+            />
           )}
         </div>
       </div>
