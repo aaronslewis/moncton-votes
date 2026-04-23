@@ -1,6 +1,84 @@
-import { CANDIDATE_QUESTIONS } from '../data/candidates.js';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { candidates, CANDIDATE_QUESTIONS } from '../data/candidates.js';
+
+const RACE_OPTIONS = [
+  { value: 'mayor',   label: 'Mayor (City-Wide)' },
+  { value: 'atlarge', label: 'At-Large' },
+  { value: 'ward1',   label: 'Ward 1' },
+  { value: 'ward2',   label: 'Ward 2' },
+  { value: 'ward3',   label: 'Ward 3' },
+  { value: 'ward4',   label: 'Ward 4' },
+];
+
+const TRUNCATE_AT = 350;
+
+function getInitials(name) {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return '?';
+  if (parts.length === 1) return parts[0][0].toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+function AnswerBlock({ answer }) {
+  const [expanded, setExpanded] = useState(false);
+
+  if (!answer) {
+    return (
+      <p style={{ fontStyle: 'italic', color: 'var(--colour-grey-400)', fontSize: 'var(--text-sm)' }}>
+        No response provided.
+      </p>
+    );
+  }
+
+  const needsTruncation = answer.length > TRUNCATE_AT;
+  const displayText = needsTruncation && !expanded ? answer.slice(0, TRUNCATE_AT) : answer;
+
+  return (
+    <div>
+      <p style={{ fontSize: 'var(--text-sm)', color: '#444', lineHeight: 1.8, margin: 0, whiteSpace: 'pre-line' }}>
+        {displayText}{needsTruncation && !expanded && '…'}
+      </p>
+      {needsTruncation && (
+        <button
+          onClick={() => setExpanded((v) => !v)}
+          style={{
+            background: 'none',
+            border: 'none',
+            padding: 0,
+            marginTop: 'var(--space-2)',
+            fontSize: 'var(--text-sm)',
+            fontWeight: 600,
+            color: 'var(--colour-primary-600)',
+            cursor: 'pointer',
+          }}
+          aria-expanded={expanded}
+        >
+          {expanded ? 'Read less ↑' : 'Read more ↓'}
+        </button>
+      )}
+    </div>
+  );
+}
+
+const selectStyle = {
+  padding: 'var(--space-3) var(--space-4)',
+  fontSize: 'var(--text-base)',
+  border: '1.5px solid var(--colour-grey-300)',
+  borderRadius: 'var(--radius-lg)',
+  background: '#fff',
+  cursor: 'pointer',
+  width: '100%',
+};
 
 export default function Platforms() {
+  const [race, setRace] = useState('');
+  const [questionIndex, setQuestionIndex] = useState('');
+
+  const raceCandidates = race ? (candidates[race] ?? []) : [];
+  const hasSelections = race !== '' && questionIndex !== '';
+  const qIdx = hasSelections ? parseInt(questionIndex, 10) : null;
+
   return (
     <>
       <header className="page-header">
@@ -11,31 +89,186 @@ export default function Platforms() {
       </header>
 
       <div className="container" style={{ paddingTop: 'var(--space-8)', paddingBottom: 'var(--space-16)' }}>
-        <p style={{ fontSize: 'var(--text-base)', color: 'var(--colour-grey-700)', marginBottom: 'var(--space-8)', lineHeight: 1.7 }}>
-          Candidates were asked to answer the following questions. Their responses will be posted the week of April 27th.
-        </p>
 
-        <ol style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', paddingLeft: 0, listStyle: 'none' }}>
-          {CANDIDATE_QUESTIONS.map((question, i) => (
-            <li key={i} className="card" style={{ padding: 'var(--space-5) var(--space-6)', display: 'flex', gap: 'var(--space-4)', alignItems: 'flex-start' }}>
-              <span style={{
-                flexShrink: 0,
+        {/* ── Compare by question ── */}
+        <section aria-labelledby="compare-heading" style={{ marginBottom: 'var(--space-16)' }}>
+          <h2 id="compare-heading" style={{ fontSize: 'var(--text-xl)', color: '#1E2D3D', marginBottom: 'var(--space-2)' }}>
+            Compare responses
+          </h2>
+          <p style={{ color: 'var(--colour-grey-600)', fontSize: 'var(--text-sm)', marginBottom: 'var(--space-6)', lineHeight: 1.6 }}>
+            Choose a race and a question to see how each candidate responded side by side.
+          </p>
+
+          {/* Selectors */}
+          <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap', marginBottom: 'var(--space-8)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', flex: '1 1 200px', minWidth: 0 }}>
+              <label htmlFor="race-select" style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--colour-grey-700)' }}>
+                Race
+              </label>
+              <select
+                id="race-select"
+                value={race}
+                onChange={(e) => setRace(e.target.value)}
+                style={{ ...selectStyle, color: race ? '#1E2D3D' : 'var(--colour-grey-500)' }}
+              >
+                <option value="">Select a race…</option>
+                {RACE_OPTIONS.map((o) => (
+                  <option key={o.value} value={o.value}>{o.label}</option>
+                ))}
+              </select>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', flex: '3 1 320px', minWidth: 0 }}>
+              <label htmlFor="question-select" style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--colour-grey-700)' }}>
+                Question
+              </label>
+              <select
+                id="question-select"
+                value={questionIndex}
+                onChange={(e) => setQuestionIndex(e.target.value)}
+                style={{ ...selectStyle, color: questionIndex !== '' ? '#1E2D3D' : 'var(--colour-grey-500)' }}
+              >
+                <option value="">Select a question…</option>
+                {CANDIDATE_QUESTIONS.map((q, i) => (
+                  <option key={i} value={i}>
+                    Q{i + 1} — {q.length > 72 ? q.slice(0, 72) + '…' : q}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Empty state */}
+          {!hasSelections && (
+            <div style={{
+              padding: 'var(--space-12) var(--space-6)',
+              textAlign: 'center',
+              background: 'var(--colour-grey-50)',
+              borderRadius: 'var(--radius-xl)',
+              border: '1px dashed var(--colour-grey-200)',
+            }}>
+              <p style={{ color: 'var(--colour-grey-400)', fontSize: 'var(--text-sm)', margin: 0 }}>
+                Select a race and question above to compare responses.
+              </p>
+            </div>
+          )}
+
+          {/* Results */}
+          {hasSelections && (
+            <div>
+              <p style={{
                 fontSize: 'var(--text-xs)',
                 fontWeight: 700,
                 textTransform: 'uppercase',
                 letterSpacing: '0.08em',
-                color: 'var(--colour-primary-600)',
-                paddingTop: '2px',
-                minWidth: '2rem',
+                color: 'var(--colour-grey-500)',
+                marginBottom: 'var(--space-5)',
               }}>
-                Q{i + 1}
-              </span>
-              <span style={{ fontSize: 'var(--text-base)', color: '#1E2D3D', lineHeight: 1.6 }}>
-                {question}
-              </span>
-            </li>
-          ))}
-        </ol>
+                Q{qIdx + 1} — {CANDIDATE_QUESTIONS[qIdx]}
+              </p>
+
+              {raceCandidates.length === 0 ? (
+                <div className="notice"><p>No candidates found for this race.</p></div>
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+                  {raceCandidates.map((candidate) => {
+                    const answer = candidate.qa?.[qIdx]?.answer ?? null;
+                    const initials = getInitials(candidate.name);
+
+                    return (
+                      <div key={candidate.id} className="card" style={{ padding: 'var(--space-6)' }}>
+                        {/* Candidate header */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-4)' }}>
+                          {candidate.photo ? (
+                            <img
+                              src={candidate.photo}
+                              alt={candidate.name}
+                              width="44"
+                              height="44"
+                              style={{ width: '44px', height: '44px', borderRadius: 'var(--radius-full)', objectFit: 'cover', flexShrink: 0 }}
+                            />
+                          ) : (
+                            <div
+                              aria-hidden="true"
+                              style={{
+                                width: '44px',
+                                height: '44px',
+                                borderRadius: 'var(--radius-full)',
+                                background: 'var(--colour-primary-100)',
+                                border: '2px solid var(--colour-primary-200)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: 'var(--text-sm)',
+                                fontWeight: 700,
+                                color: 'var(--colour-primary-700)',
+                                flexShrink: 0,
+                                fontFamily: "'Fraunces Variable', Georgia, serif",
+                              }}
+                            >
+                              {initials}
+                            </div>
+                          )}
+                          <div>
+                            <p style={{ fontWeight: 700, color: '#1E2D3D', fontSize: 'var(--text-base)', margin: 0 }}>
+                              {candidate.name}
+                            </p>
+                            {candidate.incumbent && (
+                              <p style={{ fontSize: 'var(--text-xs)', color: 'var(--colour-grey-500)', margin: 0, fontWeight: 500 }}>
+                                Incumbent
+                              </p>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Answer */}
+                        <AnswerBlock answer={answer} />
+
+                        {/* Link to full profile */}
+                        <div style={{ marginTop: 'var(--space-4)', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--colour-grey-100)' }}>
+                          <Link
+                            to={`/candidates/${candidate.id}`}
+                            style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--colour-primary-600)', textDecoration: 'none' }}
+                          >
+                            View all responses →
+                          </Link>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
+        </section>
+
+        {/* ── Questions list ── */}
+        <section aria-labelledby="questions-heading">
+          <h2 id="questions-heading" style={{ fontSize: 'var(--text-xl)', color: '#1E2D3D', marginBottom: 'var(--space-6)' }}>
+            Questions asked
+          </h2>
+          <ol style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', paddingLeft: 0, listStyle: 'none' }}>
+            {CANDIDATE_QUESTIONS.map((question, i) => (
+              <li key={i} className="card" style={{ padding: 'var(--space-5) var(--space-6)', display: 'flex', gap: 'var(--space-4)', alignItems: 'flex-start' }}>
+                <span style={{
+                  flexShrink: 0,
+                  fontSize: 'var(--text-xs)',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: 'var(--colour-primary-600)',
+                  paddingTop: '2px',
+                  minWidth: '2rem',
+                }}>
+                  Q{i + 1}
+                </span>
+                <span style={{ fontSize: 'var(--text-base)', color: '#1E2D3D', lineHeight: 1.6 }}>
+                  {question}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </section>
       </div>
     </>
   );
