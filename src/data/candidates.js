@@ -88,7 +88,7 @@ export const candidates = {
       ward: 'At-Large',
       incumbent: false,
       photo: null,
-      website: null,
+      website: 'https://carlbainbridge.ca/',
       phone: null,
       email: 'carlbainbridge@carlbainbridge.ca',
       facebook: 'https://www.facebook.com/profile.php?id=61573483389917',
