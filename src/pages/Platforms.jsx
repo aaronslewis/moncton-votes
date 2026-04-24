@@ -156,16 +156,28 @@ export default function Platforms() {
           {/* Results */}
           {hasSelections && (
             <div>
-              <p style={{
-                fontSize: 'var(--text-xs)',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.08em',
-                color: 'var(--colour-grey-500)',
-                marginBottom: 'var(--space-5)',
-              }}>
-                Q{qIdx + 1} — {CANDIDATE_QUESTIONS[qIdx]}
-              </p>
+              <div style={{ paddingTop: 'var(--space-8)', marginBottom: 'var(--space-6)' }}>
+                <p style={{
+                  fontSize: 'var(--text-xs)',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: 'var(--colour-primary-600)',
+                  marginBottom: 'var(--space-2)',
+                }}>
+                  Q{qIdx + 1}
+                </p>
+                <p style={{
+                  fontSize: 'var(--text-2xl)',
+                  fontWeight: 700,
+                  color: '#1E2D3D',
+                  lineHeight: 1.3,
+                  margin: 0,
+                  fontFamily: "'Fraunces Variable', Georgia, serif",
+                }}>
+                  {CANDIDATE_QUESTIONS[qIdx]}
+                </p>
+              </div>
 
               {raceCandidates.length === 0 ? (
                 <div className="notice"><p>No candidates found for this race.</p></div>
@@ -242,33 +254,7 @@ export default function Platforms() {
           )}
         </section>
 
-        {/* ── Questions list ── */}
-        <section aria-labelledby="questions-heading">
-          <h2 id="questions-heading" style={{ fontSize: 'var(--text-xl)', color: '#1E2D3D', marginBottom: 'var(--space-6)' }}>
-            Questions asked
-          </h2>
-          <ol style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', paddingLeft: 0, listStyle: 'none' }}>
-            {CANDIDATE_QUESTIONS.map((question, i) => (
-              <li key={i} className="card" style={{ padding: 'var(--space-5) var(--space-6)', display: 'flex', gap: 'var(--space-4)', alignItems: 'flex-start' }}>
-                <span style={{
-                  flexShrink: 0,
-                  fontSize: 'var(--text-xs)',
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: 'var(--colour-primary-600)',
-                  paddingTop: '2px',
-                  minWidth: '2rem',
-                }}>
-                  Q{i + 1}
-                </span>
-                <span style={{ fontSize: 'var(--text-base)', color: '#1E2D3D', lineHeight: 1.6 }}>
-                  {question}
-                </span>
-              </li>
-            ))}
-          </ol>
-        </section>
+
       </div>
     </>
   );
