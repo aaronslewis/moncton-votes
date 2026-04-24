@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { candidates, CANDIDATE_QUESTIONS } from '../data/candidates.js';
+import CampaignSiteLink from '../components/CampaignSiteLink.jsx';
 
 const TRUNCATE_AT = 500;
 
@@ -26,6 +27,12 @@ const EmailIcon = () => (
 const FacebookIcon = () => (
   <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18" aria-hidden="true" focusable="false">
     <path fillRule="evenodd" d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878V12.89h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z" clipRule="evenodd" />
+  </svg>
+);
+
+const InstagramIcon = () => (
+  <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18" aria-hidden="true" focusable="false">
+    <path fillRule="evenodd" d="M10 0C7.284 0 6.944.012 5.877.06 2.246.227.227 2.242.06 5.877.012 6.944 0 7.284 0 10c0 2.716.012 3.056.06 4.123.167 3.632 2.182 5.65 5.817 5.817C6.944 19.988 7.284 20 10 20c2.716 0 3.056-.012 4.123-.06 3.629-.167 5.652-2.182 5.817-5.817.048-1.067.06-1.407.06-4.123 0-2.716-.012-3.056-.06-4.123C19.773 2.245 17.755.228 14.123.06 13.056.012 12.716 0 10 0zm0 1.802c2.67 0 2.986.01 4.04.058 3.066.14 4.502 1.598 4.642 4.642.048 1.054.058 1.37.058 4.04 0 2.672-.01 2.988-.058 4.042-.14 3.04-1.572 4.501-4.642 4.641-1.054.048-1.368.058-4.04.058-2.67 0-2.987-.01-4.04-.058-3.074-.14-4.503-1.604-4.643-4.641C1.812 12.988 1.802 12.672 1.802 10c0-2.67.01-2.986.058-4.04.141-3.042 1.573-4.503 4.643-4.642C7.013 1.812 7.33 1.802 10 1.802zm0 3.063a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 8.468a3.333 3.333 0 110-6.666 3.333 3.333 0 010 6.666zm5.338-9.87a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" clipRule="evenodd" />
   </svg>
 );
 
@@ -111,7 +118,7 @@ export default function CandidateDetail() {
   }
 
   const initials = getInitials(candidate.name);
-  const hasContact = candidate.phone || candidate.email || candidate.facebook || candidate.website || candidate.websiteEn || candidate.websiteFr;
+  const hasContact = candidate.phone || candidate.email || candidate.facebook || candidate.instagram || candidate.website || candidate.websiteEn || candidate.websiteFr;
 
   return (
     <>
@@ -210,28 +217,16 @@ export default function CandidateDetail() {
                     </a>
                   </li>
                 )}
-                {candidate.website && (
+                {(candidate.website || candidate.websiteEn || candidate.websiteFr) && (
                   <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
                     <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><GlobeIcon /></span>
-                    <a href={candidate.website} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
-                      {candidate.website.replace(/^https?:\/\//, '')}
-                    </a>
-                  </li>
-                )}
-                {candidate.websiteEn && (
-                  <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-                    <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><GlobeIcon /></span>
-                    <a href={candidate.websiteEn} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
-                      Campaign site
-                    </a>
-                  </li>
-                )}
-                {candidate.websiteFr && (
-                  <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-                    <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><GlobeIcon /></span>
-                    <a href={candidate.websiteFr} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
-                      Site de campagne
-                    </a>
+                    <CampaignSiteLink
+                      website={candidate.website}
+                      websiteEn={candidate.websiteEn}
+                      websiteFr={candidate.websiteFr}
+                      label="Campaign site"
+                      style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}
+                    />
                   </li>
                 )}
                 {candidate.facebook && (
@@ -239,6 +234,14 @@ export default function CandidateDetail() {
                     <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><FacebookIcon /></span>
                     <a href={candidate.facebook} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
                       Facebook
+                    </a>
+                  </li>
+                )}
+                {candidate.instagram && (
+                  <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+                    <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><InstagramIcon /></span>
+                    <a href={candidate.instagram} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
+                      Instagram
                     </a>
                   </li>
                 )}
