@@ -103,7 +103,7 @@ export default function Platforms() {
           <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap', marginBottom: 'var(--space-8)' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', flex: '1 1 200px', minWidth: 0 }}>
               <label htmlFor="race-select" style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--colour-grey-700)' }}>
-                Race
+                Contest
               </label>
               <select
                 id="race-select"
@@ -111,7 +111,7 @@ export default function Platforms() {
                 onChange={(e) => setRace(e.target.value)}
                 style={{ ...selectStyle, color: race ? '#1E2D3D' : 'var(--colour-grey-500)' }}
               >
-                <option value="">Select a race…</option>
+                <option value="">Select a contest…</option>
                 {RACE_OPTIONS.map((o) => (
                   <option key={o.value} value={o.value}>{o.label}</option>
                 ))}
