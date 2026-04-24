@@ -106,6 +106,18 @@ export default function Platforms() {
 
       <div className="container" style={{ paddingTop: 'var(--space-8)', paddingBottom: 'var(--space-16)' }}>
 
+        {/* ── Voting breakdown notice ── */}
+        <div className="notice notice-info" style={{ marginBottom: 'var(--space-8)' }}>
+          <p>
+            <strong>On election day you will vote for:</strong> 1 Mayor &nbsp;·&nbsp;
+            2 At-Large Councillors &nbsp;·&nbsp; 2 Ward Councillors (for your ward).
+            {' '}
+            <a href="https://www.moncton.ca/en/municipal-elections-2026" target="_blank" rel="noopener noreferrer">
+              Source: City of Moncton →
+            </a>
+          </p>
+        </div>
+
         {/* ── Compare by question ── */}
         <section aria-labelledby="compare-heading" style={{ marginBottom: 'var(--space-16)' }}>
           <h2 id="compare-heading" style={{ fontSize: 'var(--text-xl)', color: '#1E2D3D', marginBottom: 'var(--space-2)' }}>
