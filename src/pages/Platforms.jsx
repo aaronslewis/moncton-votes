@@ -4,7 +4,7 @@ import { candidates, CANDIDATE_QUESTIONS } from '../data/candidates.js';
 
 const RACE_OPTIONS = [
   { value: 'mayor',   label: 'Mayor (City-Wide)' },
-  { value: 'atlarge', label: 'At-Large' },
+  { value: 'atLarge', label: 'At-Large' },
   { value: 'ward1',   label: 'Ward 1' },
   { value: 'ward2',   label: 'Ward 2' },
   { value: 'ward3',   label: 'Ward 3' },
