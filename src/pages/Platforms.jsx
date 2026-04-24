@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { candidates, CANDIDATE_QUESTIONS } from '../data/candidates.js';
 
@@ -91,7 +91,17 @@ export default function Platforms() {
   const [race, setRace] = useState('');
   const [questionIndex, setQuestionIndex] = useState('');
 
-  const raceCandidates = race ? (candidates[race] ?? []) : [];
+  const [raceCandidates, setRaceCandidates] = useState([]);
+
+  useEffect(() => {
+    const arr = [...(candidates[race] ?? [])];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    setRaceCandidates(arr);
+  }, [race]);
+
   const hasSelections = race !== '' && questionIndex !== '';
   const qIdx = hasSelections ? parseInt(questionIndex, 10) : null;
 
