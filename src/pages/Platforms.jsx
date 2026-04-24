@@ -180,10 +180,14 @@ export default function Platforms() {
               </div>
 
               {raceCandidates.length === 0 ? (
-                <div className="notice"><p>No candidates found for this race.</p></div>
-              ) : (
+                <div className="notice"><p>No candidates found for this contest.</p></div>
+              ) : (() => {
+                const responded = raceCandidates.filter((c) => c.qa && c.qa[qIdx]?.answer);
+                const didNotRespond = raceCandidates.filter((c) => !c.qa || !c.qa[qIdx]?.answer);
+                return (
+                  <>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-                  {raceCandidates.map((candidate) => {
+                  {responded.map((candidate) => {
                     const answer = candidate.qa?.[qIdx]?.answer ?? null;
                     const initials = getInitials(candidate.name);
 
@@ -249,7 +253,34 @@ export default function Platforms() {
                     );
                   })}
                 </div>
-              )}
+
+                {didNotRespond.length > 0 && (
+                  <div style={{ marginTop: 'var(--space-10)' }}>
+                    <p style={{
+                      fontSize: 'var(--text-xs)',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      color: 'var(--colour-grey-400)',
+                      marginBottom: 'var(--space-3)',
+                    }}>
+                      Did not respond
+                    </p>
+                    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+                      {didNotRespond.map((candidate) => (
+                        <li key={candidate.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 'var(--space-3) var(--space-4)', background: 'var(--colour-grey-50)', borderRadius: 'var(--radius-lg)', gap: 'var(--space-4)' }}>
+                          <span style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-grey-600)' }}>{candidate.name}</span>
+                          <Link to={`/candidates/${candidate.id}`} style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--colour-primary-600)', textDecoration: 'none', flexShrink: 0 }}>
+                            View profile →
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                  </>
+                );
+              })()}
             </div>
           )}
         </section>
