@@ -29,38 +29,34 @@ const avatarBase = {
 };
 
 function CandidateAvatar({ candidate }) {
-  const [imgFailed, setImgFailed] = useState(false);
   const initials = getInitials(candidate.name);
 
-  if (candidate.photo && !imgFailed) {
+  if (candidate.photo) {
     return (
-      <div style={avatarBase}>
-        <img
-          src={candidate.photo}
-          alt={candidate.name}
-          width={AVATAR_SIZE}
-          height={AVATAR_SIZE}
-          onError={() => setImgFailed(true)}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-        />
-      </div>
+      <div
+        role="img"
+        aria-label={candidate.name}
+        style={{
+          ...avatarBase,
+          backgroundImage: `url(${candidate.photo})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
     );
   }
 
   return (
     <div
       aria-hidden="true"
+      className="avatar-placeholder"
       style={{
         ...avatarBase,
-        background: 'var(--colour-primary-100)',
-        border: '2px solid var(--colour-primary-200)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         fontSize: 'var(--text-sm)',
         fontWeight: 700,
-        color: 'var(--colour-primary-700)',
-        fontFamily: "'Fraunces Variable', Georgia, serif",
       }}
     >
       {initials}
