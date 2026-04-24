@@ -11,8 +11,6 @@ const RACE_OPTIONS = [
   { value: 'ward4',   label: 'Ward 4' },
 ];
 
-const TRUNCATE_AT = 350;
-
 function getInitials(name) {
   const parts = name.trim().split(/\s+/).filter(Boolean);
   if (parts.length === 0) return '?';
@@ -21,43 +19,12 @@ function getInitials(name) {
 }
 
 function AnswerBlock({ answer }) {
-  const [expanded, setExpanded] = useState(false);
-
-  if (!answer) {
-    return (
-      <p style={{ fontStyle: 'italic', color: 'var(--colour-grey-400)', fontSize: 'var(--text-sm)' }}>
-        No response provided.
-      </p>
-    );
-  }
-
-  const needsTruncation = answer.length > TRUNCATE_AT;
-  const displayText = needsTruncation && !expanded ? answer.slice(0, TRUNCATE_AT) : answer;
+  if (!answer) return null;
 
   return (
-    <div>
-      <p style={{ fontSize: 'var(--text-sm)', color: '#444', lineHeight: 1.8, margin: 0, whiteSpace: 'pre-line' }}>
-        {displayText}{needsTruncation && !expanded && '…'}
-      </p>
-      {needsTruncation && (
-        <button
-          onClick={() => setExpanded((v) => !v)}
-          style={{
-            background: 'none',
-            border: 'none',
-            padding: 0,
-            marginTop: 'var(--space-2)',
-            fontSize: 'var(--text-sm)',
-            fontWeight: 600,
-            color: 'var(--colour-primary-600)',
-            cursor: 'pointer',
-          }}
-          aria-expanded={expanded}
-        >
-          {expanded ? 'Read less ↑' : 'Read more ↓'}
-        </button>
-      )}
-    </div>
+    <p style={{ fontSize: 'var(--text-sm)', color: '#444', lineHeight: 1.8, margin: 0, whiteSpace: 'pre-line' }}>
+      {answer}
+    </p>
   );
 }
 
