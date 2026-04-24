@@ -18,6 +18,56 @@ function getInitials(name) {
   return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
 }
 
+const AVATAR_SIZE = 44;
+const avatarBase = {
+  width: `${AVATAR_SIZE}px`,
+  height: `${AVATAR_SIZE}px`,
+  minWidth: `${AVATAR_SIZE}px`,
+  borderRadius: 'var(--radius-full)',
+  flexShrink: 0,
+  overflow: 'hidden',
+};
+
+function CandidateAvatar({ candidate }) {
+  const [imgFailed, setImgFailed] = useState(false);
+  const initials = getInitials(candidate.name);
+
+  if (candidate.photo && !imgFailed) {
+    return (
+      <div style={avatarBase}>
+        <img
+          src={candidate.photo}
+          alt={candidate.name}
+          width={AVATAR_SIZE}
+          height={AVATAR_SIZE}
+          onError={() => setImgFailed(true)}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      aria-hidden="true"
+      style={{
+        ...avatarBase,
+        background: 'var(--colour-primary-100)',
+        border: '2px solid var(--colour-primary-200)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 'var(--text-sm)',
+        fontWeight: 700,
+        color: 'var(--colour-primary-700)',
+        fontFamily: "'Fraunces Variable', Georgia, serif",
+      }}
+    >
+      {initials}
+    </div>
+  );
+}
+
 function AnswerBlock({ answer }) {
   if (!answer) return null;
 
@@ -156,42 +206,12 @@ export default function Platforms() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
                   {responded.map((candidate) => {
                     const answer = candidate.qa?.[qIdx]?.answer ?? null;
-                    const initials = getInitials(candidate.name);
 
                     return (
                       <div key={candidate.id} className="card" style={{ padding: 'var(--space-6)' }}>
                         {/* Candidate header */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-4)' }}>
-                          {candidate.photo ? (
-                            <img
-                              src={candidate.photo}
-                              alt={candidate.name}
-                              width="44"
-                              height="44"
-                              style={{ width: '44px', height: '44px', borderRadius: 'var(--radius-full)', objectFit: 'cover', flexShrink: 0 }}
-                            />
-                          ) : (
-                            <div
-                              aria-hidden="true"
-                              style={{
-                                width: '44px',
-                                height: '44px',
-                                borderRadius: 'var(--radius-full)',
-                                background: 'var(--colour-primary-100)',
-                                border: '2px solid var(--colour-primary-200)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                fontSize: 'var(--text-sm)',
-                                fontWeight: 700,
-                                color: 'var(--colour-primary-700)',
-                                flexShrink: 0,
-                                fontFamily: "'Fraunces Variable', Georgia, serif",
-                              }}
-                            >
-                              {initials}
-                            </div>
-                          )}
+                          <CandidateAvatar candidate={candidate} />
                           <div>
                             <p style={{ fontWeight: 700, color: '#1E2D3D', fontSize: 'var(--text-base)', margin: 0 }}>
                               {candidate.name}
