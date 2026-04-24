@@ -49,14 +49,17 @@ function CandidateAvatar({ candidate }) {
   return (
     <div
       aria-hidden="true"
-      className="avatar-placeholder"
       style={{
         ...avatarBase,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        background: 'var(--colour-primary-100)',
+        border: '2px solid var(--colour-primary-200)',
         fontSize: 'var(--text-sm)',
         fontWeight: 700,
+        color: 'var(--colour-primary-700)',
+        fontFamily: "'Fraunces Variable', Georgia, serif",
       }}
     >
       {initials}
