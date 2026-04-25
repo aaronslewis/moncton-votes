@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { candidates, CANDIDATE_QUESTIONS } from '../data/candidates.js';
 
 const RACE_OPTIONS = [
@@ -88,8 +88,12 @@ const selectStyle = {
 };
 
 export default function Platforms() {
-  const [race, setRace] = useState('');
-  const [questionIndex, setQuestionIndex] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const race = searchParams.get('contest') ?? '';
+  const questionIndex = searchParams.get('question') ?? '';
+
+  const setRace = (value) => setSearchParams((prev) => { const p = new URLSearchParams(prev); value ? p.set('contest', value) : p.delete('contest'); return p; });
+  const setQuestionIndex = (value) => setSearchParams((prev) => { const p = new URLSearchParams(prev); value !== '' ? p.set('question', value) : p.delete('question'); return p; });
 
   const [raceCandidates, setRaceCandidates] = useState([]);
 
