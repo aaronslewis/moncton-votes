@@ -101,6 +101,26 @@ function CandidateCard({ candidate }) {
             />
           )}
         </div>
+
+        {candidate.qa && candidate.qa.length > 0 && (
+          <Link
+            to={`/candidates/${candidate.id}`}
+            style={{
+              alignSelf: 'center',
+              flexShrink: 0,
+              fontSize: 'var(--text-xs)',
+              fontWeight: 600,
+              color: 'var(--colour-primary-600)',
+              border: '1.5px solid var(--colour-primary-300)',
+              borderRadius: 'var(--radius-lg)',
+              padding: 'var(--space-1) var(--space-3)',
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Responses →
+          </Link>
+        )}
       </div>
 
       {/* Bio */}
@@ -129,17 +149,6 @@ function CandidateCard({ candidate }) {
         </div>
       )}
 
-      {/* Profile link */}
-      {candidate.qa && candidate.qa.length > 0 && (
-        <div style={{ marginTop: 'var(--space-3)' }}>
-          <Link
-            to={`/candidates/${candidate.id}`}
-            style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--colour-primary-600)', textDecoration: 'none' }}
-          >
-            View profile &amp; Q&amp;A →
-          </Link>
-        </div>
-      )}
 
       {/* Contact icons */}
       {(candidate.phone || candidate.email || candidate.facebook || candidate.instagram) && (
