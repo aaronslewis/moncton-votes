@@ -111,9 +111,10 @@ function CandidateCard({ candidate }) {
               fontSize: 'var(--text-xs)',
               fontWeight: 600,
               color: 'var(--colour-primary-600)',
-              border: '1.5px solid var(--colour-primary-300)',
+              background: 'transparent',
+              border: '2px solid var(--colour-primary-600)',
               borderRadius: 'var(--radius-lg)',
-              padding: 'var(--space-1) var(--space-3)',
+              padding: 'var(--space-2) var(--space-3)',
               textDecoration: 'none',
               whiteSpace: 'nowrap',
             }}
