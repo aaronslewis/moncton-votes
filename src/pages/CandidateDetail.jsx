@@ -63,17 +63,18 @@ function AnswerBlock({ answer }) {
   const needsTruncation = answer.length > TRUNCATE_AT;
   const displayText = needsTruncation && !expanded ? answer.slice(0, TRUNCATE_AT) : answer;
 
-  const renderWithBold = (text) =>
-    text.split(/(\*\*[^*]+\*\*)/).map((part, i) =>
-      part.startsWith('**') && part.endsWith('**')
-        ? <strong key={i}>{part.slice(2, -2)}</strong>
-        : part
-    );
+  const renderInlineMarkdown = (text) =>
+    text.split(/(\*\*\*.*?\*\*\*|\*\*.*?\*\*|\*.*?\*)/g).map((part, i) => {
+      if (part.startsWith('***') && part.endsWith('***')) return <strong key={i}><em>{part.slice(3, -3)}</em></strong>;
+      if (part.startsWith('**') && part.endsWith('**')) return <strong key={i}>{part.slice(2, -2)}</strong>;
+      if (part.startsWith('*') && part.endsWith('*')) return <em key={i}>{part.slice(1, -1)}</em>;
+      return part;
+    });
 
   return (
     <div>
       <p style={{ fontSize: 'var(--text-base)', color: '#444', lineHeight: 1.8, margin: 0 }}>
-        {renderWithBold(displayText)}{needsTruncation && !expanded && '…'}
+        {renderInlineMarkdown(displayText)}{needsTruncation && !expanded && '…'}
       </p>
       {needsTruncation && (
         <button
