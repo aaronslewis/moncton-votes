@@ -67,13 +67,29 @@ function CandidateAvatar({ candidate }) {
   );
 }
 
+function renderInlineMarkdown(text) {
+  const parts = text.split(/(\*\*\*.*?\*\*\*|\*\*.*?\*\*|\*.*?\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith('***') && part.endsWith('***')) return <strong key={i}><em>{part.slice(3, -3)}</em></strong>;
+    if (part.startsWith('**') && part.endsWith('**')) return <strong key={i}>{part.slice(2, -2)}</strong>;
+    if (part.startsWith('*') && part.endsWith('*')) return <em key={i}>{part.slice(1, -1)}</em>;
+    return part;
+  });
+}
+
 function AnswerBlock({ answer }) {
   if (!answer) return null;
 
+  const lines = answer.split('\n');
   return (
-    <p style={{ fontSize: 'var(--text-sm)', color: '#444', lineHeight: 1.8, margin: 0, whiteSpace: 'pre-line' }}>
-      {answer}
-    </p>
+    <div style={{ fontSize: 'var(--text-sm)', color: '#444', lineHeight: 1.8, margin: 0, whiteSpace: 'pre-line' }}>
+      {lines.map((line, i) => (
+        <span key={i}>
+          {renderInlineMarkdown(line)}
+          {i < lines.length - 1 && '\n'}
+        </span>
+      ))}
+    </div>
   );
 }
 
