@@ -108,7 +108,7 @@ export default function Platforms() {
   const race = searchParams.get('contest') ?? '';
   const questionIndex = searchParams.get('question') ?? '';
 
-  const setRace = (value) => setSearchParams((prev) => { const p = new URLSearchParams(prev); value ? p.set('contest', value) : p.delete('contest'); return p; });
+  const setRace = (value) => setSearchParams((prev) => { const p = new URLSearchParams(prev); value ? p.set('contest', value) : p.delete('contest'); if (value && !p.has('question')) p.set('question', '0'); return p; });
   const setQuestionIndex = (value) => setSearchParams((prev) => { const p = new URLSearchParams(prev); value !== '' ? p.set('question', value) : p.delete('question'); return p; });
 
   const [raceCandidates, setRaceCandidates] = useState([]);
