@@ -77,18 +77,37 @@ function renderInlineMarkdown(text) {
   });
 }
 
-function AnswerBlock({ answer }) {
+function AnswerBlock({ answer, questionFr, answerFr }) {
   if (!answer) return null;
 
   const lines = answer.split('\n');
+  const frLines = answerFr ? answerFr.split('\n') : [];
+
   return (
-    <div style={{ fontSize: 'var(--text-sm)', color: '#444', lineHeight: 1.8, margin: 0, whiteSpace: 'pre-line' }}>
-      {lines.map((line, i) => (
-        <span key={i}>
-          {renderInlineMarkdown(line)}
-          {i < lines.length - 1 && '\n'}
-        </span>
-      ))}
+    <div>
+      <div style={{ fontSize: 'var(--text-sm)', color: '#444', lineHeight: 1.8, margin: 0, whiteSpace: 'pre-line' }}>
+        {lines.map((line, i) => (
+          <span key={i}>
+            {renderInlineMarkdown(line)}
+            {i < lines.length - 1 && '\n'}
+          </span>
+        ))}
+      </div>
+      {questionFr && answerFr && (
+        <div style={{ marginTop: 'var(--space-4)', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--colour-grey-100)' }}>
+          <p style={{ fontSize: 'var(--text-xs)', fontWeight: 700, fontStyle: 'italic', color: 'var(--colour-grey-400)', marginBottom: 'var(--space-2)', margin: '0 0 var(--space-2) 0' }}>
+            {questionFr}
+          </p>
+          <div style={{ fontSize: 'var(--text-sm)', color: '#666', lineHeight: 1.8, margin: 0, whiteSpace: 'pre-line' }}>
+            {frLines.map((line, i) => (
+              <span key={i}>
+                {renderInlineMarkdown(line)}
+                {i < frLines.length - 1 && '\n'}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -262,6 +281,8 @@ export default function Platforms() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
                   {responded.map((candidate) => {
                     const answer = candidate.qa?.[qIdx]?.answer ?? null;
+                    const questionFr = candidate.qa?.[qIdx]?.questionFr ?? null;
+                    const answerFr = candidate.qa?.[qIdx]?.answerFr ?? null;
 
                     return (
                       <div key={candidate.id} className="card" style={{ padding: 'var(--space-6)' }}>
@@ -281,7 +302,7 @@ export default function Platforms() {
                         </div>
 
                         {/* Answer */}
-                        <AnswerBlock answer={answer} />
+                        <AnswerBlock answer={answer} questionFr={questionFr} answerFr={answerFr} />
 
                         {/* Link to full profile */}
                         <div style={{ marginTop: 'var(--space-4)', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--colour-grey-100)' }}>
