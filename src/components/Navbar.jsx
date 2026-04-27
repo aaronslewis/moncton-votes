@@ -54,7 +54,7 @@ export default function Navbar() {
                 Resources
               </NavLink>
               <NavLink to="/platforms" className={getNavLinkClass} role="listitem">
-                Platforms
+                Where They Stand
               </NavLink>
             </div>
 
@@ -102,7 +102,7 @@ export default function Navbar() {
               Resources
             </NavLink>
             <NavLink to="/platforms" className={getMobileNavLinkClass} onClick={closeMenu}>
-              Platforms
+              Where They Stand
             </NavLink>
           </div>
         </div>
