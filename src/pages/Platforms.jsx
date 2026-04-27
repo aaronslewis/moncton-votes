@@ -11,6 +11,24 @@ const RACE_OPTIONS = [
   { value: 'ward4',   label: 'Ward 4' },
 ];
 
+// External resources shown at the bottom of the page.
+// Add podcast interview links here when available:
+// { label: 'Candidate Name — Podcast Name', href: 'https://...' }
+const PODCAST_LINKS = [];
+
+const EXTERNAL_LINKS = [
+  {
+    label: 'Active Transportation Coalition of Moncton — 2026 Candidate Survey Report',
+    lang: 'EN',
+    href: 'https://drive.google.com/file/d/1SaVd6oeToZVcVZeKxYkWjRnQzqAnobhW/view?usp=drive_link',
+  },
+  {
+    label: 'Active Transportation Coalition de Moncton — Rapport du sondage des candidats 2026',
+    lang: 'FR',
+    href: 'https://drive.google.com/file/d/1HHetiCvHUUGGruuNLcXb5qi0MmnYYr-9/view?usp=drive_link',
+  },
+];
+
 function getInitials(name) {
   const parts = name.trim().split(/\s+/).filter(Boolean);
   if (parts.length === 0) return '?';
@@ -342,6 +360,75 @@ export default function Platforms() {
                     </ul>
                   </div>
                 )}
+
+                {/* ── Related Resources ── */}
+                <div style={{ marginTop: 'var(--space-12)', paddingTop: 'var(--space-8)', borderTop: '1px solid var(--colour-grey-200)' }}>
+                  <p style={{
+                    fontSize: 'var(--text-xs)',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    color: 'var(--colour-grey-400)',
+                    marginBottom: 'var(--space-4)',
+                  }}>
+                    More Resources
+                  </p>
+
+                  <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                    {EXTERNAL_LINKS.map((item) => (
+                      <li key={item.href} style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-2)' }}>
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', fontWeight: 500 }}
+                        >
+                          {item.label}
+                        </a>
+                        <span style={{ fontSize: 'var(--text-xs)', color: 'var(--colour-grey-400)', flexShrink: 0 }}>
+                          {item.lang}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {PODCAST_LINKS.length > 0 && (
+                    <div style={{ marginTop: 'var(--space-5)' }}>
+                      <p style={{
+                        fontSize: 'var(--text-xs)',
+                        fontWeight: 700,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.08em',
+                        color: 'var(--colour-grey-400)',
+                        marginBottom: 'var(--space-3)',
+                      }}>
+                        Podcast Interviews
+                      </p>
+                      <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                        {PODCAST_LINKS.map((item) => (
+                          <li key={item.href}>
+                            <a
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', fontWeight: 500 }}
+                            >
+                              {item.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  <p style={{ marginTop: 'var(--space-6)', fontSize: 'var(--text-xs)', color: 'var(--colour-grey-400)', lineHeight: 1.6, margin: 'var(--space-6) 0 0' }}>
+                    Have another resource to add on where candidates stand?{' '}
+                    <a href="mailto:info@monctonvotes.ca" style={{ color: 'var(--colour-grey-500)' }}>
+                      Email info@monctonvotes.ca
+                    </a>.
+                  </p>
+                </div>
+
                   </>
                 );
               })()}
