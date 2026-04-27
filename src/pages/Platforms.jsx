@@ -160,11 +160,12 @@ export default function Platforms() {
             Compare responses
           </h2>
           <p style={{ color: 'var(--colour-grey-600)', fontSize: 'var(--text-sm)', marginBottom: 'var(--space-6)', lineHeight: 1.6 }}>
-            Choose a race and a question to see how each candidate responded side by side.
+            Choose a seat and a question to see how each candidate responded side by side.
           </p>
 
           {/* Selectors */}
-          <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap', marginBottom: 'var(--space-8)' }}>
+          <div className="card" style={{ marginBottom: 'var(--space-8)', padding: 'var(--space-5) var(--space-6)' }}>
+          <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap', marginBottom: 'var(--space-4)' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', flex: '1 1 200px', minWidth: 0 }}>
               <label htmlFor="race-select" style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--colour-grey-700)' }}>
                 Seat(s) to elect
@@ -200,6 +201,14 @@ export default function Platforms() {
                 ))}
               </select>
             </div>
+          </div>
+
+          <p style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-grey-500)', margin: 0 }}>
+            Don't know your ward?{' '}
+            <a href="https://www7.moncton.ca/myzone/wardsearch?lang=en" target="_blank" rel="noopener noreferrer">
+              Find it on the City of Moncton website →
+            </a>
+          </p>
           </div>
 
           {/* Empty state */}
