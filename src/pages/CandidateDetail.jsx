@@ -49,7 +49,7 @@ function getInitials(name) {
   return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
 }
 
-function AnswerBlock({ answer }) {
+function AnswerBlock({ answer, questionFr, answerFr }) {
   const [expanded, setExpanded] = useState(false);
 
   if (!answer) {
@@ -96,6 +96,16 @@ function AnswerBlock({ answer }) {
         >
           {expanded ? 'Read less ↑' : 'Read more ↓'}
         </button>
+      )}
+      {questionFr && answerFr && (
+        <div style={{ marginTop: 'var(--space-4)', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--colour-grey-100)' }}>
+          <p style={{ fontSize: 'var(--text-xs)', fontWeight: 700, fontStyle: 'italic', color: 'var(--colour-grey-400)', margin: '0 0 var(--space-2) 0' }}>
+            {questionFr}
+          </p>
+          <p style={{ fontSize: 'var(--text-base)', color: '#666', lineHeight: 1.8, margin: 0, whiteSpace: 'pre-line' }}>
+            {answerFr}
+          </p>
+        </div>
       )}
     </div>
   );
@@ -274,7 +284,7 @@ export default function CandidateDetail() {
                       <p style={{ fontWeight: 700, fontSize: 'var(--text-base)', color: '#1E2D3D', marginBottom: 'var(--space-4)', lineHeight: 1.5 }}>
                         {question}
                       </p>
-                      <AnswerBlock answer={qa?.answer ?? null} />
+                      <AnswerBlock answer={qa?.answer ?? null} questionFr={qa?.questionFr ?? null} answerFr={qa?.answerFr ?? null} />
                     </div>
                   );
                 })}

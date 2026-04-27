@@ -360,6 +360,63 @@ export const candidates = {
       facebook: 'https://www.facebook.com/felixthecoolestcat',
       bio: null,
       platform: [],
+      qa: [
+        {
+          answer: "My top priority is delivering progress through safe, smart growth while strengthening our sense of community. That means listening to residents, planning responsibly, and ensuring City Hall is a practical partner for families, workers, and local businesses who drive Moncton's economy.",
+          questionFr: "Quelle est votre priorité principale ?",
+          answerFr: "Ma priorité est d'assurer le progrès par une croissance sécuritaire et réfléchie, tout en renforçant notre sentiment de communauté. Cela signifie être à l'écoute des citoyens, planifier de façon responsable et faire en sorte que l'Hôtel de Ville soit un partenaire pragmatique pour les familles, les travailleurs et les entreprises locales qui soutiennent l'économie de Moncton.",
+        },
+        {
+          answer: "I support a housing‑first approach informed by proven successes in other cities. Communities that coordinate housing, mental‑health supports, and outreach have reduced homelessness and improved public safety. Moncton should apply those lessons locally to improve outcomes for people experiencing homelessness and for residents across the city.",
+          questionFr: "Itinérance",
+          answerFr: "Je soutiens une approche axée sur le logement d'abord, inspirée de solutions ayant fait leurs preuves dans d'autres villes. Les communautés qui coordonnent logement, soutien en santé mentale et interventions terrain ont réussi à réduire l'itinérance tout en améliorant la sécurité publique. Moncton doit adapter ces pratiques afin d'améliorer la situation des personnes en situation d'itinérance et le sentiment de sécurité des citoyens.",
+        },
+        {
+          answer: "Public safety requires balance and smart spending. I support responsible policing, preventative and social supports, and continued investment in firefighter staffing, equipment, and infrastructure to ensure emergency services keep pace with a growing city.",
+          questionFr: "Sécurité publique et services policiers",
+          answerFr: "La sécurité publique exige un juste équilibre et une gestion responsable des ressources. Je soutiens une police responsable, des mesures de prévention et de soutien social, ainsi que des investissements continus dans le personnel, l'équipement et les infrastructures du service incendie afin de suivre la croissance de la ville.",
+        },
+        {
+          answer: "As Moncton grows, we need practical transportation choices that reflect how people actually live and work. This includes reliable roads, smart land use, better transit where it makes sense, and thoughtful, community‑driven decisions about cycling and pedestrian spaces.",
+          questionFr: "Croissance et transport",
+          answerFr: "À mesure que Moncton grandit, il est essentiel de privilégier des solutions de transport pratiques qui reflètent la réalité quotidienne des citoyens. Cela inclut des routes fiables, une utilisation réfléchie du territoire, un meilleur transport en commun lorsque pertinent, et des décisions réfléchies — guidées par la communauté — en matière de déplacements actifs.",
+        },
+        {
+          answer: "I support mixed‑use and affordable housing projects that strengthen neighbourhoods while respecting established single‑family areas. Growth must be paired with road and transportation infrastructure expansion so increased traffic is managed safely and efficiently, and homeowners feel supported.",
+          questionFr: "Grands développements",
+          answerFr: "Je soutiens les projets à usage mixte et de logements abordables qui renforcent les quartiers tout en respectant les secteurs résidentiels unifamiliaux établis. La croissance doit s'accompagner de l'expansion des infrastructures routières et de transport afin de gérer l'augmentation du trafic de façon sécuritaire et efficace, et de soutenir les propriétaires.",
+        },
+        {
+          answer: "Affordability improves when we increase housing supply, manage taxes carefully, limit unnecessary fees, and advocate strongly to senior governments for support.",
+          questionFr: "Abordabilité",
+          answerFr: "L'abordabilité passe par une augmentation de l'offre de logements, une gestion prudente de la fiscalité, la limitation des frais inutiles et une représentation ferme auprès des autres ordres de gouvernement.",
+        },
+        {
+          answer: "Residents already feel significant pressure from property taxes and rising costs. The city should prioritize efficiencies, shared services, partnerships, and responsible budgeting so any added burden on taxpayers is minimized and treated as a last resort.",
+          questionFr: "Revenus et économies",
+          answerFr: "Les citoyens subissent déjà une pression importante liée aux taxes foncières et au coût de la vie. La Ville doit prioriser l'efficacité, les services partagés, les partenariats et une gestion budgétaire responsable afin de limiter au maximum toute pression additionnelle sur les contribuables, et ne la considérer qu'en dernier recours.",
+        },
+        {
+          answer: "I believe the city can make better use of its existing by‑laws. Clear, consistent, and fair enforcement would address many citizen concerns without layering on new rules or unnecessary red tape.",
+          questionFr: "Décision passée du conseil",
+          answerFr: "Je crois que la Ville pourrait mieux utiliser les règlements municipaux déjà en place. Une application claire, cohérente et équitable permettrait de répondre à plusieurs préoccupations citoyennes sans ajouter de nouvelles règles ou de lourdeur administrative.",
+        },
+        {
+          answer: "Exploring better ways for council and residents to communicate and understand one another, while learning from what works in other communities.",
+          questionFr: "Priorité moins attendue",
+          answerFr: "Explorer de meilleures façons pour le conseil municipal et les citoyens de communiquer et de mieux se comprendre, tout en s'inspirant de pratiques efficaces ailleurs.",
+        },
+        {
+          answer: "I value teamwork, evidence‑based decision‑making, and building strong, connected communities.",
+          questionFr: "À propos de moi",
+          answerFr: "Je valorise le travail d'équipe, les décisions fondées sur des données probantes et la construction de communautés fortes et connectées.",
+        },
+        {
+          answer: "A strong community needs progress — progress that is practical, balanced, and rooted in how people actually live. Moncton succeeds when City Hall focuses on enabling growth, supporting local employers and workers, and making thoughtful decisions that strengthen long‑term stability, opportunity, and quality of life across every neighbourhood.",
+          questionFr: "Mot de la fin",
+          answerFr: "Une communauté forte a besoin de progrès — un progrès pragmatique, équilibré et ancré dans la réalité quotidienne des gens. Moncton avance lorsque l'Hôtel de Ville favorise la croissance, soutient les employeurs et les travailleurs locaux, et prend des décisions réfléchies qui renforcent la stabilité, les possibilités et la qualité de vie dans tous les quartiers.",
+        },
+      ],
     },
     {
       id: 'ward1-roy-macmullin',
