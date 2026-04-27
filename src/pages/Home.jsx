@@ -30,6 +30,15 @@ function VoterCompassIcon() {
   );
 }
 
+function ResourcesIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+    </svg>
+  );
+}
+
 /* ── Add to Calendar ─────────────────────────────────────── */
 
 const VOTING_OPTIONS = [
@@ -199,21 +208,21 @@ const features = [
     comingSoon: false,
   },
   {
-    icon: <ReportCardIcon />,
-    title: 'Performance Scorecards',
-    description:
-      'Performance scorecards for the outgoing council term, graded across six categories: Conduct, Transparency, Effectiveness, Collaboration, Community Engagement, and Scrutiny.',
-    link: '/scorecards',
-    linkLabel: 'View Performance Scorecards',
-    comingSoon: false,
-  },
-  {
     icon: <VoterCompassIcon />,
     title: 'Where They Stand',
     description:
       'Browse where candidates stand on homelessness, public safety, housing, transit, affordability, and more — in their own words.',
     link: '/platforms',
     linkLabel: 'Where They Stand',
+    comingSoon: false,
+  },
+  {
+    icon: <ResourcesIcon />,
+    title: 'Resources',
+    description:
+      'Find official voting information, registration links, polling locations, and civic resources for the 2026 Moncton municipal election.',
+    link: '/resources',
+    linkLabel: 'View Resources',
     comingSoon: false,
   },
 ];
@@ -233,9 +242,6 @@ export default function Home() {
             <div className="hero-cta">
               <Link to="/candidates" className="btn btn-primary">
                 Find Your Candidates
-              </Link>
-              <Link to="/scorecards" className="btn btn-outline-white">
-                View Council Performance Scorecards
               </Link>
             </div>
           </div>
