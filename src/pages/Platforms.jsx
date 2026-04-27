@@ -135,8 +135,8 @@ export default function Platforms() {
     <>
       <header className="page-header">
         <div className="container">
-          <h1>Candidate Platforms</h1>
-          <p>Where the candidates stand on the issues that matter most to Moncton.</p>
+          <h1>Where They Stand</h1>
+          <p>Candidates answer questions on the issues that matter most to Moncton — in their own words.</p>
         </div>
       </header>
 
@@ -157,7 +157,7 @@ export default function Platforms() {
         {/* ── Compare by question ── */}
         <section aria-labelledby="compare-heading" style={{ marginBottom: 'var(--space-16)' }}>
           <h2 id="compare-heading" style={{ fontSize: 'var(--text-xl)', color: '#1E2D3D', marginBottom: 'var(--space-2)' }}>
-            Compare responses
+            Compare answers
           </h2>
           <p style={{ color: 'var(--colour-grey-600)', fontSize: 'var(--text-sm)', marginBottom: 'var(--space-6)', lineHeight: 1.6 }}>
             Choose a seat and a question to see how each candidate responded side by side.

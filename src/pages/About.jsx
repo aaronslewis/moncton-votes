@@ -30,7 +30,7 @@ export default function About() {
             <p style={{ lineHeight: 1.8, color: 'var(--colour-grey-700)', marginBottom: 'var(--space-4)' }}>
               Moncton Votes grew out of a personal desire to know more about the sitting councillors'
               track record. From there, when it became apparent how little information was readily
-              available for voters, on the candidates they would choose from, their platforms, and basic
+              available for voters, on the candidates they would choose from, where they stand on the issues, and basic
               voting questions — that's when the project really took off.
             </p>
             <p style={{ lineHeight: 1.8, color: 'var(--colour-grey-700)', marginBottom: 'var(--space-4)' }}>

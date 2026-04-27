@@ -16,7 +16,7 @@ export default function Footer() {
                 <Link to="/scorecards">Scorecards</Link>
                 <Link to="/candidates">Candidates</Link>
                 <Link to="/resources">Resources</Link>
-                <Link to="/platforms">Platforms</Link>
+                <Link to="/platforms">Where They Stand</Link>
                 <Link to="/about">About</Link>
               </nav>
             </div>

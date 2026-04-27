@@ -209,11 +209,11 @@ const features = [
   },
   {
     icon: <VoterCompassIcon />,
-    title: 'Candidate Platforms',
+    title: 'Where They Stand',
     description:
       'Browse where candidates stand on homelessness, public safety, housing, transit, affordability, and more — in their own words.',
     link: '/platforms',
-    linkLabel: 'View Platforms',
+    linkLabel: 'Where They Stand',
     comingSoon: false,
   },
 ];

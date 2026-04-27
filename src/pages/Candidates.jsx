@@ -119,7 +119,7 @@ function CandidateCard({ candidate }) {
               whiteSpace: 'nowrap',
             }}
           >
-            Responses →
+            Where They Stand →
           </Link>
         )}
       </div>
