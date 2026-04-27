@@ -47,14 +47,14 @@ export default function Navbar() {
               <NavLink to="/candidates" className={getNavLinkClass} role="listitem">
                 Candidates
               </NavLink>
-              <NavLink to="/scorecards" className={getNavLinkClass} role="listitem">
-                Scorecards
+              <NavLink to="/platforms" className={getNavLinkClass} role="listitem">
+                Where They Stand
               </NavLink>
               <NavLink to="/resources" className={getNavLinkClass} role="listitem">
                 Resources
               </NavLink>
-              <NavLink to="/platforms" className={getNavLinkClass} role="listitem">
-                Where They Stand
+              <NavLink to="/scorecards" className={getNavLinkClass} role="listitem">
+                Scorecards
               </NavLink>
             </div>
 
@@ -95,14 +95,14 @@ export default function Navbar() {
             <NavLink to="/candidates" className={getMobileNavLinkClass} onClick={closeMenu}>
               Candidates
             </NavLink>
-            <NavLink to="/scorecards" className={getMobileNavLinkClass} onClick={closeMenu}>
-              Scorecards
+            <NavLink to="/platforms" className={getMobileNavLinkClass} onClick={closeMenu}>
+              Where They Stand
             </NavLink>
             <NavLink to="/resources" className={getMobileNavLinkClass} onClick={closeMenu}>
               Resources
             </NavLink>
-            <NavLink to="/platforms" className={getMobileNavLinkClass} onClick={closeMenu}>
-              Where They Stand
+            <NavLink to="/scorecards" className={getMobileNavLinkClass} onClick={closeMenu}>
+              Scorecards
             </NavLink>
           </div>
         </div>
