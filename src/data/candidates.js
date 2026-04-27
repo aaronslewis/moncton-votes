@@ -62,7 +62,7 @@ export const candidates = {
         { answer: "City Council decisions are difficult but once a decision is made, all of council must accept the outcome. I would strive to have better communication and public involvement prior to upcoming decisions therefore increasing transparency for all." },
         { answer: "Building a city for the future by developing a water conservation and forest fire prevention strategy, creating energy projects with regional waste such as supporting investments in sewage treatment handling that drive revenues such as converting our waste into energy using an anaerobic digester to address North End odours as well as evaluating Magnetic Hill and Stade future use, increase investments in parks, trails, active transportation along with North End pool infrastructure." },
         { answer: "I'm passionate about preservation of historic architecture including the Cathédrale Notre-Dame de l'Assomption. See video link: https://youtu.be/RKX1rlXef3g" },
-        { answer: "As your full-time Mayor, I will work tirelessly to make this vision real, working on your behalf each day with community leaders, business leaders, and other levels of government to deliver action for your city, my city, our city. It's time to deliver for the citizens of Moncton.\" and together we can build a safer and more affordable Moncton." },
+        { answer: "As your full-time Mayor, I will work tirelessly to make this vision real, working on your behalf each day with community leaders, business leaders, and other levels of government to deliver action for your city, my city, our city. It's time to deliver for the citizens of Moncton. And together we can build a safer and more affordable Moncton." },
       ],
     },
     {
@@ -317,7 +317,7 @@ export const candidates = {
         { answer: null },
         { answer: null },
         { answer: null },
-        { answer: "Youth civic engagement. Most people my age don't realize city council affects their daily life more than almost any other level of government. I want to change that. I want to be the voice to young residents who've never felt like anyone here was speaking to them." },
+        { answer: "Youth civic engagement. Most people my age don't realize city council affects their daily life more than almost any other level of government. I want to change that. I want to be to young residents who've never felt like anyone here was speaking to them." },
         { answer: null },
         { answer: null },
       ],
