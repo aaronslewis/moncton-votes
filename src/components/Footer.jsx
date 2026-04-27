@@ -13,10 +13,10 @@ export default function Footer() {
               <p className="footer-heading">Quick Links</p>
               <nav className="footer-links" aria-label="Footer navigation">
                 <Link to="/">Home</Link>
-                <Link to="/scorecards">Scorecards</Link>
                 <Link to="/candidates">Candidates</Link>
-                <Link to="/resources">Resources</Link>
                 <Link to="/platforms">Where They Stand</Link>
+                <Link to="/resources">Resources</Link>
+                <Link to="/scorecards">Scorecards</Link>
                 <Link to="/about">About</Link>
               </nav>
             </div>
