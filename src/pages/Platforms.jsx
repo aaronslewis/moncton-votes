@@ -105,8 +105,14 @@ const selectStyle = {
 
 export default function Platforms() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const race = searchParams.get('contest') ?? '';
-  const questionIndex = searchParams.get('question') ?? '';
+  const race = searchParams.get('contest') ?? 'atLarge';
+  const questionIndex = searchParams.get('question') ?? '0';
+
+  useEffect(() => {
+    if (!searchParams.has('contest') || !searchParams.has('question')) {
+      setSearchParams({ contest: 'atLarge', question: '0' }, { replace: true });
+    }
+  }, []);
 
   const setRace = (value) => setSearchParams((prev) => { const p = new URLSearchParams(prev); value ? p.set('contest', value) : p.delete('contest'); if (value && !p.has('question')) p.set('question', '0'); return p; });
   const setQuestionIndex = (value) => setSearchParams((prev) => { const p = new URLSearchParams(prev); value !== '' ? p.set('question', value) : p.delete('question'); return p; });
