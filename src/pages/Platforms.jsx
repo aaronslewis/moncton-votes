@@ -167,7 +167,7 @@ export default function Platforms() {
           <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap', marginBottom: 'var(--space-8)' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', flex: '1 1 200px', minWidth: 0 }}>
               <label htmlFor="race-select" style={{ fontSize: 'var(--text-sm)', fontWeight: 600, color: 'var(--colour-grey-700)' }}>
-                Contest
+                Seat(s) to elect
               </label>
               <select
                 id="race-select"
@@ -175,7 +175,7 @@ export default function Platforms() {
                 onChange={(e) => setRace(e.target.value)}
                 style={{ ...selectStyle, color: race ? '#1E2D3D' : 'var(--colour-grey-500)' }}
               >
-                <option value="">Select a contest…</option>
+                <option value="">Select a seat…</option>
                 {RACE_OPTIONS.map((o) => (
                   <option key={o.value} value={o.value}>{o.label}</option>
                 ))}
@@ -244,7 +244,7 @@ export default function Platforms() {
               </div>
 
               {raceCandidates.length === 0 ? (
-                <div className="notice"><p>No candidates found for this contest.</p></div>
+                <div className="notice"><p>No candidates found for this seat.</p></div>
               ) : (() => {
                 const responded = raceCandidates.filter((c) => c.qa && c.qa[qIdx]?.answer);
                 const didNotRespond = raceCandidates.filter((c) => !c.qa || !c.qa[qIdx]?.answer);
