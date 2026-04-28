@@ -34,16 +34,18 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Never cache the HTML entry point — always fetch fresh so users get new deploys
-[[headers]]
-  for = "/index.html"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
+# HTML pages: browsers must revalidate before using cached content (so users always
+# get fresh HTML after a deploy), but the Netlify CDN edge can cache for 1 hour.
+# Netlify automatically purges the CDN cache on each deploy, so s-maxage is safe.
 [[headers]]
   for = "/"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "public, max-age=0, s-maxage=3600, must-revalidate"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, s-maxage=3600, must-revalidate"
 
 # Force full response (200) for OG image — prevents Facebook scraper getting 206
 [[headers]]
