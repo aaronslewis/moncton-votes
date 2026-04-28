@@ -64,7 +64,7 @@ export const routes = [
         },
       },
       { path: 'resources',     lazy: async () => ({ Component: (await import('./pages/Resources.jsx')).default }) },
-      { path: 'platforms',           lazy: async () => ({ Component: (await import('./pages/Platforms.jsx')).default }) },
+      { path: 'wheretheystand',      lazy: async () => ({ Component: (await import('./pages/Platforms.jsx')).default }) },
       { path: 'levels-of-government', lazy: async () => ({ Component: (await import('./pages/GovernmentLevels.jsx')).default }) },
       { path: 'about',         lazy: async () => ({ Component: (await import('./pages/About.jsx')).default }) },
       { path: '*',             element: <NotFound /> },

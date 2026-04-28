@@ -266,6 +266,11 @@ export default function CandidateDetail() {
               <h2 style={{ fontSize: 'var(--text-xl)', marginBottom: 'var(--space-6)', color: '#1E2D3D' }}>
                 Candidate Q&amp;A
               </h2>
+              {candidate.responsesLate && (
+                <div className="notice" style={{ marginBottom: 'var(--space-6)' }}>
+                  <p>These responses were received after the questionnaire deadline.</p>
+                </div>
+              )}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
                 {CANDIDATE_QUESTIONS.map((question, i) => {
                   const qa = candidate.qa[i];

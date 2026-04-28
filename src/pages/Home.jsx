@@ -204,7 +204,7 @@ const features = [
     description:
       "Find who's running in your ward. Select your ward to see your ballot — Mayoral, At-Large, and ward-specific candidates.",
     link: '/candidates',
-    linkLabel: 'Find Your Candidates',
+    linkLabel: 'View Candidates',
     comingSoon: false,
   },
   {
@@ -212,7 +212,7 @@ const features = [
     title: 'Where They Stand',
     description:
       'Browse where candidates stand on homelessness, public safety, housing, transit, affordability, and more — in their own words.',
-    link: '/platforms',
+    link: '/wheretheystand',
     linkLabel: 'Where They Stand',
     comingSoon: false,
   },
@@ -241,7 +241,7 @@ export default function Home() {
             </p>
             <div className="hero-cta">
               <Link to="/candidates" className="btn btn-primary">
-                Find Your Candidates
+                View Candidates
               </Link>
             </div>
           </div>
