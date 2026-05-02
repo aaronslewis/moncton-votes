@@ -127,7 +127,7 @@ export const candidates = {
       ward: 'At-Large',
       incumbent: false,
       photo: '/images/ali-ettarnichi.webp',
-      website: null,
+      website: 'http://ali4moncton.ca',
       phone: null,
       email: 'Ali4moncton2026@gmail.com',
       facebook: 'https://www.facebook.com/profile.php?id=61561195122058',
