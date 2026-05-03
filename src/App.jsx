@@ -1,4 +1,5 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import Layout from './components/Layout.jsx';
 import Home from './pages/Home.jsx';
 
@@ -27,9 +28,18 @@ function NotFound() {
 }
 
 /* ── Root layout wrapper — renders Navbar + Footer around pages ── */
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function AppLayout() {
   return (
     <Layout>
+      <ScrollToTop />
       <Outlet />
     </Layout>
   );
