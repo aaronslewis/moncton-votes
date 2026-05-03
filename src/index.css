@@ -1139,8 +1139,6 @@ input, select, textarea {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1);
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--colour-grey-100);
 }
 
 .contact-icon-link {
@@ -1290,6 +1288,23 @@ input, select, textarea {
 
   .profile-header-avatar {
     display: none;
+  }
+}
+
+/* Candidate detail: sidebar grid layout */
+.candidate-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .candidate-detail-layout {
+    grid-template-columns: 1fr;
+  }
+  .candidate-detail-layout > aside {
+    order: -1;
   }
 }
 

@@ -102,24 +102,6 @@ function CandidateCard({ candidate }) {
           )}
         </div>
 
-        <Link
-            to={`/candidates/${candidate.id}`}
-            style={{
-              alignSelf: 'center',
-              flexShrink: 0,
-              fontSize: 'var(--text-xs)',
-              fontWeight: 600,
-              color: 'var(--colour-primary-600)',
-              background: 'transparent',
-              border: '2px solid var(--colour-primary-600)',
-              borderRadius: 'var(--radius-lg)',
-              padding: 'var(--space-2) var(--space-3)',
-              textDecoration: 'none',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Where They Stand →
-          </Link>
       </div>
 
       {/* Bio */}
@@ -149,63 +131,82 @@ function CandidateCard({ candidate }) {
       )}
 
 
-      {/* Contact icons */}
-      {(candidate.phone || candidate.email || candidate.facebook || candidate.instagram) && (
-        <ul className="candidate-contact" aria-label={`Contact ${candidate.name}`}>
-          {candidate.phone && (
-            <li>
-              <a
-                href={`tel:${candidate.phone}`}
-                className="contact-icon-link"
-                aria-label={`Call ${candidate.name} at ${candidate.phone}`}
-              >
-                <PhoneIcon />
-                <span className="sr-only">{candidate.phone}</span>
-              </a>
-            </li>
-          )}
-          {candidate.email && (
-            <li>
-              <a
-                href={`mailto:${candidate.email}`}
-                className="contact-icon-link"
-                aria-label={`Email ${candidate.name}`}
-              >
-                <EmailIcon />
-                <span className="sr-only">{candidate.email}</span>
-              </a>
-            </li>
-          )}
-          {candidate.facebook && (
-            <li>
-              <a
-                href={candidate.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-icon-link"
-                aria-label={`${candidate.name} on Facebook (opens in new tab)`}
-              >
-                <FacebookIcon />
-                <span className="sr-only">Facebook</span>
-              </a>
-            </li>
-          )}
-          {candidate.instagram && (
-            <li>
-              <a
-                href={candidate.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-icon-link"
-                aria-label={`${candidate.name} on Instagram (opens in new tab)`}
-              >
-                <InstagramIcon />
-                <span className="sr-only">Instagram</span>
-              </a>
-            </li>
-          )}
-        </ul>
-      )}
+      {/* Contact icons + Where They Stand */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 'var(--space-3)', borderTop: '1px solid var(--colour-grey-100)', gap: 'var(--space-3)', flexWrap: 'wrap' }}>
+        {(candidate.phone || candidate.email || candidate.facebook || candidate.instagram) ? (
+          <ul className="candidate-contact" style={{ borderTop: 'none', paddingTop: 0, margin: 0 }} aria-label={`Contact ${candidate.name}`}>
+            {candidate.phone && (
+              <li>
+                <a
+                  href={`tel:${candidate.phone}`}
+                  className="contact-icon-link"
+                  aria-label={`Call ${candidate.name} at ${candidate.phone}`}
+                >
+                  <PhoneIcon />
+                  <span className="sr-only">{candidate.phone}</span>
+                </a>
+              </li>
+            )}
+            {candidate.email && (
+              <li>
+                <a
+                  href={`mailto:${candidate.email}`}
+                  className="contact-icon-link"
+                  aria-label={`Email ${candidate.name}`}
+                >
+                  <EmailIcon />
+                  <span className="sr-only">{candidate.email}</span>
+                </a>
+              </li>
+            )}
+            {candidate.facebook && (
+              <li>
+                <a
+                  href={candidate.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-icon-link"
+                  aria-label={`${candidate.name} on Facebook (opens in new tab)`}
+                >
+                  <FacebookIcon />
+                  <span className="sr-only">Facebook</span>
+                </a>
+              </li>
+            )}
+            {candidate.instagram && (
+              <li>
+                <a
+                  href={candidate.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-icon-link"
+                  aria-label={`${candidate.name} on Instagram (opens in new tab)`}
+                >
+                  <InstagramIcon />
+                  <span className="sr-only">Instagram</span>
+                </a>
+              </li>
+            )}
+          </ul>
+        ) : <div />}
+        <Link
+          to={`/candidates/${candidate.id}`}
+          style={{
+            flexShrink: 0,
+            fontSize: 'var(--text-xs)',
+            fontWeight: 600,
+            color: 'var(--colour-primary-600)',
+            background: 'transparent',
+            border: '2px solid var(--colour-primary-600)',
+            borderRadius: 'var(--radius-lg)',
+            padding: 'var(--space-2) var(--space-3)',
+            textDecoration: 'none',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          Where They Stand →
+        </Link>
+      </div>
     </div>
   );
 }

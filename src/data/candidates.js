@@ -25,7 +25,7 @@ export const candidates = {
     {
       id: 'mayor-shawn-crossman',
       name: 'Shawn Crossman',
-      ward: 'City-Wide (Mayoral)',
+      ward: 'Mayoral',
       incumbent: true,
       incumbentOf: 'Ward 1',
       photo: 'https://www.moncton.ca/sites/default/files/styles/media_library/public/2021-07/web_council_2021_2025_7.jpg',
@@ -41,7 +41,7 @@ export const candidates = {
     {
       id: 'mayor-charles-leger',
       name: 'Charles Léger',
-      ward: 'City-Wide (Mayoral)',
+      ward: 'Mayoral',
       incumbent: true,
       incumbentOf: 'Ward 2',
       photo: 'https://www.moncton.ca/sites/default/files/styles/media_library/public/2021-07/web_council_2021_2025_9.jpg',
@@ -70,7 +70,7 @@ export const candidates = {
     {
       id: 'mayor-jeffrey-mccluskey',
       name: 'Jeffrey McCluskey',
-      ward: 'City-Wide (Mayoral)',
+      ward: 'Mayoral',
       incumbent: false,
       photo: '/images/jeffrey-mccluskey.webp',
       website: null,
@@ -83,7 +83,7 @@ export const candidates = {
     {
       id: 'mayor-brian-murphy',
       name: 'Brian F.P. Murphy',
-      ward: 'City-Wide (Mayoral)',
+      ward: 'Mayoral',
       incumbent: false,
       photo: 'https://assets.cdn.filesafe.space/pKnJKEHYxJxCUaYsqvI0/media/6978daa3d560859f119e4559.png',
       website: 'https://murphy26.ca',

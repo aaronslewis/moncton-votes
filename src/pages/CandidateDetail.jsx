@@ -205,240 +205,246 @@ export default function CandidateDetail() {
 
       {/* ── Body ── */}
       <div className="container" style={{ paddingTop: 'var(--space-10)', paddingBottom: 'var(--space-16)' }}>
-        <div style={{ maxWidth: '800px' }}>
+        <div className="candidate-detail-layout">
 
-          {/* Contact card */}
-          {hasContact && (
-            <section className="card" style={{ marginBottom: 'var(--space-8)' }} aria-label={`Contact ${candidate.name}`}>
-              <h2 style={{ fontSize: 'var(--text-lg)', marginBottom: 'var(--space-4)', color: '#1E2D3D' }}>
-                Contact
-              </h2>
-              <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-                {candidate.phone && (
-                  <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-                    <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><PhoneIcon /></span>
-                    <a href={`tel:${candidate.phone}`} style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
-                      {candidate.phone}
-                    </a>
-                  </li>
+          {/* ── Main column ── */}
+          <div>
+            {/* Q&A */}
+            {candidate.qa && candidate.qa.length > 0 && (
+              <section aria-label="Candidate Q&A">
+                <h2 style={{ fontSize: 'var(--text-xl)', marginBottom: 'var(--space-6)', color: '#1E2D3D' }}>
+                  Candidate Q&amp;A
+                </h2>
+                {candidate.responsesLate && (
+                  <div className="notice" style={{ marginBottom: 'var(--space-6)' }}>
+                    <p>These responses were received after the questionnaire deadline.</p>
+                  </div>
                 )}
-                {candidate.email && (
-                  <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-                    <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><EmailIcon /></span>
-                    <a href={`mailto:${candidate.email}`} style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', wordBreak: 'break-all' }}>
-                      {candidate.email}
-                    </a>
-                  </li>
-                )}
-                {(candidate.website || candidate.websiteEn || candidate.websiteFr) && (
-                  <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-                    <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><GlobeIcon /></span>
-                    <CampaignSiteLink
-                      website={candidate.website}
-                      websiteEn={candidate.websiteEn}
-                      websiteFr={candidate.websiteFr}
-                      label="Campaign site"
-                      style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}
-                    />
-                  </li>
-                )}
-                {candidate.facebook && (
-                  <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-                    <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><FacebookIcon /></span>
-                    <a href={candidate.facebook} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
-                      Facebook
-                    </a>
-                  </li>
-                )}
-                {candidate.instagram && (
-                  <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-                    <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><InstagramIcon /></span>
-                    <a href={candidate.instagram} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
-                      Instagram
-                    </a>
-                  </li>
-                )}
-              </ul>
-            </section>
-          )}
-
-          {/* Q&A */}
-          {candidate.qa && candidate.qa.length > 0 && (
-            <section aria-label="Candidate Q&A">
-              <h2 style={{ fontSize: 'var(--text-xl)', marginBottom: 'var(--space-6)', color: '#1E2D3D' }}>
-                Candidate Q&amp;A
-              </h2>
-              {candidate.responsesLate && (
-                <div className="notice" style={{ marginBottom: 'var(--space-6)' }}>
-                  <p>These responses were received after the questionnaire deadline.</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+                  {CANDIDATE_QUESTIONS.map((question, i) => {
+                    const qa = candidate.qa[i];
+                    return (
+                      <div key={i} className="card" style={{ padding: 'var(--space-6)' }}>
+                        <p style={{
+                          fontSize: 'var(--text-xs)',
+                          fontWeight: 700,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.06em',
+                          color: 'var(--colour-grey-500)',
+                          marginBottom: 'var(--space-2)',
+                        }}>
+                          Q{i + 1}
+                        </p>
+                        <p style={{ fontWeight: 700, fontSize: 'var(--text-base)', color: '#1E2D3D', marginBottom: 'var(--space-4)', lineHeight: 1.5 }}>
+                          {question}
+                        </p>
+                        <AnswerBlock answer={qa?.answer ?? null} questionFr={qa?.questionFr ?? null} answerFr={qa?.answerFr ?? null} />
+                      </div>
+                    );
+                  })}
                 </div>
-              )}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-                {CANDIDATE_QUESTIONS.map((question, i) => {
-                  const qa = candidate.qa[i];
-                  return (
-                    <div key={i} className="card" style={{ padding: 'var(--space-6)' }}>
-                      <p style={{
-                        fontSize: 'var(--text-xs)',
-                        fontWeight: 700,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.06em',
-                        color: 'var(--colour-grey-500)',
-                        marginBottom: 'var(--space-2)',
-                      }}>
-                        Q{i + 1}
-                      </p>
-                      <p style={{ fontWeight: 700, fontSize: 'var(--text-base)', color: '#1E2D3D', marginBottom: 'var(--space-4)', lineHeight: 1.5 }}>
-                        {question}
-                      </p>
-                      <AnswerBlock answer={qa?.answer ?? null} questionFr={qa?.questionFr ?? null} answerFr={qa?.answerFr ?? null} />
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-          )}
+              </section>
+            )}
 
-          {/* No Q&A yet */}
-          {(!candidate.qa || candidate.qa.length === 0) && (
-            <div className="notice">
-              <p><strong>This candidate has not yet provided answers to our questionnaire.</strong></p>
-            </div>
-          )}
-
-          {/* Media & Resources */}
-          {(candidate.youtube || !AT_SURVEY_NON_RESPONDENTS.has(candidate.id)) && (
-          <section aria-label="Media and resources" style={{ marginTop: 'var(--space-10)' }}>
-            <h2 style={{ fontSize: 'var(--text-xl)', marginBottom: 'var(--space-6)', color: '#1E2D3D' }}>
-              Media &amp; Resources
-            </h2>
-
-            {candidate.youtube && (
-              <div style={{ marginBottom: 'var(--space-6)' }}>
-                <p style={{
-                  fontSize: 'var(--text-xs)',
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: 'var(--colour-grey-400)',
-                  marginBottom: 'var(--space-3)',
-                }}>
-                  YouTube — Candidate Interview
-                </p>
-                <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-                  <li>
-                    <a
-                      href={candidate.youtube}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', fontWeight: 500 }}
-                    >
-                      {candidate.name} — Candidate Interview
-                    </a>
-                  </li>
-                </ul>
+            {/* No Q&A yet */}
+            {(!candidate.qa || candidate.qa.length === 0) && (
+              <div className="notice">
+                <p><strong>This candidate has not yet provided answers to our questionnaire.</strong></p>
               </div>
             )}
 
-            {candidate.youtube && (
-              <div style={{ marginBottom: 'var(--space-6)' }}>
-                <p style={{
-                  fontSize: 'var(--text-xs)',
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: 'var(--colour-grey-400)',
-                  marginBottom: 'var(--space-3)',
-                }}>
-                  CBC Radio — Mayoral Candidates
-                </p>
+            {/* Media & Resources */}
+            {(candidate.youtube || !AT_SURVEY_NON_RESPONDENTS.has(candidate.id)) && (
+              <section aria-label="Media and resources" style={{ marginTop: 'var(--space-10)' }}>
+                <h2 style={{ fontSize: 'var(--text-xl)', marginBottom: 'var(--space-6)', color: '#1E2D3D' }}>
+                  Media &amp; Resources
+                </h2>
+
+                {candidate.youtube && (
+                  <div style={{ marginBottom: 'var(--space-6)' }}>
+                    <p style={{
+                      fontSize: 'var(--text-xs)',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      color: 'var(--colour-grey-400)',
+                      marginBottom: 'var(--space-3)',
+                    }}>
+                      YouTube — Candidate Interview
+                    </p>
+                    <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+                      <li>
+                        <a
+                          href={candidate.youtube}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', fontWeight: 500 }}
+                        >
+                          {candidate.name} — Candidate Interview
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+
+                {candidate.youtube && (
+                  <div style={{ marginBottom: 'var(--space-6)' }}>
+                    <p style={{
+                      fontSize: 'var(--text-xs)',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      color: 'var(--colour-grey-400)',
+                      marginBottom: 'var(--space-3)',
+                    }}>
+                      CBC Radio — Mayoral Candidates
+                    </p>
+                    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                      {MAYOR_CBC_LINKS.map((item) => (
+                        <li key={item.href}>
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', fontWeight: 500 }}
+                          >
+                            {item.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {!AT_SURVEY_NON_RESPONDENTS.has(candidate.id) && (
+                  <div>
+                    <p style={{
+                      fontSize: 'var(--text-xs)',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      color: 'var(--colour-grey-400)',
+                      marginBottom: 'var(--space-3)',
+                    }}>
+                      Active Transportation Coalition
+                    </p>
+                    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                      {ACTIVE_TRANSPORTATION_LINKS.map((item) => (
+                        <li key={item.href} style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-2)' }}>
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', fontWeight: 500 }}
+                          >
+                            {item.label}
+                          </a>
+                          <span style={{ fontSize: 'var(--text-xs)', color: 'var(--colour-grey-400)', flexShrink: 0 }}>
+                            {item.lang}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </section>
+            )}
+
+            {/* Scorecard link (incumbents only) */}
+            {scorecardSlug && (
+              <Link
+                to={`/scorecards/${scorecardSlug}`}
+                className="card"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: 'var(--space-4)',
+                  marginTop: 'var(--space-10)',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  borderLeft: '4px solid var(--colour-primary-600)',
+                }}
+              >
+                <div>
+                  <p style={{
+                    fontSize: 'var(--text-xs)',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    color: 'var(--colour-grey-500)',
+                    margin: '0 0 var(--space-1) 0',
+                  }}>
+                    AI Analysis of Last Term
+                  </p>
+                  <p style={{ fontWeight: 600, color: '#1E2D3D', fontSize: 'var(--text-base)', margin: 0 }}>
+                    View {candidate.name}'s scorecard
+                  </p>
+                </div>
+                <span style={{ color: 'var(--colour-primary-600)', fontSize: 'var(--text-base)', fontWeight: 600, flexShrink: 0 }}>
+                  →
+                </span>
+              </Link>
+            )}
+          </div>
+
+          {/* ── Sidebar ── */}
+          {hasContact && (
+            <aside>
+              <section className="card" aria-label={`Contact ${candidate.name}`}>
+                <h2 style={{ fontSize: 'var(--text-lg)', marginBottom: 'var(--space-4)', color: '#1E2D3D' }}>
+                  Contact
+                </h2>
                 <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-                  {MAYOR_CBC_LINKS.map((item) => (
-                    <li key={item.href}>
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', fontWeight: 500 }}
-                      >
-                        {item.label}
+                  {candidate.phone && (
+                    <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+                      <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><PhoneIcon /></span>
+                      <a href={`tel:${candidate.phone}`} style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
+                        {candidate.phone}
                       </a>
                     </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {!AT_SURVEY_NON_RESPONDENTS.has(candidate.id) && (
-              <div>
-                <p style={{
-                  fontSize: 'var(--text-xs)',
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: 'var(--colour-grey-400)',
-                  marginBottom: 'var(--space-3)',
-                }}>
-                  Active Transportation Coalition
-                </p>
-                <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-                  {ACTIVE_TRANSPORTATION_LINKS.map((item) => (
-                    <li key={item.href} style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-2)' }}>
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', fontWeight: 500 }}
-                      >
-                        {item.label}
+                  )}
+                  {candidate.email && (
+                    <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+                      <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><EmailIcon /></span>
+                      <a href={`mailto:${candidate.email}`} style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', wordBreak: 'break-all' }}>
+                        {candidate.email}
                       </a>
-                      <span style={{ fontSize: 'var(--text-xs)', color: 'var(--colour-grey-400)', flexShrink: 0 }}>
-                        {item.lang}
-                      </span>
                     </li>
-                  ))}
+                  )}
+                  {(candidate.website || candidate.websiteEn || candidate.websiteFr) && (
+                    <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+                      <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><GlobeIcon /></span>
+                      <CampaignSiteLink
+                        website={candidate.website}
+                        websiteEn={candidate.websiteEn}
+                        websiteFr={candidate.websiteFr}
+                        label="Campaign site"
+                        style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}
+                      />
+                    </li>
+                  )}
+                  {candidate.facebook && (
+                    <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+                      <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><FacebookIcon /></span>
+                      <a href={candidate.facebook} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
+                        Facebook
+                      </a>
+                    </li>
+                  )}
+                  {candidate.instagram && (
+                    <li style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+                      <span style={{ color: 'var(--colour-grey-400)', flexShrink: 0 }}><InstagramIcon /></span>
+                      <a href={candidate.instagram} target="_blank" rel="noopener noreferrer" style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)' }}>
+                        Instagram
+                      </a>
+                    </li>
+                  )}
                 </ul>
-              </div>
-            )}
-          </section>
+              </section>
+            </aside>
           )}
 
-          {/* Scorecard link (incumbents only) */}
-          {scorecardSlug && (
-            <Link
-              to={`/scorecards/${scorecardSlug}`}
-              className="card"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: 'var(--space-4)',
-                marginTop: 'var(--space-10)',
-                textDecoration: 'none',
-                color: 'inherit',
-                borderLeft: '4px solid var(--colour-primary-600)',
-              }}
-            >
-              <div>
-                <p style={{
-                  fontSize: 'var(--text-xs)',
-                  fontWeight: 700,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: 'var(--colour-grey-500)',
-                  margin: '0 0 var(--space-1) 0',
-                }}>
-                  Voting Record
-                </p>
-                <p style={{ fontWeight: 600, color: '#1E2D3D', fontSize: 'var(--text-base)', margin: 0 }}>
-                  View {candidate.name}'s scorecard
-                </p>
-              </div>
-              <span style={{ color: 'var(--colour-primary-600)', fontSize: 'var(--text-base)', fontWeight: 600, flexShrink: 0 }}>
-                →
-              </span>
-            </Link>
-          )}
         </div>
       </div>
     </>
