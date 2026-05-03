@@ -131,6 +131,7 @@ export default function CandidateDetail() {
 
   const initials = getInitials(candidate.name);
   const hasContact = candidate.phone || candidate.email || candidate.facebook || candidate.instagram || candidate.website || candidate.websiteEn || candidate.websiteFr;
+  const scorecardSlug = candidate.incumbent ? candidate.id.replace(/^(mayor|atlarge|ward\d+)-/, '') : null;
 
   return (
     <>
@@ -400,6 +401,43 @@ export default function CandidateDetail() {
               </div>
             )}
           </section>
+          )}
+
+          {/* Scorecard link (incumbents only) */}
+          {scorecardSlug && (
+            <Link
+              to={`/scorecards/${scorecardSlug}`}
+              className="card"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: 'var(--space-4)',
+                marginTop: 'var(--space-10)',
+                textDecoration: 'none',
+                color: 'inherit',
+                borderLeft: '4px solid var(--colour-primary-600)',
+              }}
+            >
+              <div>
+                <p style={{
+                  fontSize: 'var(--text-xs)',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: 'var(--colour-grey-500)',
+                  margin: '0 0 var(--space-1) 0',
+                }}>
+                  Voting Record
+                </p>
+                <p style={{ fontWeight: 600, color: '#1E2D3D', fontSize: 'var(--text-base)', margin: 0 }}>
+                  View {candidate.name}'s scorecard
+                </p>
+              </div>
+              <span style={{ color: 'var(--colour-primary-600)', fontSize: 'var(--text-base)', fontWeight: 600, flexShrink: 0 }}>
+                →
+              </span>
+            </Link>
           )}
         </div>
       </div>

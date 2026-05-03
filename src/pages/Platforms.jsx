@@ -350,16 +350,9 @@ export default function Platforms() {
 
                 {/* ── Related Resources ── */}
                 <div style={{ marginTop: 'var(--space-12)', paddingTop: 'var(--space-8)', borderTop: '1px solid var(--colour-grey-200)' }}>
-                  <p style={{
-                    fontSize: 'var(--text-xs)',
-                    fontWeight: 700,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.08em',
-                    color: 'var(--colour-grey-400)',
-                    marginBottom: 'var(--space-4)',
-                  }}>
+                  <h2 style={{ fontSize: 'var(--text-xl)', color: '#1E2D3D', marginBottom: 'var(--space-6)' }}>
                     More Resources
-                  </p>
+                  </h2>
 
                   {race !== 'mayor' && (
                     <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
