@@ -31,6 +31,7 @@ function NotFound() {
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
+    if (pathname === '/candidates') return;
     window.scrollTo(0, 0);
   }, [pathname]);
   return null;
