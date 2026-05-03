@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { candidates, CANDIDATE_QUESTIONS } from '../data/candidates.js';
+import { MAYOR_CBC_LINKS, ACTIVE_TRANSPORTATION_LINKS, AT_SURVEY_NON_RESPONDENTS } from '../data/mediaResources.js';
 import CampaignSiteLink from '../components/CampaignSiteLink.jsx';
 
 const TRUNCATE_AT = 500;
@@ -300,8 +301,105 @@ export default function CandidateDetail() {
           {/* No Q&A yet */}
           {(!candidate.qa || candidate.qa.length === 0) && (
             <div className="notice">
-              <p>This candidate has not yet provided answers to our questionnaire.</p>
+              <p><strong>This candidate has not yet provided answers to our questionnaire.</strong></p>
             </div>
+          )}
+
+          {/* Media & Resources */}
+          {(candidate.youtube || !AT_SURVEY_NON_RESPONDENTS.has(candidate.id)) && (
+          <section aria-label="Media and resources" style={{ marginTop: 'var(--space-10)' }}>
+            <h2 style={{ fontSize: 'var(--text-xl)', marginBottom: 'var(--space-6)', color: '#1E2D3D' }}>
+              Media &amp; Resources
+            </h2>
+
+            {candidate.youtube && (
+              <div style={{ marginBottom: 'var(--space-6)' }}>
+                <p style={{
+                  fontSize: 'var(--text-xs)',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: 'var(--colour-grey-400)',
+                  marginBottom: 'var(--space-3)',
+                }}>
+                  YouTube — Candidate Interview
+                </p>
+                <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+                  <li>
+                    <a
+                      href={candidate.youtube}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', fontWeight: 500 }}
+                    >
+                      {candidate.name} — Candidate Interview
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            )}
+
+            {candidate.youtube && (
+              <div style={{ marginBottom: 'var(--space-6)' }}>
+                <p style={{
+                  fontSize: 'var(--text-xs)',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: 'var(--colour-grey-400)',
+                  marginBottom: 'var(--space-3)',
+                }}>
+                  CBC Radio — Mayoral Candidates
+                </p>
+                <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                  {MAYOR_CBC_LINKS.map((item) => (
+                    <li key={item.href}>
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', fontWeight: 500 }}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {!AT_SURVEY_NON_RESPONDENTS.has(candidate.id) && (
+              <div>
+                <p style={{
+                  fontSize: 'var(--text-xs)',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: 'var(--colour-grey-400)',
+                  marginBottom: 'var(--space-3)',
+                }}>
+                  Active Transportation Coalition
+                </p>
+                <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                  {ACTIVE_TRANSPORTATION_LINKS.map((item) => (
+                    <li key={item.href} style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-2)' }}>
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', fontWeight: 500 }}
+                      >
+                        {item.label}
+                      </a>
+                      <span style={{ fontSize: 'var(--text-xs)', color: 'var(--colour-grey-400)', flexShrink: 0 }}>
+                        {item.lang}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </section>
           )}
         </div>
       </div>

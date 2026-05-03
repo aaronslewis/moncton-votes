@@ -36,6 +36,7 @@ export const candidates = {
       facebook: null,
       bio: null,
       platform: [],
+      youtube: 'https://www.youtube.com/watch?v=YhTWf-EW_r4&list=PLGUVhwbBWxEuagFyEYRrRbGEHrL7q3Da5&index=12',
     },
     {
       id: 'mayor-charles-leger',
@@ -51,6 +52,7 @@ export const candidates = {
       facebook: null,
       bio: null,
       platform: [],
+      youtube: 'https://www.youtube.com/watch?v=ePso05mL18g&list=PLGUVhwbBWxEuagFyEYRrRbGEHrL7q3Da5&index=8',
       qa: [
         { answer: "I have 4 priorities; however 2 top priorities will be on:\n\nSafe and secure neighbourhoods by the removal of drugs from our streets, establishing a peace officer program for community officers directed by the city, installing AI public safety cameras downtown and beyond.\n\nReal action on homelessness by developing a comprehensive St. George St plan, providing land for affordable housing and targeting underutilized properties to increase available housing." },
         { answer: "Homelessness requires an immediate focus and action developing a comprehensive St. George St plan, providing land for affordable housing and targeting underutilized properties to increase available housing." },
@@ -91,6 +93,7 @@ export const candidates = {
       facebook: null,
       bio: null,
       platform: [],
+      youtube: 'https://www.youtube.com/watch?v=W8o1y3IBcyI&list=PLGUVhwbBWxEuagFyEYRrRbGEHrL7q3Da5&index=4',
     },
   ],
 

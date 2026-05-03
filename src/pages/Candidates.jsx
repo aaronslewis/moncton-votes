@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { candidates, WARDS } from '../data/candidates.js';
 import CampaignSiteLink from '../components/CampaignSiteLink.jsx';
@@ -102,8 +102,7 @@ function CandidateCard({ candidate }) {
           )}
         </div>
 
-        {candidate.qa && candidate.qa.length > 0 && (
-          <Link
+        <Link
             to={`/candidates/${candidate.id}`}
             style={{
               alignSelf: 'center',
@@ -121,7 +120,6 @@ function CandidateCard({ candidate }) {
           >
             Where They Stand →
           </Link>
-        )}
       </div>
 
       {/* Bio */}
@@ -231,10 +229,28 @@ function CandidateSection({ title, candidateList, id }) {
   );
 }
 
+function shuffle(arr) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 export default function Candidates() {
   const [selectedWard, setSelectedWard] = useState('');
+  const [shuffled, setShuffled] = useState(candidates);
 
-  const wardCandidates = selectedWard ? candidates[selectedWard] : [];
+  useEffect(() => {
+    const result = {};
+    for (const key of Object.keys(candidates)) {
+      result[key] = shuffle(candidates[key] ?? []);
+    }
+    setShuffled(result);
+  }, []);
+
+  const wardCandidates = selectedWard ? shuffled[selectedWard] : [];
   const wardLabel = selectedWard ? WARDS.find((w) => w.value === selectedWard)?.label : '';
 
   return (
@@ -327,14 +343,14 @@ export default function Candidates() {
         <CandidateSection
           id="mayoral-heading"
           title="Mayoral Candidates"
-          candidateList={candidates.mayor}
+          candidateList={shuffled.mayor}
         />
 
         {/* ── At-Large Candidates ─────────────────────────────── */}
         <CandidateSection
           id="atlarge-heading"
           title="At-Large Candidates"
-          candidateList={candidates.atLarge}
+          candidateList={shuffled.atLarge}
         />
 
         {/* ── Ward Candidates (conditional) ───────────────────── */}
@@ -370,7 +386,7 @@ export default function Candidates() {
                     <div className="section-divider" aria-hidden="true" />
                   </div>
                   <div className="grid-2">
-                    {(candidates[ward.value] || []).map((c) => (
+                    {(shuffled[ward.value] || []).map((c) => (
                       <CandidateCard key={c.id} candidate={c} />
                     ))}
                   </div>
