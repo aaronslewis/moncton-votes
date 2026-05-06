@@ -37,6 +37,10 @@ export const candidates = {
       bio: null,
       platform: [],
       youtube: 'https://www.youtube.com/watch?v=YhTWf-EW_r4&list=PLGUVhwbBWxEuagFyEYRrRbGEHrL7q3Da5&index=12',
+      cbcInterview: {
+        label: 'CBC Radio: Shawn Crossman on what the city needs',
+        href: 'https://www.cbc.ca/listen/live-radio/1-26-information-morning-moncton/clip/16213041-moncton-mayoral-candidate-shawn-crossman-says-city-needs',
+      },
     },
     {
       id: 'mayor-charles-leger',
@@ -53,6 +57,10 @@ export const candidates = {
       bio: null,
       platform: [],
       youtube: 'https://www.youtube.com/watch?v=ePso05mL18g&list=PLGUVhwbBWxEuagFyEYRrRbGEHrL7q3Da5&index=8',
+      cbcInterview: {
+        label: 'CBC Radio: Charles Léger focuses on public safety',
+        href: 'https://www.cbc.ca/listen/live-radio/1-26-information-morning-moncton/clip/16213108-moncton-mayoral-candidate-charles-leger-focuses-public-safety',
+      },
       qa: [
         { answer: "I have 4 priorities; however 2 top priorities will be on:\n\nSafe and secure neighbourhoods by the removal of drugs from our streets, establishing a peace officer program for community officers directed by the city, installing AI public safety cameras downtown and beyond.\n\nReal action on homelessness by developing a comprehensive St. George St plan, providing land for affordable housing and targeting underutilized properties to increase available housing." },
         { answer: "Homelessness requires an immediate focus and action developing a comprehensive St. George St plan, providing land for affordable housing and targeting underutilized properties to increase available housing." },
@@ -79,6 +87,10 @@ export const candidates = {
       facebook: 'https://www.facebook.com/JeffreyMcCLuskey2026',
       bio: null,
       platform: [],
+      cbcInterview: {
+        label: 'CBC Radio: Jeffrey McCluskey says homelessness is the top priority',
+        href: 'https://www.cbc.ca/listen/live-radio/1-26-information-morning-moncton/clip/16213088-moncton-mayoral-candidate-jeffrey-mccluskey-says-homelessness-top',
+      },
     },
     {
       id: 'mayor-brian-murphy',
@@ -94,6 +106,10 @@ export const candidates = {
       bio: null,
       platform: [],
       youtube: 'https://www.youtube.com/watch?v=W8o1y3IBcyI&list=PLGUVhwbBWxEuagFyEYRrRbGEHrL7q3Da5&index=4',
+      cbcInterview: {
+        label: 'CBC Radio: Brian Murphy cites changes to policing',
+        href: 'https://www.cbc.ca/listen/live-radio/1-26-information-morning-moncton/clip/16212756-moncton-mayoral-candidate-brian-murphy-cites-changes-policing',
+      },
     },
   ],
 

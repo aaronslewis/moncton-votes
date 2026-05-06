@@ -254,7 +254,7 @@ export default function CandidateDetail() {
             )}
 
             {/* Media & Resources */}
-            {(candidate.youtube || !AT_SURVEY_NON_RESPONDENTS.has(candidate.id)) && (
+            {(candidate.youtube || candidate.cbcInterview || !AT_SURVEY_NON_RESPONDENTS.has(candidate.id)) && (
               <section aria-label="Media and resources" style={{ marginTop: 'var(--space-10)' }}>
                 <h2 style={{ fontSize: 'var(--text-xl)', marginBottom: 'var(--space-6)', color: '#1E2D3D' }}>
                   Media &amp; Resources
@@ -287,7 +287,7 @@ export default function CandidateDetail() {
                   </div>
                 )}
 
-                {candidate.youtube && (
+                {(candidate.cbcInterview || candidate.youtube) && (
                   <div style={{ marginBottom: 'var(--space-6)' }}>
                     <p style={{
                       fontSize: 'var(--text-xs)',
@@ -297,10 +297,22 @@ export default function CandidateDetail() {
                       color: 'var(--colour-grey-400)',
                       marginBottom: 'var(--space-3)',
                     }}>
-                      CBC Radio — Mayoral Candidates
+                      CBC Radio
                     </p>
                     <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-                      {MAYOR_CBC_LINKS.map((item) => (
+                      {candidate.cbcInterview && (
+                        <li>
+                          <a
+                            href={candidate.cbcInterview.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', fontWeight: 500 }}
+                          >
+                            {candidate.cbcInterview.label}
+                          </a>
+                        </li>
+                      )}
+                      {candidate.youtube && MAYOR_CBC_LINKS.map((item) => (
                         <li key={item.href}>
                           <a
                             href={item.href}

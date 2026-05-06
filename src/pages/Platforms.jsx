@@ -16,6 +16,19 @@ const MAYOR_YOUTUBE_LINKS = (candidates.mayor ?? [])
   .filter((c) => c.youtube)
   .map((c) => ({ label: `${c.name} — Candidate Interview`, href: c.youtube }));
 
+const MAYOR_CBC_INTERVIEW_LINKS = (candidates.mayor ?? [])
+  .filter((c) => c.cbcInterview)
+  .map((c) => ({ label: c.cbcInterview.label, href: c.cbcInterview.href }));
+
+function shuffle(arr) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
 function getInitials(name) {
   const parts = name.trim().split(/\s+/).filter(Boolean);
   if (parts.length === 0) return '?';
@@ -142,15 +155,17 @@ export default function Platforms() {
   const setQuestionIndex = (value) => setSearchParams((prev) => { const p = new URLSearchParams(prev); value !== '' ? p.set('question', value) : p.delete('question'); return p; });
 
   const [raceCandidates, setRaceCandidates] = useState([]);
+  const [youtubeLinks, setYoutubeLinks] = useState(MAYOR_YOUTUBE_LINKS);
+  const [cbcInterviewLinks, setCbcInterviewLinks] = useState(MAYOR_CBC_INTERVIEW_LINKS);
 
   useEffect(() => {
-    const arr = [...(candidates[race] ?? [])];
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    setRaceCandidates(arr);
+    setRaceCandidates(shuffle(candidates[race] ?? []));
   }, [race]);
+
+  useEffect(() => {
+    setYoutubeLinks(shuffle(MAYOR_YOUTUBE_LINKS));
+    setCbcInterviewLinks(shuffle(MAYOR_CBC_INTERVIEW_LINKS));
+  }, []);
 
   const hasSelections = race !== '' && questionIndex !== '';
   const qIdx = hasSelections ? parseInt(questionIndex, 10) : null;
@@ -385,7 +400,34 @@ export default function Platforms() {
                           color: 'var(--colour-grey-400)',
                           marginBottom: 'var(--space-3)',
                         }}>
-                          CBC Radio — Mayoral Candidates
+                          CBC Radio — Candidate Interviews
+                        </p>
+                        <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
+                          {cbcInterviewLinks.map((item) => (
+                            <li key={item.href}>
+                              <a
+                                href={item.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ fontSize: 'var(--text-sm)', color: 'var(--colour-primary-600)', fontWeight: 500 }}
+                              >
+                                {item.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div style={{ marginTop: 'var(--space-5)' }}>
+                        <p style={{
+                          fontSize: 'var(--text-xs)',
+                          fontWeight: 700,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.08em',
+                          color: 'var(--colour-grey-400)',
+                          marginBottom: 'var(--space-3)',
+                        }}>
+                          CBC Radio — Mayoral Panels
                         </p>
                         <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
                           {MAYOR_CBC_LINKS.map((item) => (
@@ -415,7 +457,7 @@ export default function Platforms() {
                           YouTube — Candidate Interviews
                         </p>
                         <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
-                          {MAYOR_YOUTUBE_LINKS.map((item) => (
+                          {youtubeLinks.map((item) => (
                             <li key={item.href}>
                               <a
                                 href={item.href}
