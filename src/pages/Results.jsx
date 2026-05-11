@@ -5,8 +5,7 @@ import { candidates as allCandidates } from '../data/candidates.js';
 const POLLS_CLOSE = new Date('2026-05-11T23:00:00Z');
 const POLL_INTERVAL_MS = 4 * 60 * 1000;
 
-const WARD_IDS   = ['1266', '1267', '1268', '1269'];
-const WARD_LABELS = { '1266': 'Ward 1', '1267': 'Ward 2', '1268': 'Ward 3', '1269': 'Ward 4' };
+// Ward labels are derived from areaName or contestName at render time
 
 // ── Dev-mode mock data ─────────────────────────────────────────────────────
 // Mirrors the Elections NB data shape so the UI is fully previewable locally.
@@ -50,10 +49,10 @@ function buildMockData() {
       makeContest('Councillor at Large/Conseiller(ère) de ville', 2, allCandidates.atLarge.map(makeChoice)),
     ], 45),
     wards: {
-      '1266': makeArea([makeContest('Ward 1 Councillor/Conseiller(ère)', 2, allCandidates.ward1.map(makeChoice))], 12),
-      '1267': makeArea([makeContest('Ward 2 Councillor/Conseiller(ère)', 2, allCandidates.ward2.map(makeChoice))], 11),
-      '1268': makeArea([makeContest('Ward 3 Councillor/Conseiller(ère)', 2, allCandidates.ward3.map(makeChoice))], 11),
-      '1269': makeArea([makeContest('Ward 4 Councillor/Conseiller(ère)', 2, allCandidates.ward4.map(makeChoice))], 11),
+      'w1': { ...makeArea([makeContest('Ward 1 Councillor/Conseiller(ère)', 2, allCandidates.ward1.map(makeChoice))], 12), areaName: 'Moncton Ward 1' },
+      'w2': { ...makeArea([makeContest('Ward 2 Councillor/Conseiller(ère)', 2, allCandidates.ward2.map(makeChoice))], 11), areaName: 'Moncton Ward 2' },
+      'w3': { ...makeArea([makeContest('Ward 3 Councillor/Conseiller(ère)', 2, allCandidates.ward3.map(makeChoice))], 11), areaName: 'Moncton Ward 3' },
+      'w4': { ...makeArea([makeContest('Ward 4 Councillor/Conseiller(ère)', 2, allCandidates.ward4.map(makeChoice))], 11), areaName: 'Moncton Ward 4' },
     },
   };
 }
@@ -511,9 +510,10 @@ export default function Results() {
               gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
               gap: 'var(--space-6)',
             }}>
-              {WARD_IDS.map((id) => (
-                <AreaCard key={id} title={WARD_LABELS[id]} areaData={wards[id]} />
-              ))}
+              {Object.entries(wards).map(([id, wardData]) => {
+                const title = wardData?.areaName ?? id;
+                return <AreaCard key={id} title={title} areaData={wardData} />;
+              })}
             </div>
           </>
         )}

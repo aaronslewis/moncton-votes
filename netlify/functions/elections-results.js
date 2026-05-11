@@ -1,9 +1,6 @@
 const RESULTS_URL =
   'https://www3.gnb.ca/elections/results-resultats/2026-05-11/MUN/data/arearesults.json';
 
-const MONCTON_ID = '1064';
-const WARD_IDS = ['1266', '1267', '1268', '1269'];
-
 export const handler = async () => {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 12000);
@@ -25,11 +22,38 @@ export const handler = async () => {
     const data = await res.json();
     const areaResults = data.areaResults ?? {};
 
-    // Return only Moncton + its wards to keep the payload small
+    // Find Moncton-related areas by name rather than hard-coded IDs
+    let monctonId = null;
+    const wardIds = [];
+    const allAreaNames = {};
+
+    for (const [id, area] of Object.entries(areaResults)) {
+      const name = (area?.areaName ?? '').toLowerCase();
+      allAreaNames[id] = area?.areaName ?? '(no name)';
+      if (name.includes('moncton')) {
+        // Check if this is the city-level entry (has mayor contest) or a ward
+        const hasWard = (area?.contestResults ?? []).some(
+          (c) => /ward|quartier/i.test(c.contestName ?? '')
+        );
+        const hasMayor = (area?.contestResults ?? []).some(
+          (c) => /mayor|maire/i.test(c.contestName ?? '')
+        );
+        if (hasMayor && !hasWard) {
+          monctonId = id;
+        } else if (hasWard || /ward\s*\d|quartier\s*\d/i.test(name)) {
+          wardIds.push(id);
+        } else if (!monctonId) {
+          // Fallback: first Moncton entry without ward in name is probably city-level
+          monctonId = id;
+        }
+      }
+    }
+
     const payload = {
       timestamp: data.timestamp ?? null,
-      moncton: areaResults[MONCTON_ID] ?? null,
-      wards: Object.fromEntries(WARD_IDS.map((id) => [id, areaResults[id] ?? null])),
+      moncton: monctonId ? areaResults[monctonId] : null,
+      wards: Object.fromEntries(wardIds.map((id) => [id, areaResults[id]])),
+      _debug: { monctonId, wardIds, totalAreas: Object.keys(areaResults).length },
     };
 
     return {
