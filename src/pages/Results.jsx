@@ -3,7 +3,7 @@ import { candidates as allCandidates } from '../data/candidates.js';
 
 // Polls close 8 PM Atlantic Daylight Time (UTC-3) = 23:00 UTC
 const POLLS_CLOSE = new Date('2026-05-11T23:00:00Z');
-const POLL_INTERVAL_MS = 4 * 60 * 1000;
+const POLL_INTERVAL_MS = 1 * 60 * 1000;
 
 // Ward labels are derived from areaName or contestName at render time
 
