@@ -78,6 +78,7 @@ export const routes = [
       { path: 'wheretheystand',      lazy: async () => ({ Component: (await import('./pages/Platforms.jsx')).default }) },
       { path: 'levels-of-government', lazy: async () => ({ Component: (await import('./pages/GovernmentLevels.jsx')).default }) },
       { path: 'about',         lazy: async () => ({ Component: (await import('./pages/About.jsx')).default }) },
+      { path: 'results',       lazy: async () => ({ Component: (await import('./pages/Results.jsx')).default }) },
       { path: '*',             element: <NotFound /> },
     ],
   },
