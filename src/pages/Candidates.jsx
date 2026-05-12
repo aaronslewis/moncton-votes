@@ -85,6 +85,11 @@ function CandidateCard({ candidate }) {
             <span className="badge badge-blue" style={{ fontSize: 'var(--text-xs)' }}>
               {candidate.ward}
             </span>
+            {candidate.elected && (
+              <span className="badge" style={{ fontSize: 'var(--text-xs)', background: 'var(--grade-a)', color: '#fff' }}>
+                ✓ Elected
+              </span>
+            )}
             {candidate.incumbent && (
               <span className="badge badge-grey" style={{ fontSize: 'var(--text-xs)' }}>
                 {incumbentLabel(candidate)}

@@ -240,8 +240,8 @@ export default function Home() {
               councillors performed, and make a choice you feel good about.
             </p>
             <div className="hero-cta">
-              <Link to="/candidates" className="btn btn-primary">
-                View Candidates
+              <Link to="/results" className="btn btn-primary">
+                View Results
               </Link>
             </div>
           </div>

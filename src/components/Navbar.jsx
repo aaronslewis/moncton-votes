@@ -47,6 +47,9 @@ export default function Navbar() {
               <NavLink to="/candidates" className={getNavLinkClass} role="listitem">
                 Candidates
               </NavLink>
+              <NavLink to="/results" className={getNavLinkClass} role="listitem">
+                Results
+              </NavLink>
               <NavLink to="/wheretheystand" className={getNavLinkClass} role="listitem">
                 Where They Stand
               </NavLink>
@@ -94,6 +97,9 @@ export default function Navbar() {
             </NavLink>
             <NavLink to="/candidates" className={getMobileNavLinkClass} onClick={closeMenu}>
               Candidates
+            </NavLink>
+            <NavLink to="/results" className={getMobileNavLinkClass} onClick={closeMenu}>
+              Results
             </NavLink>
             <NavLink to="/wheretheystand" className={getMobileNavLinkClass} onClick={closeMenu}>
               Where They Stand

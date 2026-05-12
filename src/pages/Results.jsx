@@ -1,71 +1,12 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
 import { candidates as allCandidates } from '../data/candidates.js';
-
-// Polls close 8 PM Atlantic Daylight Time (UTC-3) = 23:00 UTC
-const POLLS_CLOSE = new Date('2026-05-11T23:00:00Z');
-const POLL_INTERVAL_MS = 1 * 60 * 1000;
-
-// Ward labels are derived from areaName or contestName at render time
-
-// ── Dev-mode mock data ─────────────────────────────────────────────────────
-// Mirrors the Elections NB data shape so the UI is fully previewable locally.
-
-function buildMockData() {
-  const makeChoice = (c, i) => ({
-    id: c.id,
-    choiceName: c.name,
-    votes: 0,
-    percentage: 0,
-    isIncumbent: c.incumbent ?? false,
-    isWinner: false,
-    isDisabled: false,
-  });
-  const makeContest = (contestName, voteFor, choices) => ({
-    id: contestName,
-    contestName,
-    voteFor,
-    isAcclaimed: false,
-    choiceResults: choices,
-  });
-  const makeStats = (polls) => ({
-    eligibleVoters: 75000,
-    turnout: 0,
-    ballotCast: 0,
-    tabulators: polls,
-    closedTabulators: 0,
-    startedPolls: 0,
-    polls,
-    closedPolls: 0,
-  });
-  const makeArea = (contestResults, polls) => ({
-    statistics: makeStats(polls),
-    contestResults,
-  });
-
-  return {
-    timestamp: new Date().toISOString(),
-    moncton: makeArea([
-      makeContest('Mayor/Maire', 1, allCandidates.mayor.map(makeChoice)),
-      makeContest('Councillor at Large/Conseiller(ère) de ville', 2, allCandidates.atLarge.map(makeChoice)),
-    ], 45),
-    wards: {
-      'w1': { ...makeArea([makeContest('Ward 1 Councillor/Conseiller(ère)', 2, allCandidates.ward1.map(makeChoice))], 12), areaName: 'Moncton Ward 1' },
-      'w2': { ...makeArea([makeContest('Ward 2 Councillor/Conseiller(ère)', 2, allCandidates.ward2.map(makeChoice))], 11), areaName: 'Moncton Ward 2' },
-      'w3': { ...makeArea([makeContest('Ward 3 Councillor/Conseiller(ère)', 2, allCandidates.ward3.map(makeChoice))], 11), areaName: 'Moncton Ward 3' },
-      'w4': { ...makeArea([makeContest('Ward 4 Councillor/Conseiller(ère)', 2, allCandidates.ward4.map(makeChoice))], 11), areaName: 'Moncton Ward 4' },
-    },
-  };
-}
-
-const DEV_MOCK = import.meta.env.DEV ? buildMockData() : null;
 
 // ── Name matching ──────────────────────────────────────────────────────────
 
 function normalizeStr(s) {
   return s
     .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '') // strip diacritics  (Léger → Leger)
-    .replace(/[^a-z\s]/gi, '')       // strip punctuation (F.P. → filtered)
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z\s]/gi, '')
     .toLowerCase()
     .trim();
 }
@@ -73,7 +14,7 @@ function normalizeStr(s) {
 function extractFirstLast(name) {
   const parts = normalizeStr(name)
     .split(/\s+/)
-    .filter((p) => p.length > 1); // drop single-letter middle initials
+    .filter((p) => p.length > 1);
   if (parts.length === 0) return null;
   if (parts.length === 1) return { first: parts[0], last: parts[0] };
   return { first: parts[0], last: parts[parts.length - 1] };
@@ -90,60 +31,103 @@ function buildCandidateMap() {
 
 const CANDIDATE_MAP = buildCandidateMap();
 
-function lookupCandidate(electionNBName) {
-  if (!electionNBName) return null;
-  // Handle possible "Last, First" format from Elections NB
-  const name = electionNBName.includes(',')
-    ? electionNBName.split(',').reverse().join(' ').trim()
-    : electionNBName;
-  const fl = extractFirstLast(name);
+function lookupCandidate(name) {
+  if (!name) return null;
+  const normalized = name.includes(',')
+    ? name.split(',').reverse().join(' ').trim()
+    : name;
+  const fl = extractFirstLast(normalized);
   if (!fl) return null;
   return CANDIDATE_MAP.get(`${fl.first} ${fl.last}`) ?? null;
 }
 
-// ── Projection logic ───────────────────────────────────────────────────────
-//
-// Status ladder (matches how major Canadian outlets call races):
-//   'elected'   — isWinner from Elections NB (official call)
-//   'projected' — ≥ 40 % polls in AND margin > 30 % of estimated remaining votes
-//   'leading'   — currently ahead, not yet projectable
-//   null        — not in a winning position
+// ── Static final results ───────────────────────────────────────────────────
 
-function computeStatus({ choice, sortedRows, voteFor, stats, isAcclaimed }) {
-  if (isAcclaimed || choice.isWinner) return 'elected';
-
-  const totalVotes = sortedRows.reduce((s, r) => s + r.votes, 0);
-  if (totalVotes === 0) return null;
-
-  const rank = sortedRows.findIndex((r) => r.id === choice.id);
-  if (rank < 0 || rank >= voteFor) return null;
-
-  const { polls = 0, closedPolls = 0 } = stats ?? {};
-  const pollsFraction = polls > 0 ? closedPolls / polls : 0;
-
-  if (pollsFraction < 0.40) return 'leading';
-
-  // Compare against the first candidate outside the winning positions
-  const firstLoserVotes = sortedRows[voteFor]?.votes ?? 0;
-  const margin = choice.votes - firstLoserVotes;
-  // Estimated uncounted votes (uniform-turnout assumption)
-  const votesRemaining = totalVotes * (1 / pollsFraction - 1);
-  // A 30-point swing: challenger gets 30 % more of remaining than their current share
-  const maxSwing = votesRemaining * 0.30;
-
-  return margin > maxSwing ? 'projected' : 'leading';
-}
+const RESULTS = {
+  moncton: {
+    contestResults: [
+      {
+        id: 'mayor',
+        contestName: 'Mayor / Maire',
+        voteFor: 1,
+        isAcclaimed: false,
+        choiceResults: [
+          { id: 1, choiceName: 'Shawn Crossman',    votes: 6593, isWinner: 1, isIncumbent: false },
+          { id: 2, choiceName: 'Brian F.P. Murphy',  votes: 6299, isWinner: 0, isIncumbent: false },
+          { id: 3, choiceName: 'Charles Léger',      votes: 4189, isWinner: 0, isIncumbent: false },
+          { id: 4, choiceName: 'Jeffrey McCluskey',  votes:  408, isWinner: 0, isIncumbent: false },
+        ],
+      },
+      {
+        id: 'atlarge',
+        contestName: 'Councillor at Large / Conseiller(ère) Général(e)',
+        voteFor: 2,
+        isAcclaimed: false,
+        choiceResults: [
+          { id: 5,  choiceName: 'Greg Turner',     votes: 7682, isWinner: 1, isIncumbent: false },
+          { id: 6,  choiceName: 'Marty Kingston',  votes: 7280, isWinner: 1, isIncumbent: true  },
+          { id: 7,  choiceName: 'Ana Larade',      votes: 5796, isWinner: 0, isIncumbent: false },
+          { id: 8,  choiceName: 'Bryan MacDonald', votes: 4734, isWinner: 0, isIncumbent: false },
+          { id: 9,  choiceName: 'Ali Ettarnichi',  votes: 2429, isWinner: 0, isIncumbent: false },
+          { id: 10, choiceName: 'Carl Bainbridge', votes: 1541, isWinner: 0, isIncumbent: false },
+        ],
+      },
+    ],
+  },
+  wards: {
+    w1: {
+      areaName: 'Ward 1',
+      contestResults: [{
+        id: 'ward1', contestName: 'Councillor Ward 1', voteFor: 2, isAcclaimed: false,
+        choiceResults: [
+          { id: 11, choiceName: 'Mike Gaudet',     votes: 2226, isWinner: 1, isIncumbent: false },
+          { id: 12, choiceName: 'Felix LeBlanc',   votes: 2056, isWinner: 1, isIncumbent: false },
+          { id: 13, choiceName: 'Brian Branch',    votes: 1340, isWinner: 0, isIncumbent: false },
+          { id: 14, choiceName: 'Reem Fayyad',     votes: 1340, isWinner: 0, isIncumbent: false },
+          { id: 15, choiceName: 'Roy MacMullin',   votes:  921, isWinner: 0, isIncumbent: false },
+          { id: 16, choiceName: 'Alex Le',         votes:  243, isWinner: 0, isIncumbent: false },
+        ],
+      }],
+    },
+    w2: {
+      areaName: 'Ward 2',
+      contestResults: [{
+        id: 'ward2', contestName: 'Councillor Ward 2', voteFor: 2, isAcclaimed: false,
+        choiceResults: [
+          { id: 17, choiceName: 'Marc Léger',          votes: 2150, isWinner: 1, isIncumbent: false },
+          { id: 18, choiceName: 'Kristin Cavoukian',   votes: 2119, isWinner: 1, isIncumbent: false },
+          { id: 19, choiceName: 'Daniel Bourgeois',    votes: 1606, isWinner: 0, isIncumbent: true  },
+          { id: 20, choiceName: 'Todd Hansen',         votes:  762, isWinner: 0, isIncumbent: false },
+        ],
+      }],
+    },
+    w3: {
+      areaName: 'Ward 3',
+      contestResults: [{
+        id: 'ward3', contestName: 'Councillor Ward 3', voteFor: 2, isAcclaimed: false,
+        choiceResults: [
+          { id: 21, choiceName: 'Julianna Mutch',    votes: 3018, isWinner: 1, isIncumbent: false },
+          { id: 22, choiceName: 'Bryan Butler',      votes: 2512, isWinner: 1, isIncumbent: true  },
+          { id: 23, choiceName: 'Dave Steeves',      votes: 2126, isWinner: 0, isIncumbent: true  },
+          { id: 24, choiceName: 'Rodney Arsenault',  votes:  869, isWinner: 0, isIncumbent: false },
+        ],
+      }],
+    },
+    w4: {
+      areaName: 'Ward 4',
+      contestResults: [{
+        id: 'ward4', contestName: 'Councillor Ward 4', voteFor: 2, isAcclaimed: false,
+        choiceResults: [
+          { id: 25, choiceName: 'Paul Richard',   votes: 2526, isWinner: 1, isIncumbent: true  },
+          { id: 26, choiceName: 'Kate Doyle',     votes: 2349, isWinner: 1, isIncumbent: false },
+          { id: 27, choiceName: 'Kevin Rogers',   votes: 1164, isWinner: 0, isIncumbent: false },
+        ],
+      }],
+    },
+  },
+};
 
 // ── Helpers ────────────────────────────────────────────────────────────────
-
-function isPollsClosed() { return Date.now() >= POLLS_CLOSE.getTime(); }
-
-// Show tables as soon as contest/candidate structure exists (even with 0 votes)
-function hasContent(areaData) {
-  return (areaData?.contestResults ?? []).some((c) => (c.choiceResults ?? []).length > 0);
-}
-
-function pad(n) { return String(n).padStart(2, '0'); }
 
 function getInitials(name) {
   const parts = name.trim().split(/\s+/).filter(Boolean);
@@ -151,34 +135,6 @@ function getInitials(name) {
   if (parts.length === 1) return parts[0][0].toUpperCase();
   return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
 }
-
-// ── Countdown ─────────────────────────────────────────────────────────────
-
-function Countdown({ target }) {
-  const [ms, setMs] = useState(() => Math.max(0, target - Date.now()));
-  useEffect(() => {
-    setMs(Math.max(0, target - Date.now()));
-    const id = setInterval(() => setMs(Math.max(0, target - Date.now())), 1000);
-    return () => clearInterval(id);
-  }, [target]);
-  if (ms === 0) return null;
-  const h = Math.floor(ms / 3600000);
-  const m = Math.floor((ms % 3600000) / 60000);
-  const s = Math.floor((ms % 60000) / 1000);
-  return (
-    <span style={{ fontVariantNumeric: 'tabular-nums' }}>
-      {h > 0 ? `${h}h ` : ''}{m}m {pad(s)}s
-    </span>
-  );
-}
-
-// ── Status display ─────────────────────────────────────────────────────────
-
-const STATUS_META = {
-  elected:   { icon: '✓', label: 'Elected',   color: 'var(--grade-a)' },
-  projected: { icon: '◆', label: 'Projected',  color: 'var(--colour-primary-600)' },
-  leading:   { icon: '▲', label: 'Leading',    color: 'var(--colour-grey-400)' },
-};
 
 // ── Avatar ─────────────────────────────────────────────────────────────────
 
@@ -225,19 +181,14 @@ function Avatar({ candidate, choiceName }) {
 
 // ── Contest table ──────────────────────────────────────────────────────────
 
-function ContestTable({ contest, stats }) {
+function ContestTable({ contest }) {
   const { contestName, voteFor = 1, isAcclaimed, choiceResults = [] } = contest;
 
-  const sortedRows = [...choiceResults]
-    .filter((c) => !c.isDisabled)
-    .sort((a, b) => b.votes - a.votes);
-
+  const sortedRows = [...choiceResults].sort((a, b) => b.votes - a.votes);
   const totalVotes = sortedRows.reduce((s, r) => s + r.votes, 0);
-  const anyVotes   = totalVotes > 0;
 
   return (
     <div style={{ marginBottom: 'var(--space-6)' }}>
-      {/* Contest label */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-3)' }}>
         <h3 style={{
           margin: 0,
@@ -253,12 +204,9 @@ function ContestTable({ contest, stats }) {
         {!isAcclaimed && voteFor > 1 && <span className="badge badge-grey">Top {voteFor} elected</span>}
       </div>
 
-      {/* Candidate rows */}
       {sortedRows.map((choice, i) => {
-        const status    = computeStatus({ choice, sortedRows, voteFor, stats, isAcclaimed });
-        const meta      = status ? STATUS_META[status] : null;
-        const highlight = status === 'elected' || status === 'projected';
-        const pct       = anyVotes ? ((choice.votes / totalVotes) * 100).toFixed(1) : null;
+        const elected   = !!choice.isWinner;
+        const pct       = totalVotes > 0 ? ((choice.votes / totalVotes) * 100).toFixed(1) : null;
         const candidate = lookupCandidate(choice.choiceName);
 
         return (
@@ -271,20 +219,18 @@ function ContestTable({ contest, stats }) {
               gap: 'var(--space-3)',
               padding: 'var(--space-2) var(--space-3)',
               borderBottom: '1px solid var(--colour-grey-100)',
-              background: highlight ? 'var(--colour-primary-50)' : 'transparent',
+              background: elected ? 'var(--colour-primary-50)' : 'transparent',
             }}
           >
-            {/* Avatar */}
             <Avatar candidate={candidate} choiceName={choice.choiceName} />
 
-            {/* Name + badges */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', minWidth: 0 }}>
-              {meta
-                ? <span title={meta.label} style={{ color: meta.color, fontWeight: 700, fontSize: 'var(--text-sm)', flexShrink: 0 }}>{meta.icon}</span>
+              {elected
+                ? <span style={{ color: 'var(--grade-a)', fontWeight: 700, fontSize: 'var(--text-sm)', flexShrink: 0 }}>✓</span>
                 : <span style={{ display: 'inline-block', width: '1em', flexShrink: 0 }} />
               }
               <span style={{
-                fontWeight: highlight ? 600 : 400,
+                fontWeight: elected ? 600 : 400,
                 fontSize: 'var(--text-sm)',
                 overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
               }}>
@@ -293,29 +239,21 @@ function ContestTable({ contest, stats }) {
               {choice.isIncumbent && (
                 <span className="badge badge-grey" style={{ fontSize: '0.6rem', padding: '1px 4px', flexShrink: 0 }}>Inc.</span>
               )}
-              {status === 'projected' && (
-                <span className="badge badge-blue" style={{ fontSize: '0.6rem', padding: '1px 4px', flexShrink: 0 }}>Projected</span>
-              )}
-              {status === 'elected' && !isAcclaimed && (
+              {elected && (
                 <span style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--grade-a)', flexShrink: 0 }}>Elected</span>
-              )}
-              {isAcclaimed && i === 0 && (
-                <span style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--grade-a)', flexShrink: 0 }}>Acclaimed</span>
               )}
             </div>
 
-            {/* Votes */}
             <span style={{
               fontVariantNumeric: 'tabular-nums',
-              fontWeight: highlight ? 600 : 400,
+              fontWeight: elected ? 600 : 400,
               fontSize: 'var(--text-sm)',
               whiteSpace: 'nowrap',
               textAlign: 'right',
             }}>
-              {isAcclaimed ? '—' : choice.votes.toLocaleString('en-CA')}
+              {choice.votes.toLocaleString('en-CA')}
             </span>
 
-            {/* % */}
             <span style={{
               fontVariantNumeric: 'tabular-nums',
               fontSize: 'var(--text-sm)',
@@ -323,7 +261,7 @@ function ContestTable({ contest, stats }) {
               whiteSpace: 'nowrap',
               textAlign: 'right',
             }}>
-              {isAcclaimed || !anyVotes ? '—' : `${pct}%`}
+              {pct ? `${pct}%` : '—'}
             </span>
           </div>
         );
@@ -336,187 +274,58 @@ function ContestTable({ contest, stats }) {
 
 function AreaCard({ title, areaData, contestFilter }) {
   if (!areaData) return null;
-  const { statistics, contestResults = [] } = areaData;
+  const { contestResults = [] } = areaData;
   const filtered = contestFilter ? contestResults.filter(contestFilter) : contestResults;
   if (filtered.length === 0) return null;
-
-  const { polls = 0, closedPolls = 0 } = statistics ?? {};
-  const reportingPct = polls > 0 ? Math.round((closedPolls / polls) * 100) : 0;
 
   return (
     <section className="card" style={{ marginBottom: 'var(--space-6)', padding: 0, overflow: 'hidden' }}>
       <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'baseline',
         padding: 'var(--space-4) var(--space-5)',
         borderBottom: '1px solid var(--colour-grey-200)',
       }}>
         <h2 style={{ margin: 0, fontSize: 'var(--text-xl)', fontWeight: 700 }}>{title}</h2>
-        {polls > 0 && (
-          <span style={{ fontSize: 'var(--text-xs)', color: 'var(--colour-grey-500)', whiteSpace: 'nowrap', marginLeft: 'var(--space-3)' }}>
-            {closedPolls}/{polls} polls ({reportingPct}%)
-          </span>
-        )}
       </div>
       <div style={{ padding: 'var(--space-4) var(--space-5)' }}>
         {filtered.map((c, i) => (
-          <ContestTable key={c.id ?? i} contest={c} stats={statistics} />
+          <ContestTable key={c.id ?? i} contest={c} />
         ))}
       </div>
     </section>
   );
 }
 
-// ── Contest filters ────────────────────────────────────────────────────────
-
 const isMayor   = (c) => /mayor|maire/i.test(c.contestName);
-const isAtLarge = (c) => /at.large|de ville/i.test(c.contestName);
+const isAtLarge = (c) => /at.large|général/i.test(c.contestName);
 
 // ── Page ───────────────────────────────────────────────────────────────────
 
 export default function Results() {
-  const [results,     setResults]     = useState(DEV_MOCK); // pre-fill in dev
-  const [lastUpdated, setLastUpdated] = useState(DEV_MOCK ? new Date() : null);
-  const [loading,     setLoading]     = useState(false);
-  const [error,       setError]       = useState(null);
-  const [nextPoll,    setNextPoll]    = useState(DEV_MOCK ? new Date(Date.now() + POLL_INTERVAL_MS) : null);
-  const [pollsClosed, setPollsClosed] = useState(() => DEV_MOCK ? true : isPollsClosed());
-  const intervalRef = useRef(null);
-
-  const fetchResults = useCallback(async () => {
-    if (DEV_MOCK) return; // dev: keep mock data, skip real fetch
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch('/.netlify/functions/elections-results');
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = await res.json();
-      setResults(json);
-      setLastUpdated(new Date());
-      setNextPoll(new Date(Date.now() + POLL_INTERVAL_MS));
-    } catch (e) {
-      setError(e.message);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (DEV_MOCK) return; // dev: no polling needed
-
-    if (isPollsClosed()) {
-      fetchResults();
-      intervalRef.current = setInterval(fetchResults, POLL_INTERVAL_MS);
-      return () => clearInterval(intervalRef.current);
-    }
-
-    const delay = POLLS_CLOSE.getTime() - Date.now();
-    const timeoutId = setTimeout(() => {
-      setPollsClosed(true);
-      fetchResults();
-      intervalRef.current = setInterval(fetchResults, POLL_INTERVAL_MS);
-    }, delay);
-
-    return () => {
-      clearTimeout(timeoutId);
-      clearInterval(intervalRef.current);
-    };
-  }, [fetchResults]);
-
-  const moncton    = results?.moncton;
-  const wards      = results?.wards ?? {};
-  const showTables = hasContent(moncton);
-
-  const adtTime = (d) =>
-    d.toLocaleTimeString('en-CA', {
-      timeZone: 'America/Moncton',
-      hour: '2-digit', minute: '2-digit', second: '2-digit',
-    });
+  const { moncton, wards } = RESULTS;
 
   return (
     <>
       <header className="page-header">
         <div className="container">
-          <h1>2026 Election — Live Results</h1>
-          <p>Moncton municipal election, May 11, 2026. Unofficial results from Elections NB.</p>
+          <h1>2026 Election — Final Results</h1>
+          <p>Moncton municipal election, May 11, 2026. Official results from Elections NB.</p>
         </div>
       </header>
 
       <div className="container" style={{ paddingTop: 'var(--space-8)', paddingBottom: 'var(--space-16)' }}>
 
-        {!pollsClosed && (
-          <div className="notice notice-info" style={{ marginBottom: 'var(--space-6)' }}>
-            <p>
-              <strong>Polls are open until 8:00 PM ADT.</strong>{' '}
-              Results will load automatically — <Countdown target={POLLS_CLOSE.getTime()} /> remaining.
-            </p>
-          </div>
-        )}
+        <AreaCard title="Mayor"               areaData={moncton} contestFilter={isMayor} />
+        <AreaCard title="Councillor At-Large" areaData={moncton} contestFilter={isAtLarge} />
 
-        {pollsClosed && loading && !results && (
-          <div className="notice notice-info" style={{ marginBottom: 'var(--space-6)' }}>
-            <p>Loading results from Elections NB…</p>
-          </div>
-        )}
-
-        {error && (
-          <div className="notice" style={{ marginBottom: 'var(--space-6)' }}>
-            <p>
-              Could not load results: {error}.{' '}
-              <button
-                className="btn btn-ghost"
-                style={{ fontSize: 'var(--text-xs)', padding: 'var(--space-1) var(--space-2)' }}
-                onClick={fetchResults}
-              >
-                Retry
-              </button>
-            </p>
-          </div>
-        )}
-
-        {pollsClosed && results && !showTables && (
-          <div className="notice notice-info" style={{ marginBottom: 'var(--space-6)' }}>
-            <p>No results available yet from Elections NB. Checking every 4 minutes.</p>
-          </div>
-        )}
-
-        {lastUpdated && (
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            fontSize: 'var(--text-xs)',
-            color: 'var(--colour-grey-500)',
-            marginBottom: 'var(--space-6)',
-          }}>
-            <span>
-              {DEV_MOCK ? 'Dev preview — mock data (all zeros)' : `Updated ${adtTime(lastUpdated)} ADT`}
-            </span>
-            <span>
-              {!DEV_MOCK && (loading
-                ? 'Refreshing…'
-                : nextPoll && <><Countdown target={nextPoll.getTime()} /> until next check</>
-              )}
-            </span>
-          </div>
-        )}
-
-        {showTables && (
-          <>
-            <AreaCard title="Mayor"               areaData={moncton} contestFilter={isMayor} />
-            <AreaCard title="Councillor At-Large" areaData={moncton} contestFilter={isAtLarge} />
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: 'var(--space-6)',
-            }}>
-              {Object.entries(wards).map(([id, wardData]) => {
-                const title = wardData?.areaName ?? id;
-                return <AreaCard key={id} title={title} areaData={wardData} />;
-              })}
-            </div>
-          </>
-        )}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: 'var(--space-6)',
+        }}>
+          {Object.entries(wards).map(([id, wardData]) => (
+            <AreaCard key={id} title={wardData.areaName} areaData={wardData} />
+          ))}
+        </div>
 
         <div style={{
           marginTop: 'var(--space-8)',
@@ -526,12 +335,10 @@ export default function Results() {
           color: 'var(--colour-grey-500)',
         }}>
           <p>
-            ▲ Leading &nbsp;·&nbsp;
-            ◆ Projected (lead exceeds a 30-point swing in remaining ballots) &nbsp;·&nbsp;
-            ✓ Elected (official Elections NB call) &nbsp;·&nbsp;
-            Results refresh every 4 minutes &nbsp;·&nbsp;{' '}
+            ✓ Elected &nbsp;·&nbsp;
+            Inc. = Incumbent &nbsp;·&nbsp;{' '}
             <a
-              href="https://www3.gnb.ca/elections/results-resultats/2026-05-11/MUN/MUN.html#at/cd88ce35-4e2a-43d0-81f3-bfbe27ac2664/ar/1064/"
+              href="https://www3.gnb.ca/elections/results-resultats/2026-05-11/MUN/MUN.html"
               target="_blank"
               rel="noopener noreferrer"
             >
